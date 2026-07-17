@@ -1,0 +1,22 @@
+{
+  "name": "atmoscene-workspace",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Animated weather icons and living sky scenes that blend into any interface.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "echo \"Scaffold the Atmoscene build in Phase 01\"",
+    "test": "echo \"Add Atmoscene validation in Phase 01\""
+  },
+  "keywords": [
+    "animated-weather-icons",
+    "weather-svg",
+    "lottie-weather",
+    "weather-animation",
+    "moon-phase-icons",
+    "weather-background"
+  ]
+}
