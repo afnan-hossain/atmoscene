@@ -49,6 +49,7 @@ Atmoscene will be a global, open-source library of animated weather icons and at
 - [ ] Create the public GitHub repository.
 - [ ] Set default branch to `main` and protect it after the first tagged release.
 - [ ] Add repository description, website URL, topics, social preview, and Discussions.
+- [x] Add Buy Me a Coffee funding metadata and repository support CTA.
 - [ ] Enable Issues, GitHub Pages, Dependabot, security advisories, and branch rules.
 - [ ] Add issue templates for bug, icon request, weather-data mapping, accessibility, and documentation.
 - [ ] Add pull-request template and contributor checklist.
@@ -384,6 +385,7 @@ Every item needs day/night support where physically meaningful, severity levels 
 - [ ] Accessibility and reduced-motion guide.
 - [ ] Performance and caching guide.
 - [ ] Attribution and licensing guide.
+- [ ] Add a tasteful, consistent Buy Me a Coffee CTA to the documentation header, footer, contribution guide, download flow, and project support page.
 - [ ] Migration/compatibility guide for Meteocons users without copying its branding.
 
 ### Live gallery and lab
@@ -415,6 +417,7 @@ Every item needs day/night support where physically meaningful, severity levels 
 - [ ] Unique title, meta description, H1, explanatory copy, and code examples per category/asset page.
 - [ ] Generate `sitemap.xml`, image sitemap, `robots.txt`, RSS/changelog feed, and canonical tags.
 - [ ] Add Open Graph and X cards generated from real Atmoscene visuals.
+- [ ] Include a non-intrusive project-support CTA without weakening documentation usability or Core Web Vitals.
 - [ ] Add JSON-LD for `SoftwareSourceCode`, `WebApplication`, `CreativeWork`, `ImageObject`, and `BreadcrumbList` where appropriate.
 - [ ] Avoid keyword stuffing; write useful explanatory content around real integration tasks.
 - [ ] Meet Core Web Vitals and accessibility targets.
@@ -517,4 +520,3 @@ Work only on these items next:
 4. Scaffold the pnpm/Astro monorepo.
 5. Build the transparent edge-feather proof of concept before drawing the full catalogue.
 6. Create one canonical reference family—clear, cloud-only, rain-only, snow-only, wind-only, moon phase, and eclipse—to prove composition without duplicate celestial bodies.
-

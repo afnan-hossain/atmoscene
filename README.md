@@ -2,6 +2,8 @@
 
 **Animated weather icons and living sky scenes that blend into any interface.**
 
+[![Support Atmoscene on Buy Me a Coffee](https://img.shields.io/badge/Support_Atmoscene-Buy_Me_a_Coffee-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=111111)](https://buymeacoffee.com/afnan.hossain)
+
 Atmoscene is a planned open-source weather-visualization system for the web, apps, dashboards, broadcasts, and data products. It will combine expressive animated icons with time-aware atmospheric gradients, celestial events, transparent edge feathering, and a data-driven resolver that selects the right visual from real weather data.
 
 > Project status: architecture and catalogue planning. The current name is provisional until the first public release.
@@ -47,3 +49,9 @@ See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 ## License
 
 The original Atmoscene code and assets are intended to be released under the MIT License. Third-party materials retain their original notices and licenses.
+
+## Support Atmoscene
+
+Atmoscene will remain free and open source. If the icons, animation engine, or documentation help your project, you can support ongoing design and development through [Buy Me a Coffee](https://buymeacoffee.com/afnan.hossain).
+
+[Support the project](https://buymeacoffee.com/afnan.hossain)

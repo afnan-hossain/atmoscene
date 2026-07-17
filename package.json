@@ -4,6 +4,10 @@
   "private": true,
   "description": "Animated weather icons and living sky scenes that blend into any interface.",
   "license": "MIT",
+  "funding": {
+    "type": "individual",
+    "url": "https://buymeacoffee.com/afnan.hossain"
+  },
   "engines": {
     "node": ">=20"
   },
