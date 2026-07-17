@@ -30,6 +30,79 @@ Atmoscene will be a global, open-source library of animated weather icons and at
 - [ ] Every animation is fluid, transform-efficient, and purposeful.
 - [ ] Every scene supports `prefers-reduced-motion` with a meaningful static frame.
 
+## Mandatory browser-first asset workflow
+
+Every asset category must follow this loop. Do not create the full catalogue invisibly and reveal it only at the end.
+
+### Step 1 — Catalogue and reference mapping
+
+- [ ] Import the complete Meteocons filename/category list as a compatibility reference, not as Atmoscene's final artwork.
+- [ ] Record the original concept id, weather meaning, day/night applicability, severity, source attribution, and required Atmoscene replacement id.
+- [ ] Add Atmoscene-only concepts such as expanded snow, aurora, eclipse progression, rare optics, tropical, marine, polar, and air-quality states.
+- [ ] Mark concepts as `reference-only`, `designing`, `browser-review`, `approved`, or `released`.
+
+### Step 2 — Canonical Atmoscene artwork
+
+- [ ] Rebuild each concept in the original Atmoscene visual language rather than recolouring or tracing the Meteocons icon.
+- [ ] Separate composable layers: sky, celestial body, cloud, precipitation, visibility, wind, hazard, and data-card metric.
+- [ ] Maintain one semantic source file from which line, flat, fill, and monochrome versions can be generated or carefully synchronized.
+- [ ] Keep cloud-only and effect-only variants so a composed scene never introduces an unwanted second sun or moon.
+
+### Step 3 — Motion and atmospheric gradient
+
+- [ ] Apply the correct motion behaviour for the physical phenomenon.
+- [ ] Combine the asset with distinct astronomical-time gradients in scene mode.
+- [ ] Keep icon mode transparent and independent from the scene gradient.
+- [ ] Apply phase/intensity-aware glow to the actual sun, moon, aurora, or eclipse rather than adding a duplicate glowing disc.
+- [ ] Validate normal, severe, and reduced-motion timelines.
+
+### Step 4 — Seamless edge treatment
+
+- [ ] Apply the shared two-axis alpha feather to the complete scene group.
+- [ ] Confirm that the centre remains crisp while all four sides gradually dissolve to transparent.
+- [ ] Test over at least eight arbitrary backgrounds before browser-review status.
+- [ ] Reject any scene with an abrupt square, dark seam, colour fringe, or clipped particle trail.
+
+### Step 5 — Generate formats and styles
+
+- [ ] Export animated SVG, static SVG, Lottie JSON, PNG, and WebP.
+- [ ] Export line, flat, fill, and monochrome families with identical semantic ids.
+- [ ] Generate checksums, sizes, poster frames, thumbnails, metadata, and code snippets.
+- [ ] Run automatic validation for missing files, broken masks, duplicate celestial bodies, inaccessible motion, and visual drift.
+
+### Step 6 — Immediate browser review
+
+- [ ] Add the asset to the local browser lab immediately after the first working version.
+- [ ] Keep the lab open with hot reload while the asset is refined.
+- [ ] Review every style and format through the same asset card.
+- [ ] Review transparent icon, feathered scene, overlay-only, and backdrop-only modes.
+- [ ] Review desktop, tablet, mobile, light, dark, high-contrast, and arbitrary-background states.
+- [ ] Do not mark an asset `approved` until its browser card is accepted.
+
+### Required browser lab controls
+
+- [ ] Category: clear/cloud/rain/snow/ice/storm/wind/visibility/air/celestial/aurora/optics/tropical/marine/hazard/metrics.
+- [ ] Style: line/flat/fill/monochrome.
+- [ ] Format: animated SVG/static SVG/Lottie/PNG/WebP.
+- [ ] Mode: icon/scene/overlay/backdrop.
+- [ ] Time: dawn/sunrise/morning/noon/afternoon/sunset/dusk/night/moonrise/moonset/polar.
+- [ ] Weather severity and motion intensity.
+- [ ] Moon phase, special moon appearance, solar eclipse, and lunar eclipse progression.
+- [ ] Wind speed, direction, gust pattern, and precipitation drift.
+- [ ] Scene aspect ratio, scale, opacity, feather X/Y, feather start, and blend mode.
+- [ ] Background colour, gradient, image, pattern, checkerboard, and page-section simulation.
+- [ ] Reduced motion, pause/play, animation speed, and poster frame.
+- [ ] Transfer-size and loaded-request inspector proving that only selected assets load.
+- [ ] Copy/download buttons and integration snippets for every supported output.
+
+### Browser-review acceptance
+
+- [ ] A reviewer can open one local URL and browse every completed category without navigating source folders.
+- [ ] URL query parameters preserve category, style, format, mode, time, and background selections for shareable reviews.
+- [ ] The lab never animates the entire catalogue simultaneously; offscreen assets pause and unload.
+- [ ] Every card shows its semantic id, category, current status, formats, compressed size, and attribution.
+- [ ] Visual comparison can show Atmoscene styles side by side without displaying Meteocons artwork as if it were Atmoscene output.
+
 ## Phase 00 — Repository, identity, and governance
 
 ### Naming and identity
@@ -103,6 +176,7 @@ atmoscene/
 
 - [ ] Use a pnpm workspace with TypeScript project references.
 - [ ] Use Astro for a static, SEO-friendly GitHub Pages documentation site.
+- [ ] Create the local `/lab` route first so every asset iteration can be reviewed in Chrome before GitHub Pages exists.
 - [ ] Create a stable JSON Schema for icon metadata and scene composition.
 - [ ] Create a canonical manifest with id, aliases, categories, tags, styles, formats, conditions, day/night support, animation status, attribution, and file hashes.
 - [ ] Create deterministic build outputs; generated files must never be hand-edited.
@@ -114,6 +188,7 @@ atmoscene/
 
 - [ ] `pnpm install`, `pnpm build`, `pnpm test`, and `pnpm docs:build` work from a clean clone.
 - [ ] One demonstration scene exports to every planned format from one canonical source.
+- [ ] The demonstration scene appears in the browser lab with live style, format, mode, feather, time, and background controls.
 - [ ] Generated packages contain no accidental cross-package imports.
 
 ## Phase 02 — Atmoscene design system
