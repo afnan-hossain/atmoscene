@@ -12,8 +12,11 @@
     "node": ">=20"
   },
   "scripts": {
-    "build": "echo \"Scaffold the Atmoscene build in Phase 01\"",
-    "test": "echo \"Add Atmoscene validation in Phase 01\""
+    "dev": "node tools/serve.mjs",
+    "lab": "node tools/serve.mjs",
+    "check": "node --check apps/lab/app.js && node --check tools/serve.mjs",
+    "build": "echo \"Static local prototype requires no build step\"",
+    "test": "npm run check"
   },
   "keywords": [
     "animated-weather-icons",

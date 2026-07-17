@@ -4,9 +4,9 @@
 
 [![Support Atmoscene on Buy Me a Coffee](https://img.shields.io/badge/Support_Atmoscene-Buy_Me_a_Coffee-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=111111)](https://buymeacoffee.com/afnan.hossain)
 
-Atmoscene is a planned open-source weather-visualization system for the web, apps, dashboards, broadcasts, and data products. It will combine expressive animated icons with time-aware atmospheric gradients, celestial events, transparent edge feathering, and a data-driven resolver that selects the right visual from real weather data.
+Atmoscene is an open-source weather-visualization system for the web, apps, dashboards, broadcasts, and data products. It combines expressive animated icons with time-aware atmospheric gradients, celestial events, transparent edge feathering, and a data-driven resolver that selects the right visual from real weather data.
 
-> Project status: architecture and catalogue planning. The current name is provisional until the first public release.
+> **Atmoscene is the final project name.** The project is currently in its engine-and-asset prototyping phase; GitHub Pages will be published only after the local experience and core catalogue are approved.
 
 ## What will make Atmoscene different
 
@@ -37,6 +37,18 @@ Atmoscene is a planned open-source weather-visualization system for the web, app
 ## Roadmap
 
 The complete implementation plan, catalogue, release gates, and acceptance criteria are in [TASK.md](TASK.md).
+
+## Local live-weather prototype
+
+The first local prototype lets a visitor search for any global location and resolves current weather, local daylight, wind, moon phase, air quality, and a seven-day forecast into an animated scene. The page uses Open-Meteo weather/geocoding data and Open-Meteo air-quality data powered by CAMS, with visible attribution.
+
+```bash
+npm run dev
+```
+
+Then open `http://127.0.0.1:8790`. GitHub Pages is intentionally disabled until the local engine and original Atmoscene asset catalogue are approved.
+
+The prototype condition layer temporarily uses attributed Meteocons SVGs. Atmoscene’s original canonical assets will replace those files as the line, flat, fill, monochrome, static SVG, animated SVG, and Lottie families are completed.
 
 ## Meteocons tribute and attribution
 

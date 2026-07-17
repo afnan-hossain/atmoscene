@@ -107,19 +107,20 @@ Every asset category must follow this loop. Do not create the full catalogue inv
 
 ### Naming and identity
 
-- [x] Select provisional working name: **Atmoscene**.
+- [x] Approve the final project name: **Atmoscene**.
 - [x] Define English descriptor: **Animated Weather Icons & Living Sky Scenes**.
 - [x] Perform preliminary web and GitHub collision search.
 - [ ] Perform npm package-name checks for `atmoscene` and planned scopes.
 - [ ] Perform domain and social-handle checks.
 - [ ] Perform a proper trademark search before a public brand launch.
-- [ ] Approve final name, logo, wordmark, colour system, and one-sentence pitch.
+- [x] Approve the final name and one-sentence pitch.
+- [ ] Approve the logo, wordmark, and colour system.
 
 ### Repository foundation
 
 - [x] Create a completely separate local repository folder.
 - [x] Add master task plan, README, MIT license, and third-party notices.
-- [ ] Create the public GitHub repository.
+- [x] Create the public GitHub repository.
 - [ ] Set default branch to `main` and protect it after the first tagged release.
 - [ ] Add repository description, website URL, topics, social preview, and Discussions.
 - [x] Add Buy Me a Coffee funding metadata and repository support CTA.
@@ -176,13 +177,32 @@ atmoscene/
 
 - [ ] Use a pnpm workspace with TypeScript project references.
 - [ ] Use Astro for a static, SEO-friendly GitHub Pages documentation site.
-- [ ] Create the local `/lab` route first so every asset iteration can be reviewed in Chrome before GitHub Pages exists.
+- [x] Create the first local `/lab` prototype so engine and asset iterations can be reviewed in Chrome before GitHub Pages exists.
 - [ ] Create a stable JSON Schema for icon metadata and scene composition.
 - [ ] Create a canonical manifest with id, aliases, categories, tags, styles, formats, conditions, day/night support, animation status, attribution, and file hashes.
 - [ ] Create deterministic build outputs; generated files must never be hand-edited.
 - [ ] Add SVG optimization that preserves animation IDs, masks, filters, gradients, and accessibility metadata.
 - [ ] Add asset hashing and release integrity checks.
 - [ ] Decide how canonical motion exports to SVG CSS/SMIL and Lottie without visual drift.
+
+### Local live-engine prototype checkpoint
+
+- [x] Add a dependency-free local server and `npm run dev` command.
+- [x] Search global places through Open-Meteo Geocoding.
+- [x] Fetch current weather and a seven-day forecast from Open-Meteo.
+- [x] Fetch AQI, UV, PM2.5, and related air-quality fields from Open-Meteo/CAMS.
+- [x] Normalize WMO weather codes into a prototype condition resolver.
+- [x] Resolve distinct dawn, sunrise, morning, noon, afternoon, sunset, dusk, and night palettes.
+- [x] Resolve the current moon phase without adding a duplicate moon to an existing celestial artwork.
+- [x] Add flowing wind, rain, snow, fog/haze, tiny stationary stars, and full-scene lightning layers.
+- [x] Add four-sided scene feathering so the atmospheric gradient dissolves into the host page.
+- [x] Keep data metrics outside the scene and show wind, humidity, AQI, UV, pressure, visibility, precipitation, and PM2.5.
+- [x] Refresh live data every ten minutes without reloading the page.
+- [x] Add visible Open-Meteo, CAMS, and Meteocons prototype attribution.
+- [x] Verify Dhaka and Reykjavík live states in Chrome.
+- [ ] Complete tablet and mobile interaction QA.
+- [ ] Obtain user approval for the local engine composition.
+- [ ] Replace the attributed Meteocons prototype condition layer with approved original Atmoscene artwork.
 
 ### Phase 01 acceptance
 
@@ -589,9 +609,10 @@ Every item needs day/night support where physically meaningful, severity levels 
 
 Work only on these items next:
 
-1. Approve or rename **Atmoscene**.
-2. Install/authenticate GitHub CLI if the connected GitHub app cannot create a repository.
-3. Create the public repository and first commit.
-4. Scaffold the pnpm/Astro monorepo.
-5. Build the transparent edge-feather proof of concept before drawing the full catalogue.
-6. Create one canonical reference family—clear, cloud-only, rain-only, snow-only, wind-only, moon phase, and eclipse—to prove composition without duplicate celestial bodies.
+1. Review and approve the local Atmoscene location-search weather engine.
+2. Complete tablet/mobile, keyboard, error-state, reduced-motion, and performance QA for the prototype.
+3. Scaffold the pnpm/Astro monorepo without enabling GitHub Pages.
+4. Create one original canonical reference family—clear, cloud-only, rain-only, snow-only, wind-only, moon phase, and eclipse—to prove composition without duplicate celestial bodies.
+5. Put that family in the browser lab and review every style/format/mode before expanding the catalogue.
+6. Replace prototype Meteocons condition files incrementally as original Atmoscene assets are approved.
+7. Build the full SEO documentation site only after the asset system and local engine pass approval.
