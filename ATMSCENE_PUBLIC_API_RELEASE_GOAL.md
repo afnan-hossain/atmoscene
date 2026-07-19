@@ -1,6 +1,6 @@
 # Atmoscene Public Asset API Release Goal
 
-Status: active
+Status: complete
 Owner: Afnan Hossain
 Target: a versioned, static-first public asset API on GitHub Pages that reuses the exact Atmoscene registry and compositor used by the website.
 

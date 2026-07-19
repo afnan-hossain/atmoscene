@@ -65,7 +65,7 @@ This file is the active, chunked delivery contract for turning Atmoscene into a 
 - [x] Generate 3,552 stable scene descriptors from the canonical registry and renderer data.
 - [x] Provide ESM and classic-browser SDKs with caching, request de-duplication, validation and typed errors.
 - [x] Build a real consumer demo that fetches the public JSON API and mounts the canonical runtime.
-- [ ] Confirm public GitHub Pages URLs after deployment.
+- [x] Confirm public GitHub Pages URLs after deployment.
 - Acceptance: a consumer can resolve and mount an Atmoscene scene without importing private project code.
 
 ## Chunk 07 — Complete developer documentation
@@ -73,7 +73,7 @@ This file is the active, chunked delivery contract for turning Atmoscene into a 
 - [x] Document endpoints, identifiers, schemas, collection browsing, SDK methods and errors.
 - [x] Document ESM, classic JS, React, Vue, Svelte, Web Components and SSR usage.
 - [x] Document performance, lazy loading, accessibility, reduced motion, privacy, security, attribution, versioning and self-hosting.
-- [ ] Verify every documented URL against the deployed release.
+- [x] Verify every documented URL against the deployed release.
 - Acceptance: no required integration step is implicit or hidden.
 
 ## Chunk 08 — Automated release safeguards
@@ -86,10 +86,10 @@ This file is the active, chunked delivery contract for turning Atmoscene into a 
 
 ## Chunk 09 — Commit, publish and consume
 
-- [ ] Stage the Atmoscene application, generator, docs, tests and workflow without staging local Graphify output or unrelated archives.
-- [ ] Commit the verified release.
-- [ ] Push to GitHub and verify the Pages deployment.
-- [ ] Load a public scene through the deployed API in the consumer demo.
+- [x] Stage the Atmoscene application, generator, docs, tests and workflow without staging local Graphify output or unrelated archives.
+- [x] Commit the verified release.
+- [x] Push to GitHub and verify the Pages deployment.
+- [x] Load a public scene through the deployed API in the consumer demo.
 - Acceptance: the public API, documentation and demo return successful responses from the published origin.
 
 ## Linked workstreams
@@ -97,3 +97,11 @@ This file is the active, chunked delivery contract for turning Atmoscene into a 
 - API implementation detail: [`ATMSCENE_PUBLIC_API_RELEASE_GOAL.md`](ATMSCENE_PUBLIC_API_RELEASE_GOAL.md)
 - Global collection production: [`ATMOSCENE_GLOBAL_LIBRARY_GOAL.md`](ATMOSCENE_GLOBAL_LIBRARY_GOAL.md)
 - Final route/brand convergence: [`ATMOSCENE_FINAL_BRAND_DELIVERABLES.md`](ATMOSCENE_FINAL_BRAND_DELIVERABLES.md)
+
+## Published release
+
+- Homepage: <https://afnan-hossain.github.io/atmoscene/>
+- Live weather/library demo: <https://afnan-hossain.github.io/atmoscene/lab/>
+- API manifest: <https://afnan-hossain.github.io/atmoscene/api/v1/manifest.json>
+- API documentation: <https://afnan-hossain.github.io/atmoscene/docs/api/>
+- API consumer demo: <https://afnan-hossain.github.io/atmoscene/api/demo/>
