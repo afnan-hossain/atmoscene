@@ -24,9 +24,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - name: Install dependencies
-        run: npm install --ignore-scripts
       - name: Build API and verify site
         run: npm run build
       - name: Configure GitHub Pages
