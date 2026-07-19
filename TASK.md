@@ -1,5 +1,7 @@
 # Atmoscene Master Task Plan
 
+Current delivery track: [Public Asset API release](./ATMSCENE_PUBLIC_API_RELEASE_GOAL.md)
+
 This file is the single source of truth for building Atmoscene. Work should be completed phase by phase. A phase is complete only when every acceptance criterion and validation item in that phase passes.
 
 ## Product definition
@@ -142,7 +144,7 @@ Every asset category must follow this loop. Do not create the full catalogue inv
 
 - [ ] Public repository exists and clones cleanly.
 - [ ] A new contributor can find scope, license, attribution, and task order in under two minutes.
-- [ ] No file from the Avro project is accidentally committed to this repository.
+- [ ] Only intentionally migrated weather-lab files are copied from the Avro workspace, with provenance and third-party notices preserved; no unrelated Avro project file is committed.
 
 ## Phase 01 — Monorepo and canonical asset architecture
 
@@ -194,11 +196,26 @@ atmoscene/
 - [x] Normalize WMO weather codes into a prototype condition resolver.
 - [x] Resolve distinct dawn, sunrise, morning, noon, afternoon, sunset, dusk, and night palettes.
 - [x] Resolve the current moon phase without adding a duplicate moon to an existing celestial artwork.
-- [x] Add flowing wind, rain, snow, fog/haze, tiny stationary stars, and full-scene lightning layers.
+- [x] Add flowing wind, rain, fog/haze, tiny stationary silver stars, and full-scene lightning layers to the shared renderer.
+- [x] Add original snow/ice production-preview layers to the shared renderer; keep the family unreleased until browser review and user approval.
 - [x] Add four-sided scene feathering so the atmospheric gradient dissolves into the host page.
 - [x] Keep data metrics outside the scene and show wind, humidity, AQI, UV, pressure, visibility, precipitation, and PM2.5.
 - [x] Refresh live data every ten minutes without reloading the page.
+- [x] Use the shared catalogue scene renderer as the full homepage hero sky instead of drawing a second imitation scene or placing it inside a weather-widget box.
+- [x] Keep product identity and library explanation on the hero's left, live local weather on the right, and a compact location search below the preview.
+- [x] Adapt hero text contrast to the resolved bright/dark sky phase while protecting weather and celestial artwork from text overlap.
+- [x] Move sun-bearing condition artwork through a daylight phase arc without introducing a duplicate sun.
+- [x] Expand the night field to 41 fixed silver stars with independent twinkle timing and cloud-aware visibility.
+- [x] Give the complete homepage separate day, dawn/dusk, and night contrast systems while keeping weather-specific animation inside the hero.
+- [x] Theme the compact location search from the resolved sky mode and remove the rectangular loading-state overlay.
+- [x] Replace the old hero feather/fade with a clean, non-feathered transition into the detailed weather section.
+- [x] Move last-updated and next-refresh information to the detailed weather section; keep only tiny live and refresh controls in the hero.
+- [x] Resolve approximate first-visit IP location, explicit GPS locality names, friendly time-zone labels, country-aware measurement defaults, and country-aware date/time conventions.
 - [x] Add visible Open-Meteo, CAMS, and Meteocons prototype attribution.
+- [x] Keep location suggestions above later sections and reliably hide the result panel when search is dismissed.
+- [x] Replace the weather-data spreadsheet grid with a responsive masonry/bento composition using animated metric artwork.
+- [x] Add 7/15/30-day observed/current/forecast timeline windows with the current day centred by default.
+- [x] Render real shared Atmoscene scenes in the homepage library cards.
 - [x] Verify Dhaka and Reykjavík live states in Chrome.
 - [ ] Complete tablet and mobile interaction QA.
 - [ ] Obtain user approval for the local engine composition.
@@ -306,6 +323,13 @@ Every item needs day/night support where physically meaningful, severity levels 
 - [ ] Hail: small, large, severe.
 
 ### C. Snow and ice
+
+Production batch 01 status:
+
+- [x] Canonical flurries, light snow, moderate snow, heavy snow, blowing snow, blizzard, freezing fog, and diamond-dust states for day and night.
+- [x] Wind-responsive three-density snowfall, organic foreground drifts, ice shimmer, and full-scene whiteout layers.
+- [x] A lazy production-review route with 48 representative scenes; the full resolver can compose these states with all existing daylight and lunar phases.
+- [ ] Browser approval, reduced-motion audit, transparent icon export, static SVG export, metadata manifest, and final category release.
 
 - [ ] Flurries, light snow, moderate snow, heavy snow, extreme snow.
 - [ ] Snow showers, lake-effect snow, blowing snow, drifting snow.
@@ -507,13 +531,17 @@ Every item needs day/night support where physically meaningful, severity levels 
 
 ### Technical SEO
 
-- [ ] Static-render every documentation and asset page.
-- [ ] Fast canonical URLs with clean English slugs.
-- [ ] Unique title, meta description, H1, explanatory copy, and code examples per category/asset page.
-- [ ] Generate `sitemap.xml`, image sitemap, `robots.txt`, RSS/changelog feed, and canonical tags.
+- [x] Static-render the homepage, documentation entry point, library index, and currently available category landing pages.
+- [x] Add fast canonical URLs with clean English slugs for the current baseline categories.
+- [x] Add unique title, meta description, H1, and explanatory copy to the current indexable routes.
+- [x] Generate the first `sitemap.xml`, `robots.txt`, canonical tags, and an AI-readable factual `llms.txt` project map.
+- [ ] Generate an image sitemap and RSS/changelog feed after original Atmoscene media and releases exist.
 - [ ] Add Open Graph and X cards generated from real Atmoscene visuals.
 - [ ] Include a non-intrusive project-support CTA without weakening documentation usability or Core Web Vitals.
-- [ ] Add JSON-LD for `SoftwareSourceCode`, `WebApplication`, `CreativeWork`, `ImageObject`, and `BreadcrumbList` where appropriate.
+- [x] Add accurate initial JSON-LD for `WebSite`, `SoftwareApplication`, `SoftwareSourceCode`, `CollectionPage`, `TechArticle`, and `BreadcrumbList` where appropriate.
+- [ ] Add `CreativeWork` and `ImageObject` only after canonical original assets have stable individual pages.
+- [x] Keep the parameter-based interactive explorer `noindex,follow`; index only useful static category pages.
+- [x] Add automated checks for unique metadata, canonical URLs, JSON-LD parsing, sitemap coverage, H1 count, and explorer indexing rules.
 - [ ] Avoid keyword stuffing; write useful explanatory content around real integration tasks.
 - [ ] Meet Core Web Vitals and accessibility targets.
 
@@ -609,10 +637,34 @@ Every item needs day/night support where physically meaningful, severity levels 
 
 Work only on these items next:
 
-1. Review and approve the local Atmoscene location-search weather engine.
-2. Complete tablet/mobile, keyboard, error-state, reduced-motion, and performance QA for the prototype.
-3. Scaffold the pnpm/Astro monorepo without enabling GitHub Pages.
-4. Create one original canonical reference family—clear, cloud-only, rain-only, snow-only, wind-only, moon phase, and eclipse—to prove composition without duplicate celestial bodies.
-5. Put that family in the browser lab and review every style/format/mode before expanding the catalogue.
-6. Replace prototype Meteocons condition files incrementally as original Atmoscene assets are approved.
-7. Build the full SEO documentation site only after the asset system and local engine pass approval.
+1. Preserve and verify the 986-scene Avro weather-lab baseline as an independent copy inside Atmoscene; never move, delete, rename, or overwrite the Avro originals.
+2. Present the recovered baseline as an English, universal, sans-serif Atmoscene asset catalogue with category routes that load only the requested subset.
+3. Keep **Try with your weather** in the homepage hero as the immediate product demo, then introduce the asset library, categories, formats, and developer usage directly below it.
+4. Build and browser-review one global expansion family at a time in this order: snow and ice; mixed precipitation and hail; severe storm; dust and sand; smoke and volcanic ash; tropical and marine; aurora and atmospheric optics; polar day/night; celestial and rare events.
+5. Split every family into separate category routes and lazy-load cards/assets so no page animates the entire library.
+6. For each family, complete canonical original artwork, physical motion, scene gradients, transparent icon mode, feathered scene mode, reduced motion, metadata, and browser approval before starting the next family.
+7. Complete tablet/mobile, keyboard, error-state, reduced-motion, and performance QA for the library and local-weather demo.
+8. Scaffold the pnpm/Astro monorepo without enabling GitHub Pages, then generate SVG, static SVG, Lottie, PNG/WebP, line, flat, fill, and monochrome outputs.
+9. Replace attributed Meteocons prototype layers incrementally only after the corresponding original Atmoscene family is approved.
+10. Maintain the implemented SEO foundation during asset work; build the full multi-page documentation and release site only after the asset system and local engine pass approval.
+
+## Post-catalogue public Scene API
+
+Start this phase only after the canonical asset catalogue, semantic ids, formats, and resolver mappings are approved and versioned.
+
+- [ ] Publish a versioned REST/edge API that accepts normalized weather condition, day/night and astronomical phase, moon phase, wind, visibility, severity, style, format, motion preference, and optional locale inputs.
+- [ ] Return a small composition manifest: semantic scene id, icon/overlay/backdrop asset URLs, palette and gradient tokens, celestial state, animation/reduced-motion metadata, accessibility label, attribution, version, and cache lifetime.
+- [ ] Serve SVG, static SVG, Lottie, PNG/WebP, and manifests through a versioned CDN; do not embed large animation payloads in routine resolver responses.
+- [ ] Add optional Open-Meteo adapter endpoints for latitude/longitude demos while keeping the core resolver provider-neutral.
+- [ ] Support deterministic cache keys, immutable versioned URLs, ETags, CDN caching, rate limits, abuse protection, health/status endpoints, and privacy-preserving logs.
+- [ ] Publish OpenAPI documentation, JavaScript/TypeScript SDK, curl examples, framework examples, error contracts, changelog, deprecation policy, uptime expectations, and self-hosting instructions.
+- [ ] Keep a free public tier sustainable; document quotas before enabling keys or billing.
+- [ ] Add API playground controls to the documentation site so developers can select a condition and copy the request, response, and rendered scene.
+- [ ] Never expose unstable draft asset ids through the public API; only released manifest versions are callable.
+
+### Scene API acceptance
+
+- [ ] One request resolves exactly one compatible scene composition without duplicate celestial bodies or unrelated metric icons.
+- [ ] A cached resolver response is small, deterministic, provider-neutral, and references only released CDN assets.
+- [ ] Reduced-motion, static fallback, accessibility label, licensing, and attribution are present in every response.
+- [ ] The API playground and SDK examples reproduce the same scene as the catalogue for the same normalized inputs.

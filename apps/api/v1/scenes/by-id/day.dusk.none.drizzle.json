@@ -1,0 +1,37 @@
+{
+  "id": "day.dusk.none.drizzle",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Dusk · Drizzle",
+  "mode": "day",
+  "phase": "dusk",
+  "moonPhase": null,
+  "weather": "drizzle",
+  "family": "core",
+  "category": "rain",
+  "effect": "standard",
+  "windProfile": "precipitation",
+  "attributes": {
+    "key": "drizzle",
+    "bn": "গুঁড়ি বৃষ্টি",
+    "en": "Drizzle",
+    "category": "rain",
+    "condition": "drizzle",
+    "ownsCelestial": false,
+    "rain": 1,
+    "cloud": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.dusk.none.drizzle.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.dusk.none.drizzle"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "dusk",
+    "moonPhase": null,
+    "weather": "drizzle",
+    "seed": 103
+  }
+}

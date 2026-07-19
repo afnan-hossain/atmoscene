@@ -1,69 +1,145 @@
 # Atmoscene
 
-**Animated weather icons and living sky scenes that blend into any interface.**
+**Open-source animated weather icons and living sky scenes for apps, dashboards, websites and broadcasts.**
 
 [![Support Atmoscene on Buy Me a Coffee](https://img.shields.io/badge/Support_Atmoscene-Buy_Me_a_Coffee-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=111111)](https://buymeacoffee.com/afnan.hossain)
 
-Atmoscene is an open-source weather-visualization system for the web, apps, dashboards, broadcasts, and data products. It combines expressive animated icons with time-aware atmospheric gradients, celestial events, transparent edge feathering, and a data-driven resolver that selects the right visual from real weather data.
+Atmoscene is an animated weather asset library with a scene-first renderer. It combines local daylight, weather, wind, visibility, atmospheric effects and celestial events into coherent SVG/CSS scenes. The homepage includes a location-aware weather demonstration, while the asset library, catalogue and developer documentation remain the product's core.
 
-> **Atmoscene is the final project name.** The project is currently in its engine-and-asset prototyping phase; GitHub Pages will be published only after the local experience and core catalogue are approved.
+The current registry contains **3,552 scene combinations** across **12 directly browsable collections**:
 
-## What will make Atmoscene different
+- **384 daylight scenes** across dawn, sunrise, morning, noon, afternoon, sunset and dusk.
+- **3,168 night and moon scenes** with phase-aware celestial artwork and fixed-position silver stars.
+- **502 aurora and polar-sky scenes**.
+- **592 tropical and marine scenes**.
+- **444 dust, smoke, ash and smog scenes**.
+- **436 rare celestial-event scenes**.
+- **Public API v1** with one stable JSON endpoint per scene and a zero-dependency browser SDK.
 
-- A complete icon and scene system, not a small set of repeated symbols.
-- Distinct dawn, sunrise, morning, high-noon, afternoon, sunset, dusk, night, moonrise, and moonset palettes.
-- Weather, daylight, moon phase, wind, visibility, air quality, and celestial-event combinations.
-- Transparent, feathered scene edges that dissolve naturally into any page background.
-- Animated SVG as the lightweight default; Lottie and static exports generated from the same canonical source.
-- Line, flat, fill, and monochrome style families with consistent names and geometry.
-- Tree-shakeable packages and on-demand loading: applications request only the asset currently needed.
-- Global coverage including snow, blizzards, freezing rain, aurora, tropical cyclones, sandstorms, smoke, volcanic ash, marine weather, and polar conditions.
-- Accessible reduced-motion fallbacks and high-contrast variants.
-- Detailed English documentation, live previews, mapping guides, and copy-ready code examples.
+## What makes Atmoscene different
 
-## Planned outputs
+- A composable scene system rather than a small set of repeated condition icons.
+- Distinct daylight and twilight palettes with phase-aware sun and moon placement.
+- Weather, wind, visibility, air quality, polar, marine and celestial-event layers.
+- Transparent scene edges that blend into surrounding interfaces.
+- Lightweight animated SVG and CSS with reduced-motion fallbacks.
+- A semantic renderer that applications can drive with weather-provider data.
+- Family-first browsing and on-demand rendering; the catalogue mounts no more than 24 previews at once.
+- Global coverage including blizzards, aurora, tropical cyclones, waterspouts, sandstorms, smoke, volcanic ash, marine weather and polar conditions.
+- English documentation, accessible labels, keyboard navigation and high-contrast day, twilight and night themes.
 
-| Output | Purpose |
-| --- | --- |
-| Animated SVG | Default lightweight web format |
-| Static SVG | Email, print, server rendering, and reduced motion |
-| Lottie JSON | Native apps and advanced motion workflows |
-| PNG/WebP | Social, editorial, and no-SVG environments |
-| Line / Flat / Fill / Mono | Four interoperable visual families |
-| JavaScript/TypeScript resolver | Convert weather data into asset names and scene tokens |
-| React, Vue, Svelte, and Web Component wrappers | Framework-friendly integration |
-| Icon manifest and JSON schema | Search, tooling, and third-party adapters |
-
-## Roadmap
-
-The complete implementation plan, catalogue, release gates, and acceptance criteria are in [TASK.md](TASK.md).
-
-## Local live-weather prototype
-
-The first local prototype lets a visitor search for any global location and resolves current weather, local daylight, wind, moon phase, air quality, and a seven-day forecast into an animated scene. The page uses Open-Meteo weather/geocoding data and Open-Meteo air-quality data powered by CAMS, with visible attribution.
+## Browse the local preview
 
 ```bash
+npm install
 npm run dev
 ```
 
-Then open `http://127.0.0.1:8790`. GitHub Pages is intentionally disabled until the local engine and original Atmoscene asset catalogue are approved.
+Then open:
 
-The prototype condition layer temporarily uses attributed Meteocons SVGs. Atmoscene’s original canonical assets will replace those files as the line, flat, fill, monochrome, static SVG, animated SVG, and Lottie families are completed.
+- Homepage and live library demo: `http://127.0.0.1:8790/`
+- Asset library: `http://127.0.0.1:8790/library/`
+- Paginated catalogue: `http://127.0.0.1:8790/library/catalog.html`
+- Developer documentation: `http://127.0.0.1:8790/docs/`
+- API documentation: `http://127.0.0.1:8790/docs/api/`
+- Working API consumer: `http://127.0.0.1:8790/api/demo/`
+
+## Public API and SDK
+
+Every scene has a stable versioned URL. The SDK fetches the scene metadata and mounts the same canonical renderer used by Atmoscene itself.
+
+```js
+import { AtmosceneClient } from 'https://afnan-hossain.github.io/atmoscene/api/v1/client.mjs';
+
+const atmoscene = new AtmosceneClient();
+const scene = await atmoscene.scene('day.sunset.none.rain');
+await atmoscene.mount('#weather-scene', scene);
+```
+
+- Manifest: `https://afnan-hossain.github.io/atmoscene/api/v1/manifest.json`
+- One scene: `https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.sunset.none.rain.json`
+- Collection: `https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json`
+- Complete API reference: `https://afnan-hossain.github.io/atmoscene/docs/api/`
+- Live consumer: `https://afnan-hossain.github.io/atmoscene/api/demo/`
+
+The catalogue is family-first, paginated and updated in place. A filter or page change replaces only the visible result set instead of reloading the document or constructing thousands of animated nodes.
+
+## Global scene collections
+
+| Collection | Coverage |
+| --- | --- |
+| Daylight & sun | Daylight phases, heat, solar glow and solar events |
+| Night & moon | Moon phases, night weather, stars, moonrise and moonset |
+| Clouds | Clear, partly cloudy, overcast and layered cloud systems |
+| Rain | Drizzle, showers, rain intensity and wind-driven precipitation |
+| Storms | Thunderstorms, lightning, severe rain and storm illumination |
+| Wind | Condition-aware airflow, gusts, squalls and turbulent motion |
+| Fog & haze | Fog, mist, haze and visibility-aware scenes |
+| Snow & ice | Flurries, snow, blizzards, freezing fog and diamond dust |
+| Aurora & polar sky | Polar day/night, auroral curtains and polar cloud phenomena |
+| Tropical & marine | Sea breeze, monsoon, cyclone, waterspout, marine fog and surf |
+| Dust, smoke & ash | Dust, sandstorm, smoke, wildfire smoke, volcanic ash and smog |
+| Rare celestial events | Halos, sun dogs, rainbows, meteors, comets and light pillars |
+
+Each collection page renders six representative scenes with the same canonical compositor used by the homepage and catalogue. The Library landing page lazy-loads one preview per collection.
+
+## Live weather demonstration
+
+The homepage shows how Atmoscene can resolve a searched or device location into a living sky. It combines current Open-Meteo weather, local daylight, wind, moon phase and air-quality data while adapting contrast, units, date formatting and time-zone labels to the selected location.
+
+On a first visit, the demo may attempt an approximate IP-based location without opening a permission prompt. **Use precise location** requests browser geolocation only after an explicit click and reverse-geocodes the coordinates into a locality name. Manual global place search remains available, and New York is the neutral network-failure fallback.
+
+The hero is a product demonstration, not a replacement for a weather service. Weather and air-quality sources are visibly attributed, and data refreshes without requiring a page reload.
+
+## Renderer example
+
+```html
+<div class="weather-scene" data-scene-mount></div>
+<script src="/library/js/catalog.js"></script>
+<script>
+  const scene = AtmosceneSceneRenderer.weather({
+    family: "aurora-polar",
+    state: "aurora-strong",
+    phase: "night",
+    moonPhase: "waxing-crescent",
+    wind: "light-breeze"
+  });
+
+  document.querySelector("[data-scene-mount]").innerHTML = scene;
+</script>
+```
+
+See the local [developer documentation](apps/docs/index.html) for the current semantic renderer vocabulary and integration guidance.
+
+## Formats and integrations
+
+The browser library currently uses animated SVG/CSS scenes and static reduced-motion states. API v1 and its framework-neutral browser SDK are published from the canonical semantic model. Generated static SVG, Lottie, PNG/WebP, line, flat, fill and monochrome export packages remain future release targets until their versioned files and contracts are published.
+
+## Discoverability architecture
+
+The homepage, library, documentation, catalogue and 12 collection pages include static international-English content, unique metadata, canonical URLs, structured data, XML sitemap entries and automated SEO checks. Collection pages provide crawlable explanations for searches such as **animated weather SVG**, **aurora animation**, **tropical cyclone weather animation**, **marine weather icons**, **sandstorm animation**, **volcanic ash weather icon** and **celestial-event SVG**.
+
+The detailed keyword map, Google snippet strategy, AI-search guidance and launch measurement plan are in [docs/SEO_PLAN.md](docs/SEO_PLAN.md). Search snippets, rich results, AI citations and rankings remain search-engine decisions and are never guaranteed.
+
+## Verification
+
+```bash
+npm run check
+npm run build
+```
+
+The checks validate route metadata, canonical scene counts, family coverage, catalogue limits, internal links and public-copy rules.
 
 ## Meteocons tribute and attribution
 
-Atmoscene began while studying the breadth, naming, and open-source usefulness of [Meteocons](https://meteocons.com/) by Bas Milius. Meteocons demonstrated how valuable a carefully designed animated weather library can be. Atmoscene will include a permanent tribute page and preserve all required MIT notices for any Meteocons material used during research, prototyping, or compatibility work.
+Atmoscene began while studying the breadth, naming and open-source usefulness of [Meteocons](https://meteocons.com/) by Bas Milius. Meteocons demonstrated how valuable a carefully designed animated weather library can be. Atmoscene preserves required notices for Meteocons-derived condition artwork and composes those ingredients with original Atmoscene sky, weather, atmospheric and celestial layers.
 
-Atmoscene is an independent project and is not affiliated with or endorsed by Meteocons or Bas Milius.
+Atmoscene is independent and is not affiliated with or endorsed by Meteocons or Bas Milius. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+## License and support
 
-## License
+Original Atmoscene code and assets are intended for release under the MIT License. Third-party materials retain their original licenses and notices.
 
-The original Atmoscene code and assets are intended to be released under the MIT License. Third-party materials retain their original notices and licenses.
+Atmoscene is created by **Afnan Hossain**. If the library, renderer or documentation helps your project, support continued open-source development through [Buy Me a Coffee](https://buymeacoffee.com/afnan.hossain).
 
-## Support Atmoscene
-
-Atmoscene will remain free and open source. If the icons, animation engine, or documentation help your project, you can support ongoing design and development through [Buy Me a Coffee](https://buymeacoffee.com/afnan.hossain).
-
-[Support the project](https://buymeacoffee.com/afnan.hossain)
+Copyright © Afnan Hossain.

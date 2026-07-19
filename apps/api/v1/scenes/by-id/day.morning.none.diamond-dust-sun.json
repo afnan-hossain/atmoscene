@@ -1,0 +1,35 @@
+{
+  "id": "day.morning.none.diamond-dust-sun",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Morning · Diamond dust sunlight",
+  "mode": "day",
+  "phase": "morning",
+  "moonPhase": null,
+  "weather": "diamond-dust-sun",
+  "family": "aurora-polar",
+  "category": "aurora-polar",
+  "effect": "diamond-sun",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "diamond-dust-sun",
+    "en": "Diamond dust sunlight",
+    "family": "aurora-polar",
+    "category": "aurora-polar",
+    "effect": "diamond-sun",
+    "ice": 2,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.morning.none.diamond-dust-sun.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aurora-polar.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.morning.none.diamond-dust-sun"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "morning",
+    "moonPhase": null,
+    "weather": "diamond-dust-sun",
+    "seed": 1592
+  }
+}

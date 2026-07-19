@@ -1,0 +1,36 @@
+{
+  "id": "day.noon.none.hot",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Noon · Hot sun",
+  "mode": "day",
+  "phase": "noon",
+  "moonPhase": null,
+  "weather": "hot",
+  "family": "core",
+  "category": "clear",
+  "effect": "standard",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "hot",
+    "bn": "প্রখর রোদ",
+    "en": "Hot sun",
+    "category": "clear",
+    "condition": "",
+    "ownsCelestial": false,
+    "heat": 2,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.noon.none.hot.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.noon.none.hot"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "noon",
+    "moonPhase": null,
+    "weather": "hot",
+    "seed": 51
+  }
+}

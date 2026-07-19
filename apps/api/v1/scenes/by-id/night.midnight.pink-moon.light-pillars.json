@@ -1,0 +1,36 @@
+{
+  "id": "night.midnight.pink-moon.light-pillars",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Midnight · Pink moon · Light pillars",
+  "mode": "night",
+  "phase": "midnight",
+  "moonPhase": "pink-moon",
+  "weather": "light-pillars",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "light-pillars",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "light-pillars",
+    "en": "Light pillars",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "light-pillars",
+    "celestialEvent": "light-pillars",
+    "ice": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.midnight.pink-moon.light-pillars.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.midnight.pink-moon.light-pillars"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "midnight",
+    "moonPhase": "pink-moon",
+    "weather": "light-pillars",
+    "seed": 3341
+  }
+}

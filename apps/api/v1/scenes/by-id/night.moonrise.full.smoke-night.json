@@ -1,0 +1,36 @@
+{
+  "id": "night.moonrise.full.smoke-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonrise · Full moon · Night smoke",
+  "mode": "night",
+  "phase": "moonrise",
+  "moonPhase": "full",
+  "weather": "smoke-night",
+  "family": "aerosols",
+  "category": "aerosols",
+  "effect": "smoke",
+  "windProfile": "aerosol-flow",
+  "attributes": {
+    "key": "smoke-night",
+    "en": "Night smoke",
+    "family": "aerosols",
+    "category": "aerosols",
+    "effect": "smoke",
+    "aerosol": 1,
+    "visibility": "smoke",
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonrise.full.smoke-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aerosols.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonrise.full.smoke-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonrise",
+    "moonPhase": "full",
+    "weather": "smoke-night",
+    "seed": 2813
+  }
+}

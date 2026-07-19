@@ -1,0 +1,38 @@
+{
+  "id": "day.noon.none.tropical-cyclone",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Noon · Tropical cyclone",
+  "mode": "day",
+  "phase": "noon",
+  "moonPhase": null,
+  "weather": "tropical-cyclone",
+  "family": "tropical-marine",
+  "category": "tropical-marine",
+  "effect": "cyclone",
+  "windProfile": "turbulent",
+  "attributes": {
+    "key": "tropical-cyclone",
+    "en": "Tropical cyclone",
+    "family": "tropical-marine",
+    "category": "tropical-marine",
+    "effect": "cyclone",
+    "marine": 3,
+    "rain": 3,
+    "cloud": 3,
+    "wind": 4,
+    "storm": true
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.noon.none.tropical-cyclone.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/tropical-marine.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.noon.none.tropical-cyclone"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "noon",
+    "moonPhase": null,
+    "weather": "tropical-cyclone",
+    "seed": 2109
+  }
+}

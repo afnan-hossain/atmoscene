@@ -1,0 +1,35 @@
+{
+  "id": "night.moonrise.first-quarter.aurora-faint",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonrise · First quarter · Faint aurora",
+  "mode": "night",
+  "phase": "moonrise",
+  "moonPhase": "first-quarter",
+  "weather": "aurora-faint",
+  "family": "aurora-polar",
+  "category": "aurora-polar",
+  "effect": "aurora-faint",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "aurora-faint",
+    "en": "Faint aurora",
+    "family": "aurora-polar",
+    "category": "aurora-polar",
+    "effect": "aurora-faint",
+    "aurora": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonrise.first-quarter.aurora-faint.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aurora-polar.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonrise.first-quarter.aurora-faint"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonrise",
+    "moonPhase": "first-quarter",
+    "weather": "aurora-faint",
+    "seed": 1711
+  }
+}

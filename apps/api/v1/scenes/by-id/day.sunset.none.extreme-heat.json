@@ -1,0 +1,36 @@
+{
+  "id": "day.sunset.none.extreme-heat",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Sunset · Extreme heat",
+  "mode": "day",
+  "phase": "sunset",
+  "moonPhase": null,
+  "weather": "extreme-heat",
+  "family": "core",
+  "category": "clear",
+  "effect": "standard",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "extreme-heat",
+    "bn": "তীব্র তাপপ্রবাহ",
+    "en": "Extreme heat",
+    "category": "clear",
+    "condition": "",
+    "ownsCelestial": false,
+    "heat": 3,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.sunset.none.extreme-heat.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.sunset.none.extreme-heat"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "sunset",
+    "moonPhase": null,
+    "weather": "extreme-heat",
+    "seed": 84
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "night.evening.waxing-crescent.tropical-shower-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Evening · Waxing crescent · Night tropical shower",
+  "mode": "night",
+  "phase": "evening",
+  "moonPhase": "waxing-crescent",
+  "weather": "tropical-shower-night",
+  "family": "tropical-marine",
+  "category": "tropical-marine",
+  "effect": "tropical-shower",
+  "windProfile": "precipitation",
+  "attributes": {
+    "key": "tropical-shower-night",
+    "en": "Night tropical shower",
+    "family": "tropical-marine",
+    "category": "tropical-marine",
+    "effect": "tropical-shower",
+    "marine": 1,
+    "rain": 2,
+    "cloud": 1,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.evening.waxing-crescent.tropical-shower-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/tropical-marine.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.evening.waxing-crescent.tropical-shower-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "evening",
+    "moonPhase": "waxing-crescent",
+    "weather": "tropical-shower-night",
+    "seed": 2154
+  }
+}

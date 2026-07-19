@@ -1,0 +1,36 @@
+{
+  "id": "night.moonrise.new.aurora-cloudy",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonrise · New moon · Aurora behind clouds",
+  "mode": "night",
+  "phase": "moonrise",
+  "moonPhase": "new",
+  "weather": "aurora-cloudy",
+  "family": "aurora-polar",
+  "category": "aurora-polar",
+  "effect": "aurora-cloudy",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "aurora-cloudy",
+    "en": "Aurora behind clouds",
+    "family": "aurora-polar",
+    "category": "aurora-polar",
+    "effect": "aurora-cloudy",
+    "aurora": 2,
+    "cloud": 2,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonrise.new.aurora-cloudy.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aurora-polar.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonrise.new.aurora-cloudy"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonrise",
+    "moonPhase": "new",
+    "weather": "aurora-cloudy",
+    "seed": 1701
+  }
+}

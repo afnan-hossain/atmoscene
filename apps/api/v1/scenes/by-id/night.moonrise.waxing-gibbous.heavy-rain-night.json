@@ -1,0 +1,36 @@
+{
+  "id": "night.moonrise.waxing-gibbous.heavy-rain-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonrise · Waxing gibbous · Night heavy rain",
+  "mode": "night",
+  "phase": "moonrise",
+  "moonPhase": "waxing-gibbous",
+  "weather": "heavy-rain-night",
+  "family": "core",
+  "category": "rain",
+  "effect": "standard",
+  "windProfile": "precipitation",
+  "attributes": {
+    "key": "heavy-rain-night",
+    "bn": "রাতের ভারী বৃষ্টি",
+    "en": "Night heavy rain",
+    "category": "rain",
+    "condition": "extreme-rain",
+    "rain": 3,
+    "cloud": 2,
+    "wind": 2
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonrise.waxing-gibbous.heavy-rain-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonrise.waxing-gibbous.heavy-rain-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonrise",
+    "moonPhase": "waxing-gibbous",
+    "weather": "heavy-rain-night",
+    "seed": 316
+  }
+}

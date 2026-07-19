@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" data-sky-theme="night">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A working Atmoscene API consumer that fetches and mounts animated weather scenes by stable scene ID.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#071525">
+  <title>Atmoscene API Demo — Fetch and Mount Animated Weather Scenes</title>
+  <link rel="canonical" href="https://afnan-hossain.github.io/atmoscene/api/demo/">
+  <link rel="stylesheet" href="../../shared/shell.css">
+  <link rel="stylesheet" href="../../library/css/catalog.css">
+  <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+  <header data-atmoscene-header></header>
+  <main class="api-demo-shell">
+    <section class="api-demo-intro">
+      <p class="api-eyebrow">LIVE PUBLIC API CONSUMER</p>
+      <h1>One scene ID.<br><em>A complete living sky.</em></h1>
+      <p>This page is a real consumer of Atmoscene API v1. It fetches scene JSON over HTTP, loads the public SDK, and mounts the canonical renderer—exactly as an external app can.</p>
+      <div class="api-demo-links"><a href="../../docs/api/">Read the API documentation</a><a href="../v1/manifest.json">Open the JSON manifest</a></div>
+    </section>
+
+    <section class="api-demo-workbench" aria-labelledby="demo-title">
+      <div class="api-demo-controls">
+        <div><span>Interactive example</span><h2 id="demo-title">Fetch a scene from the API</h2></div>
+        <label>Collection<select data-family></select></label>
+        <label>Mode<select data-mode><option value="day">Day</option><option value="night">Night</option></select></label>
+        <label>Sky phase<select data-phase></select></label>
+        <label data-moon-wrap>Moon phase<select data-moon></select></label>
+        <label>Weather scene<select data-scene></select></label>
+        <button type="button" data-mount>Fetch and mount</button>
+        <p class="api-demo-status" data-status role="status">Loading the API manifest…</p>
+      </div>
+      <div class="api-demo-stage-wrap">
+        <div class="api-demo-stage" data-scene-mount></div>
+        <div class="api-demo-caption"><strong data-scene-label>Preparing scene</strong><code data-scene-id></code></div>
+      </div>
+    </section>
+
+    <section class="api-demo-code">
+      <div><p class="api-eyebrow">COPYABLE INTEGRATION</p><h2>The code running above</h2><p>Change the scene ID to any ID returned by the scene index or a collection endpoint.</p></div>
+      <pre><code data-code>import { AtmosceneClient } from '/api/v1/client.mjs';
+
+const atmoscene = new AtmosceneClient();
+const scene = await atmoscene.scene('day.sunset.none.rain');
+await atmoscene.mount('#sky', scene);</code></pre>
+    </section>
+  </main>
+  <footer data-atmoscene-footer></footer>
+  <script src="../../shared/registry.js"></script>
+  <script src="../../shared/shell.js"></script>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>

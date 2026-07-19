@@ -14,8 +14,9 @@
   "scripts": {
     "dev": "node tools/serve.mjs",
     "lab": "node tools/serve.mjs",
-    "check": "node --check apps/lab/app.js && node --check tools/serve.mjs",
-    "build": "echo \"Static local prototype requires no build step\"",
+    "api:build": "node tools/build-api.mjs",
+    "check": "node --check apps/lab/app.js && node --check apps/library/js/engine.js && node --check apps/library/js/catalog.js && node --check apps/library/js/site-shell.js && node --check apps/shared/registry.js && node --check apps/shared/shell.js && node --check apps/api/v1/client.mjs && node --check apps/api/v1/client.js && node --check apps/api/demo/app.mjs && node --check tools/build-api.mjs && node --check tools/check-api.mjs && node --check tools/serve.mjs && node --check tools/check-seo.mjs && node --check tools/check-app-integrity.mjs && node tools/check-seo.mjs && node tools/check-app-integrity.mjs && node tools/check-api.mjs",
+    "build": "npm run api:build && npm run check",
     "test": "npm run check"
   },
   "keywords": [

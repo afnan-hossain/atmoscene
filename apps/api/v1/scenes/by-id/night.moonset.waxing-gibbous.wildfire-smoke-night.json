@@ -1,0 +1,38 @@
+{
+  "id": "night.moonset.waxing-gibbous.wildfire-smoke-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonset · Waxing gibbous · Night wildfire smoke",
+  "mode": "night",
+  "phase": "moonset",
+  "moonPhase": "waxing-gibbous",
+  "weather": "wildfire-smoke-night",
+  "family": "aerosols",
+  "category": "aerosols",
+  "effect": "wildfire-smoke",
+  "windProfile": "aerosol-flow",
+  "attributes": {
+    "key": "wildfire-smoke-night",
+    "en": "Night wildfire smoke",
+    "family": "aerosols",
+    "category": "aerosols",
+    "effect": "wildfire-smoke",
+    "aerosol": 3,
+    "visibility": "smoke",
+    "cloud": 1,
+    "heat": 1,
+    "wind": 2
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonset.waxing-gibbous.wildfire-smoke-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aerosols.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonset.waxing-gibbous.wildfire-smoke-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonset",
+    "moonPhase": "waxing-gibbous",
+    "weather": "wildfire-smoke-night",
+    "seed": 3006
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "day.sunset.none.flurries",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Sunset · Flurries",
+  "mode": "day",
+  "phase": "sunset",
+  "moonPhase": null,
+  "weather": "flurries",
+  "family": "snow-ice",
+  "category": "snow",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "flurries",
+    "bn": "",
+    "en": "Flurries",
+    "category": "snow",
+    "condition": "cloudy",
+    "cloud": 1,
+    "snow": 1,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.sunset.none.flurries.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.sunset.none.flurries"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "sunset",
+    "moonPhase": null,
+    "weather": "flurries",
+    "seed": 1027
+  }
+}

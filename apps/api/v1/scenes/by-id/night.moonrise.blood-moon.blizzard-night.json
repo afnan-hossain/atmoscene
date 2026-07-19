@@ -1,0 +1,38 @@
+{
+  "id": "night.moonrise.blood-moon.blizzard-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonrise · Blood moon · Night blizzard",
+  "mode": "night",
+  "phase": "moonrise",
+  "moonPhase": "blood-moon",
+  "weather": "blizzard-night",
+  "family": "snow-ice",
+  "category": "snow",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "blizzard-night",
+    "bn": "",
+    "en": "Night blizzard",
+    "category": "snow",
+    "condition": "overcast",
+    "cloud": 3,
+    "snow": 4,
+    "wind": 4,
+    "drift": true,
+    "whiteout": true
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonrise.blood-moon.blizzard-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonrise.blood-moon.blizzard-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonrise",
+    "moonPhase": "blood-moon",
+    "weather": "blizzard-night",
+    "seed": 1216
+  }
+}

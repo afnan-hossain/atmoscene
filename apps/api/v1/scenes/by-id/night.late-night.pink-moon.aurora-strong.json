@@ -1,0 +1,35 @@
+{
+  "id": "night.late-night.pink-moon.aurora-strong",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Late night · Pink moon · Strong aurora",
+  "mode": "night",
+  "phase": "late-night",
+  "moonPhase": "pink-moon",
+  "weather": "aurora-strong",
+  "family": "aurora-polar",
+  "category": "aurora-polar",
+  "effect": "aurora-strong",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "aurora-strong",
+    "en": "Strong aurora",
+    "family": "aurora-polar",
+    "category": "aurora-polar",
+    "effect": "aurora-strong",
+    "aurora": 3,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.late-night.pink-moon.aurora-strong.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aurora-polar.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.late-night.pink-moon.aurora-strong"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "late-night",
+    "moonPhase": "pink-moon",
+    "weather": "aurora-strong",
+    "seed": 1909
+  }
+}

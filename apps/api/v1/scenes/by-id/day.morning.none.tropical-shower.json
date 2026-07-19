@@ -1,0 +1,37 @@
+{
+  "id": "day.morning.none.tropical-shower",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Morning · Tropical shower",
+  "mode": "day",
+  "phase": "morning",
+  "moonPhase": null,
+  "weather": "tropical-shower",
+  "family": "tropical-marine",
+  "category": "tropical-marine",
+  "effect": "tropical-shower",
+  "windProfile": "precipitation",
+  "attributes": {
+    "key": "tropical-shower",
+    "en": "Tropical shower",
+    "family": "tropical-marine",
+    "category": "tropical-marine",
+    "effect": "tropical-shower",
+    "marine": 1,
+    "rain": 2,
+    "cloud": 1,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.morning.none.tropical-shower.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/tropical-marine.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.morning.none.tropical-shower"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "morning",
+    "moonPhase": null,
+    "weather": "tropical-shower",
+    "seed": 2098
+  }
+}

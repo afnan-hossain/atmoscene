@@ -1,0 +1,35 @@
+{
+  "id": "night.pre-dawn-night.first-quarter.fog-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Pre-dawn · First quarter · Night fog",
+  "mode": "night",
+  "phase": "pre-dawn-night",
+  "moonPhase": "first-quarter",
+  "weather": "fog-night",
+  "family": "core",
+  "category": "visibility",
+  "effect": "standard",
+  "windProfile": "laminar",
+  "attributes": {
+    "key": "fog-night",
+    "bn": "রাতের কুয়াশা",
+    "en": "Night fog",
+    "category": "visibility",
+    "condition": "fog",
+    "visibility": "fog",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.pre-dawn-night.first-quarter.fog-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.pre-dawn-night.first-quarter.fog-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "pre-dawn-night",
+    "moonPhase": "first-quarter",
+    "weather": "fog-night",
+    "seed": 877
+  }
+}

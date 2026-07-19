@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afnan-hossain.github.io/atmoscene/api/v1/schemas/scene.schema.json",
+  "title": "Atmoscene scene",
+  "type": "object",
+  "required": [
+    "id",
+    "apiVersion",
+    "label",
+    "mode",
+    "phase",
+    "weather",
+    "family",
+    "runtime",
+    "links"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^(day|night)\\.[a-z0-9-]+\\.[a-z0-9-]+\\.[a-z0-9-]+$"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "rendererVersion": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "day",
+        "night"
+      ]
+    },
+    "phase": {
+      "type": "string"
+    },
+    "moonPhase": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "weather": {
+      "type": "string"
+    },
+    "family": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "effect": {
+      "type": "string"
+    },
+    "windProfile": {
+      "type": "string"
+    },
+    "attributes": {
+      "type": "object"
+    },
+    "links": {
+      "type": "object"
+    },
+    "runtime": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

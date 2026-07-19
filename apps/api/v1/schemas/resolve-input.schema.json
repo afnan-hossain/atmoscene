@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://afnan-hossain.github.io/atmoscene/api/v1/schemas/resolve-input.schema.json",
+  "title": "Atmoscene scene resolution input",
+  "type": "object",
+  "required": [
+    "mode",
+    "phase",
+    "weather"
+  ],
+  "properties": {
+    "mode": {
+      "enum": [
+        "day",
+        "night"
+      ]
+    },
+    "phase": {
+      "type": "string",
+      "minLength": 1
+    },
+    "moonPhase": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "weather": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "night"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "moonPhase"
+        ]
+      }
+    }
+  ],
+  "additionalProperties": false
+}

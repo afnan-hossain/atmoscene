@@ -1,0 +1,36 @@
+{
+  "id": "day.sunset.none.clear-warm",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Sunset · Mostly clear warm",
+  "mode": "day",
+  "phase": "sunset",
+  "moonPhase": null,
+  "weather": "clear-warm",
+  "family": "core",
+  "category": "clear",
+  "effect": "standard",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "clear-warm",
+    "bn": "প্রধানত পরিষ্কার · উষ্ণ",
+    "en": "Mostly clear warm",
+    "category": "clear",
+    "condition": "",
+    "ownsCelestial": false,
+    "heat": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.sunset.none.clear-warm.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.sunset.none.clear-warm"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "sunset",
+    "moonPhase": null,
+    "weather": "clear-warm",
+    "seed": 82
+  }
+}

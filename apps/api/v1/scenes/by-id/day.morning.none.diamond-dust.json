@@ -1,0 +1,36 @@
+{
+  "id": "day.morning.none.diamond-dust",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Morning · Diamond dust",
+  "mode": "day",
+  "phase": "morning",
+  "moonPhase": null,
+  "weather": "diamond-dust",
+  "family": "snow-ice",
+  "category": "ice",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "diamond-dust",
+    "bn": "",
+    "en": "Diamond dust",
+    "category": "ice",
+    "condition": "",
+    "cloud": 0,
+    "ice": 2,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.morning.none.diamond-dust.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.morning.none.diamond-dust"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "morning",
+    "moonPhase": null,
+    "weather": "diamond-dust",
+    "seed": 1010
+  }
+}

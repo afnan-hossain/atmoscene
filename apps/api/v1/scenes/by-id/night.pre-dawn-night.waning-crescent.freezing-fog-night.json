@@ -1,0 +1,37 @@
+{
+  "id": "night.pre-dawn-night.waning-crescent.freezing-fog-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Pre-dawn · Waning crescent · Night freezing fog",
+  "mode": "night",
+  "phase": "pre-dawn-night",
+  "moonPhase": "waning-crescent",
+  "weather": "freezing-fog-night",
+  "family": "snow-ice",
+  "category": "ice",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "freezing-fog-night",
+    "bn": "",
+    "en": "Night freezing fog",
+    "category": "ice",
+    "condition": "fog",
+    "visibility": "fog",
+    "cloud": 1,
+    "ice": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.pre-dawn-night.waning-crescent.freezing-fog-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.pre-dawn-night.waning-crescent.freezing-fog-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "pre-dawn-night",
+    "moonPhase": "waning-crescent",
+    "weather": "freezing-fog-night",
+    "seed": 1553
+  }
+}

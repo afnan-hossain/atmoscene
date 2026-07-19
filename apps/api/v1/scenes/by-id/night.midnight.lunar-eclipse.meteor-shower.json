@@ -1,0 +1,35 @@
+{
+  "id": "night.midnight.lunar-eclipse.meteor-shower",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Midnight · Lunar eclipse · Meteor shower",
+  "mode": "night",
+  "phase": "midnight",
+  "moonPhase": "lunar-eclipse",
+  "weather": "meteor-shower",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "meteor-shower",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "meteor-shower",
+    "en": "Meteor shower",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "meteor-shower",
+    "celestialEvent": "meteor-shower",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.midnight.lunar-eclipse.meteor-shower.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.midnight.lunar-eclipse.meteor-shower"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "midnight",
+    "moonPhase": "lunar-eclipse",
+    "weather": "meteor-shower",
+    "seed": 3349
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "day.sunset.none.gusty",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Sunset · Gusty",
+  "mode": "day",
+  "phase": "sunset",
+  "moonPhase": null,
+  "weather": "gusty",
+  "family": "core",
+  "category": "wind",
+  "effect": "standard",
+  "windProfile": "gusting",
+  "attributes": {
+    "key": "gusty",
+    "bn": "দমকা বাতাস",
+    "en": "Gusty",
+    "category": "wind",
+    "condition": "",
+    "wind": 3
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.sunset.none.gusty.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.sunset.none.gusty"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "sunset",
+    "moonPhase": null,
+    "weather": "gusty",
+    "seed": 95
+  }
+}

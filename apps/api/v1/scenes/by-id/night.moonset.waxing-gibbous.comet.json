@@ -1,0 +1,35 @@
+{
+  "id": "night.moonset.waxing-gibbous.comet",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonset · Waxing gibbous · Comet",
+  "mode": "night",
+  "phase": "moonset",
+  "moonPhase": "waxing-gibbous",
+  "weather": "comet",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "comet",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "comet",
+    "en": "Comet",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "comet",
+    "celestialEvent": "comet",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonset.waxing-gibbous.comet.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonset.waxing-gibbous.comet"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonset",
+    "moonPhase": "waxing-gibbous",
+    "weather": "comet",
+    "seed": 3440
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "night.pre-dawn-night.waning-gibbous.smoke-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Pre-dawn · Waning gibbous · Night smoke",
+  "mode": "night",
+  "phase": "pre-dawn-night",
+  "moonPhase": "waning-gibbous",
+  "weather": "smoke-night",
+  "family": "aerosols",
+  "category": "aerosols",
+  "effect": "smoke",
+  "windProfile": "aerosol-flow",
+  "attributes": {
+    "key": "smoke-night",
+    "en": "Night smoke",
+    "family": "aerosols",
+    "category": "aerosols",
+    "effect": "smoke",
+    "aerosol": 1,
+    "visibility": "smoke",
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.pre-dawn-night.waning-gibbous.smoke-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aerosols.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.pre-dawn-night.waning-gibbous.smoke-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "pre-dawn-night",
+    "moonPhase": "waning-gibbous",
+    "weather": "smoke-night",
+    "seed": 3083
+  }
+}

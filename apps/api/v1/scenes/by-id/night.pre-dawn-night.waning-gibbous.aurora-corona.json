@@ -1,0 +1,35 @@
+{
+  "id": "night.pre-dawn-night.waning-gibbous.aurora-corona",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Pre-dawn · Waning gibbous · Aurora corona",
+  "mode": "night",
+  "phase": "pre-dawn-night",
+  "moonPhase": "waning-gibbous",
+  "weather": "aurora-corona",
+  "family": "aurora-polar",
+  "category": "aurora-polar",
+  "effect": "aurora-corona",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "aurora-corona",
+    "en": "Aurora corona",
+    "family": "aurora-polar",
+    "category": "aurora-polar",
+    "effect": "aurora-corona",
+    "aurora": 4,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.pre-dawn-night.waning-gibbous.aurora-corona.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aurora-polar.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.pre-dawn-night.waning-gibbous.aurora-corona"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "pre-dawn-night",
+    "moonPhase": "waning-gibbous",
+    "weather": "aurora-corona",
+    "seed": 2043
+  }
+}

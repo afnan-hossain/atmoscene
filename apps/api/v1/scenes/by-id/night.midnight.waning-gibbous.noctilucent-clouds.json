@@ -1,0 +1,35 @@
+{
+  "id": "night.midnight.waning-gibbous.noctilucent-clouds",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Midnight · Waning gibbous · Noctilucent clouds",
+  "mode": "night",
+  "phase": "midnight",
+  "moonPhase": "waning-gibbous",
+  "weather": "noctilucent-clouds",
+  "family": "aurora-polar",
+  "category": "aurora-polar",
+  "effect": "noctilucent",
+  "windProfile": "cloud-flow",
+  "attributes": {
+    "key": "noctilucent-clouds",
+    "en": "Noctilucent clouds",
+    "family": "aurora-polar",
+    "category": "aurora-polar",
+    "effect": "noctilucent",
+    "cloud": 1,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.midnight.waning-gibbous.noctilucent-clouds.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aurora-polar.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.midnight.waning-gibbous.noctilucent-clouds"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "midnight",
+    "moonPhase": "waning-gibbous",
+    "weather": "noctilucent-clouds",
+    "seed": 1814
+  }
+}

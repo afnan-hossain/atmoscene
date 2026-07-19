@@ -1,0 +1,35 @@
+{
+  "id": "night.pre-dawn-night.waxing-gibbous.zodiacal-light",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Pre-dawn · Waxing gibbous · Zodiacal light",
+  "mode": "night",
+  "phase": "pre-dawn-night",
+  "moonPhase": "waxing-gibbous",
+  "weather": "zodiacal-light",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "zodiacal-light",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "zodiacal-light",
+    "en": "Zodiacal light",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "zodiacal-light",
+    "celestialEvent": "zodiacal-light",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.pre-dawn-night.waxing-gibbous.zodiacal-light.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.pre-dawn-night.waxing-gibbous.zodiacal-light"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "pre-dawn-night",
+    "moonPhase": "waxing-gibbous",
+    "weather": "zodiacal-light",
+    "seed": 3507
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "night.midnight.new.freezing-fog-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Midnight · New moon · Night freezing fog",
+  "mode": "night",
+  "phase": "midnight",
+  "moonPhase": "new",
+  "weather": "freezing-fog-night",
+  "family": "snow-ice",
+  "category": "ice",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "freezing-fog-night",
+    "bn": "",
+    "en": "Night freezing fog",
+    "category": "ice",
+    "condition": "fog",
+    "visibility": "fog",
+    "cloud": 1,
+    "ice": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.midnight.new.freezing-fog-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.midnight.new.freezing-fog-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "midnight",
+    "moonPhase": "new",
+    "weather": "freezing-fog-night",
+    "seed": 1233
+  }
+}

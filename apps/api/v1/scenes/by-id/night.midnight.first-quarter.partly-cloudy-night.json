@@ -1,0 +1,35 @@
+{
+  "id": "night.midnight.first-quarter.partly-cloudy-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Midnight · First quarter · Partly cloudy night",
+  "mode": "night",
+  "phase": "midnight",
+  "moonPhase": "first-quarter",
+  "weather": "partly-cloudy-night",
+  "family": "core",
+  "category": "cloud",
+  "effect": "standard",
+  "windProfile": "cloud-flow",
+  "attributes": {
+    "key": "partly-cloudy-night",
+    "bn": "আংশিক মেঘলা রাত",
+    "en": "Partly cloudy night",
+    "category": "cloud",
+    "condition": "cloudy",
+    "cloud": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.midnight.first-quarter.partly-cloudy-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.midnight.first-quarter.partly-cloudy-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "midnight",
+    "moonPhase": "first-quarter",
+    "weather": "partly-cloudy-night",
+    "seed": 442
+  }
+}

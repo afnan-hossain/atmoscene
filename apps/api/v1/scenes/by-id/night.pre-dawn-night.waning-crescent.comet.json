@@ -1,0 +1,35 @@
+{
+  "id": "night.pre-dawn-night.waning-crescent.comet",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Pre-dawn · Waning crescent · Comet",
+  "mode": "night",
+  "phase": "pre-dawn-night",
+  "moonPhase": "waning-crescent",
+  "weather": "comet",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "comet",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "comet",
+    "en": "Comet",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "comet",
+    "celestialEvent": "comet",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.pre-dawn-night.waning-crescent.comet.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.pre-dawn-night.waning-crescent.comet"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "pre-dawn-night",
+    "moonPhase": "waning-crescent",
+    "weather": "comet",
+    "seed": 3530
+  }
+}

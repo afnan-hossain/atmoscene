@@ -1,0 +1,36 @@
+{
+  "id": "night.pre-dawn-night.new.diamond-dust-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Pre-dawn · New moon · Night diamond dust",
+  "mode": "night",
+  "phase": "pre-dawn-night",
+  "moonPhase": "new",
+  "weather": "diamond-dust-night",
+  "family": "snow-ice",
+  "category": "ice",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "diamond-dust-night",
+    "bn": "",
+    "en": "Night diamond dust",
+    "category": "ice",
+    "condition": "",
+    "cloud": 0,
+    "ice": 2,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.pre-dawn-night.new.diamond-dust-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.pre-dawn-night.new.diamond-dust-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "pre-dawn-night",
+    "moonPhase": "new",
+    "weather": "diamond-dust-night",
+    "seed": 1498
+  }
+}

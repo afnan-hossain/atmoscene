@@ -1,0 +1,58 @@
+{
+  "name": "Atmoscene Public Asset API",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "generatedAt": "2026-07-19T00:00:00.000Z",
+  "license": "MIT",
+  "author": "Afnan Hossain",
+  "homepage": "https://afnan-hossain.github.io/atmoscene",
+  "documentation": "https://afnan-hossain.github.io/atmoscene/docs/api/",
+  "support": "https://buymeacoffee.com/afnan.hossain",
+  "counts": {
+    "total": 3552,
+    "day": 384,
+    "night": 3168,
+    "baseline": 986,
+    "core": 1578,
+    "snowIce": 592,
+    "wind": 296,
+    "auroraPolar": 502,
+    "tropicalMarine": 592,
+    "aerosols": 444,
+    "rareCelestial": 436
+  },
+  "endpoints": {
+    "health": "https://afnan-hossain.github.io/atmoscene/api/v1/health.json",
+    "manifest": "https://afnan-hossain.github.io/atmoscene/api/v1/manifest.json",
+    "sceneIndex": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/index.json",
+    "sceneById": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/{sceneId}.json",
+    "collections": {
+      "core": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+      "snow-ice": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+      "aurora-polar": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aurora-polar.json",
+      "tropical-marine": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/tropical-marine.json",
+      "aerosols": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aerosols.json",
+      "rare-celestial": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json"
+    },
+    "weatherFamily": "https://afnan-hossain.github.io/atmoscene/api/v1/lookups/weather-family.json",
+    "checksums": "https://afnan-hossain.github.io/atmoscene/api/v1/checksums.json",
+    "sceneSchema": "https://afnan-hossain.github.io/atmoscene/api/v1/schemas/scene.schema.json",
+    "resolveInputSchema": "https://afnan-hossain.github.io/atmoscene/api/v1/schemas/resolve-input.schema.json"
+  },
+  "runtime": {
+    "module": "https://afnan-hossain.github.io/atmoscene/api/v1/client.mjs",
+    "classic": "https://afnan-hossain.github.io/atmoscene/api/v1/client.js",
+    "stylesheet": "https://afnan-hossain.github.io/atmoscene/library/css/catalog.css",
+    "registry": "https://afnan-hossain.github.io/atmoscene/shared/registry.js",
+    "engine": "https://afnan-hossain.github.io/atmoscene/library/js/engine.js",
+    "renderer": "https://afnan-hossain.github.io/atmoscene/library/js/catalog.js"
+  },
+  "runtimePaths": {
+    "module": "api/v1/client.mjs",
+    "classic": "api/v1/client.js",
+    "stylesheet": "library/css/catalog.css",
+    "registry": "shared/registry.js",
+    "engine": "library/js/engine.js",
+    "renderer": "library/js/catalog.js"
+  }
+}

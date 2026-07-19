@@ -1,0 +1,38 @@
+{
+  "id": "day.solar-eclipse.none.tropical-thunderstorm",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Solar eclipse · Tropical thunderstorm",
+  "mode": "day",
+  "phase": "solar-eclipse",
+  "moonPhase": null,
+  "weather": "tropical-thunderstorm",
+  "family": "tropical-marine",
+  "category": "tropical-marine",
+  "effect": "tropical-storm",
+  "windProfile": "turbulent",
+  "attributes": {
+    "key": "tropical-thunderstorm",
+    "en": "Tropical thunderstorm",
+    "family": "tropical-marine",
+    "category": "tropical-marine",
+    "effect": "tropical-storm",
+    "marine": 2,
+    "rain": 3,
+    "cloud": 3,
+    "wind": 3,
+    "storm": true
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.solar-eclipse.none.tropical-thunderstorm.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/tropical-marine.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.solar-eclipse.none.tropical-thunderstorm"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "solar-eclipse",
+    "moonPhase": null,
+    "weather": "tropical-thunderstorm",
+    "seed": 2140
+  }
+}

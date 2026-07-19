@@ -1,0 +1,35 @@
+{
+  "id": "night.late-night.waxing-gibbous.fog-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Late night · Waxing gibbous · Night fog",
+  "mode": "night",
+  "phase": "late-night",
+  "moonPhase": "waxing-gibbous",
+  "weather": "fog-night",
+  "family": "core",
+  "category": "visibility",
+  "effect": "standard",
+  "windProfile": "laminar",
+  "attributes": {
+    "key": "fog-night",
+    "bn": "রাতের কুয়াশা",
+    "en": "Night fog",
+    "category": "visibility",
+    "condition": "fog",
+    "visibility": "fog",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.late-night.waxing-gibbous.fog-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.late-night.waxing-gibbous.fog-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "late-night",
+    "moonPhase": "waxing-gibbous",
+    "weather": "fog-night",
+    "seed": 604
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "night.late-night.blood-moon.moderate-snow-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Late night · Blood moon · Night moderate snow",
+  "mode": "night",
+  "phase": "late-night",
+  "moonPhase": "blood-moon",
+  "weather": "moderate-snow-night",
+  "family": "snow-ice",
+  "category": "snow",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "moderate-snow-night",
+    "bn": "",
+    "en": "Night moderate snow",
+    "category": "snow",
+    "condition": "overcast",
+    "cloud": 2,
+    "snow": 2,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.late-night.blood-moon.moderate-snow-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.late-night.blood-moon.moderate-snow-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "late-night",
+    "moonPhase": "blood-moon",
+    "weather": "moderate-snow-night",
+    "seed": 1389
+  }
+}

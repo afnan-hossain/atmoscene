@@ -1,0 +1,35 @@
+{
+  "id": "night.moonset.full.sea-breeze-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonset · Full moon · Night sea breeze",
+  "mode": "night",
+  "phase": "moonset",
+  "moonPhase": "full",
+  "weather": "sea-breeze-night",
+  "family": "tropical-marine",
+  "category": "tropical-marine",
+  "effect": "sea-breeze",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "sea-breeze-night",
+    "en": "Night sea breeze",
+    "family": "tropical-marine",
+    "category": "tropical-marine",
+    "effect": "sea-breeze",
+    "marine": 1,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonset.full.sea-breeze-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/tropical-marine.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonset.full.sea-breeze-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonset",
+    "moonPhase": "full",
+    "weather": "sea-breeze-night",
+    "seed": 2529
+  }
+}

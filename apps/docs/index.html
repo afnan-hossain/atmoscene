@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071525">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="description" content="Learn how to browse and integrate Atmoscene animated weather SVG scenes, semantic weather states, day and night phases, and on-demand category loading.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Atmoscene">
+  <meta property="og:title" content="Animated Weather SVG & Lottie Documentation | Atmoscene">
+  <meta property="og:description" content="Implementation guidance for animated weather icons, scene resolution, web frameworks and on-demand asset loading.">
+  <meta property="og:url" content="https://afnan-hossain.github.io/atmoscene/docs/">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Animated Weather SVG & Lottie Documentation | Atmoscene</title>
+  <link rel="canonical" href="https://afnan-hossain.github.io/atmoscene/docs/">
+  <link rel="manifest" href="../site.webmanifest">
+  <link rel="stylesheet" href="../library/css/catalog.css?v=prototype-02">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "TechArticle",
+          "headline": "Atmoscene animated weather SVG and scene documentation",
+          "description": "Getting-started and integration guidance for the Atmoscene weather asset library.",
+          "url": "https://afnan-hossain.github.io/atmoscene/docs/",
+          "author": { "@type": "Person", "name": "Afnan Hossain" },
+          "isPartOf": { "@id": "https://afnan-hossain.github.io/atmoscene/#website" },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Atmoscene", "item": "https://afnan-hossain.github.io/atmoscene/" },
+            { "@type": "ListItem", "position": 2, "name": "Documentation", "item": "https://afnan-hossain.github.io/atmoscene/docs/" }
+          ]
+        }
+      ]
+    }
+  </script>
+  <link rel="stylesheet" href="../shared/shell.css?v=goal07-transparent-support">
+</head>
+<body>
+  <header data-atmoscene-header></header>
+  <main class="docs-shell">
+    <aside class="docs-nav"><p>Documentation</p><a class="is-current" href="#getting-started">Getting Started</a><a href="#usage">Usage</a><a href="#frameworks">Frameworks</a><a href="#cdn">CDN</a><a href="#api">API Reference</a><a href="#answers">Quick answers</a></aside>
+    <article class="docs-content">
+      <section id="getting-started"><p class="eyebrow">GETTING STARTED</p><h1>Use one living scene.<br><em>Load only what you need.</em></h1><p>Atmoscene’s browser release provides 3,552 time-aware animated SVG scene combinations through a shared renderer and category-based catalogue. Open a focused family, choose day or night, then load only the scene required by an interface.</p><div class="docs-live-example"><div class="docs-live-scene" data-library-card-scene="day|sunset|rain||Rain at sunset"></div><div><span>Shared renderer example</span><strong>Sunset · rain · precipitation wind profile</strong><p>This live scene is produced by the same compositor used by Home, Library, Catalogue and every category page.</p></div></div><div class="format-grid"><div><strong>Animated SVG</strong><span>Scalable browser motion with transparent layers.</span></div><div><strong>Reduced motion</strong><span>Animations stop when the user prefers reduced motion.</span></div><div><strong>Semantic states</strong><span>Readable family, weather, phase and moon identifiers.</span></div><div><strong>Scene engine</strong><span>Weather + time + celestial composition.</span></div></div></section>
+      <section id="usage"><p class="eyebrow">USAGE</p><h2>Use the browser scene renderer</h2><pre><code>const renderer = window.AtmosceneSceneRenderer;
+const scene = {
+  mode: 'night',
+  phase: renderer.nightPhase('midnight', 'full'),
+  weather: renderer.weather('night', 'aurora-strong')
+};
+target.innerHTML = renderer.sceneMarkup(scene, 1);</code></pre><p>The catalogue uses the same public semantic keys, making it a visual reference for selecting the correct weather and celestial state.</p></section>
+      <section id="frameworks"><p class="eyebrow">FRAMEWORKS</p><h2>Framework-neutral scene markup</h2><p>The renderer returns SVG-based HTML markup that can be mounted from plain JavaScript or wrapped by React, Vue, Svelte and Web Components. Category routing prevents an interface from bundling or rendering the complete catalogue.</p></section>
+      <section id="cdn"><p class="eyebrow">DELIVERY</p><h2>Cacheable and on demand</h2><pre><code>/api/v1/scenes/by-id/day.sunset.none.rain.json</code></pre><p>Use the public versioned API to fetch one scene by stable semantic ID, browse family collection endpoints for discovery, and load the zero-dependency SDK only when an interface needs to mount a scene. See the <a href="api/">complete API v1 reference</a>.</p></section>
+      <section id="api"><p class="eyebrow">API REFERENCE</p><h2>Semantic scene resolution</h2><pre><code>renderer.weather(mode, weatherKey)
+renderer.dayPhase(phaseKey)
+renderer.nightPhase(timeKey, moonPhaseKey)
+renderer.sceneMarkup(scene, uniqueId)</code></pre><p>Every rendered scene exposes semantic data attributes for family, weather, time phase, moon phase, wind profile, visibility, precipitation and special effects. These attributes can drive theming, accessibility descriptions and provider adapters without changing the artwork.</p></section>
+      <section id="answers" class="answer-section">
+        <p class="eyebrow">QUICK ANSWERS</p><h2>Animated weather asset questions</h2>
+        <h3>What is an animated weather SVG?</h3><p>An animated weather SVG is a scalable vector weather graphic whose motion runs in the browser without a raster video. It stays sharp at different sizes and can be loaded as a standalone asset.</p>
+        <h3>When should I use SVG instead of Lottie?</h3><p>Use animated SVG for lightweight web delivery and simple embedding. Use Lottie when an application needs timeline control or a native playback runtime. Atmoscene plans both formats from one canonical motion source.</p>
+        <h3>How will Atmoscene map Open-Meteo or WMO weather codes?</h3><p>The provider adapter will normalize a weather code, day or night state, daylight phase, moon phase, wind, visibility and severity. The core resolver will then return one semantic Atmoscene scene ID without tying the library to a single data provider.</p>
+        <h3>Does an app need to render all 3,552 scenes?</h3><p>No. Category pages show six representative scenes and the catalogue renders at most 24 previews per page. A weather interface needs only the scene selected for its current state.</p>
+      </section>
+    </article>
+  </main>
+  <footer data-atmoscene-footer></footer>
+  <script src="../shared/registry.js?v=global-library-2026-07"></script>
+  <script src="../library/js/engine.js?v=goal03-shell"></script>
+  <script src="../library/js/catalog.js?v=global-library-2026-07"></script>
+  <script src="../library/js/site-shell.js?v=global-library-2026-07"></script>
+  <script src="../shared/shell.js?v=goal07-transparent-support"></script>
+</body>
+</html>

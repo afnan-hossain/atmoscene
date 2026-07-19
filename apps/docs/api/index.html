@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" data-sky-theme="night">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Complete Atmoscene API v1 and JavaScript SDK documentation: endpoints, scene IDs, browser mounting, errors, caching, accessibility and framework integration.">
+  <meta name="robots" content="index, follow, max-snippet:-1">
+  <meta name="theme-color" content="#071525">
+  <title>Atmoscene API v1 & JavaScript SDK Documentation</title>
+  <link rel="canonical" href="https://afnan-hossain.github.io/atmoscene/docs/api/">
+  <link rel="stylesheet" href="../../shared/shell.css">
+  <link rel="stylesheet" href="../../library/css/catalog.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Atmoscene API v1 and JavaScript SDK documentation","author":{"@type":"Person","name":"Afnan Hossain"},"url":"https://afnan-hossain.github.io/atmoscene/docs/api/","proficiencyLevel":"Beginner to advanced","inLanguage":"en"}</script>
+</head>
+<body>
+  <header data-atmoscene-header></header>
+  <main class="docs-shell">
+    <aside class="docs-nav"><p>API v1</p><a href="#quickstart">Quick start</a><a href="#ids">Scene IDs</a><a href="#endpoints">Endpoints</a><a href="#sdk">JavaScript SDK</a><a href="#mount">Mounting</a><a href="#errors">Errors</a><a href="#performance">Performance</a><a href="#frameworks">Frameworks</a><a href="#accessibility">Accessibility</a><a href="#versioning">Versioning</a><a href="#attribution">License</a></aside>
+    <article class="docs-content">
+      <section id="quickstart"><p class="eyebrow">PUBLIC ASSET API · VERSION 1</p><h1>Fetch one scene.<br><em>Mount the real renderer.</em></h1><p>Atmoscene API v1 is a static, cacheable JSON API designed for GitHub Pages and any browser, build pipeline, or edge runtime that can use HTTP. Every one of the 3,552 scene combinations has a stable URL. The optional JavaScript SDK loads the same renderer and CSS used by the Atmoscene library.</p><pre><code>import { AtmosceneClient } from 'https://afnan-hossain.github.io/atmoscene/api/v1/client.mjs';
+
+const atmoscene = new AtmosceneClient();
+const scene = await atmoscene.scene('day.sunset.none.rain');
+await atmoscene.mount('#weather-scene', scene);</code></pre><p><a href="../../api/demo/">Open the working API consumer</a> or inspect the <a href="../../api/v1/manifest.json">machine-readable manifest</a>.</p></section>
+      <section id="ids"><p class="eyebrow">CANONICAL IDENTIFIERS</p><h2>Scene ID grammar</h2><pre><code>{mode}.{phase}.{moonPhase-or-none}.{weather}
+
+day.sunset.none.rain
+night.midnight.full.aurora-strong
+night.moonrise.waxing-crescent.tropical-cyclone-night</code></pre><p>IDs are lowercase, dot-separated and stable within API v1. Day scenes always use <code>none</code> for the moon segment. Night scenes include a named lunar state. A scene response also includes family, category, effect, wind profile, original renderer attributes and preview links.</p></section>
+      <section id="endpoints"><p class="eyebrow">HTTP ENDPOINTS</p><h2>Static URLs, normal fetch</h2><pre><code>GET /api/v1/health.json
+GET /api/v1/manifest.json
+GET /api/v1/scenes/index.json
+GET /api/v1/scenes/by-id/{sceneId}.json
+GET /api/v1/collections/{collectionId}.json
+GET /api/v1/lookups/weather-family.json
+GET /api/v1/checksums.json
+GET /api/v1/schemas/scene.schema.json
+GET /api/v1/schemas/resolve-input.schema.json</code></pre><p>Collection IDs are <code>core</code>, <code>snow-ice</code>, <code>aurora-polar</code>, <code>tropical-marine</code>, <code>aerosols</code> and <code>rare-celestial</code>. Prefer a collection endpoint for discovery and a by-ID endpoint in production. The complete index is intended for search tools, build pipelines and offline catalogues.</p><pre><code>const response = await fetch(
+  'https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.sunset.none.rain.json'
+);
+if (!response.ok) throw new Error(`HTTP ${response.status}`);
+const scene = await response.json();</code></pre></section>
+      <section id="sdk"><p class="eyebrow">ZERO-DEPENDENCY SDK</p><h2>Client methods</h2><pre><code>const client = new AtmosceneClient({ baseUrl, fetchImpl });
+
+client.health({ signal })
+client.manifest({ signal })
+client.collection(collectionId, { signal })
+client.scene(sceneId, { signal })
+client.sceneIndex({ signal })
+client.resolve({ mode, phase, moonPhase, weather }, { signal })
+client.loadRuntime()
+client.mount(target, sceneOrId, { label, replace })
+client.unmount(target)</code></pre><p>Responses are cached in memory by URL. Pass an <code>AbortSignal</code> to cancel fetches. Supply <code>baseUrl</code> for a self-hosted copy or local development server, and <code>fetchImpl</code> for compatible non-browser runtimes.</p><h3>Classic script</h3><pre><code>&lt;script src="https://afnan-hossain.github.io/atmoscene/api/v1/client.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  Atmoscene.create().then(async (client) =&gt; {
+    await client.mount('#sky', 'night.midnight.full.clear-night');
+  });
+&lt;/script&gt;</code></pre></section>
+      <section id="mount"><p class="eyebrow">RENDERING CONTRACT</p><h2>Mount without duplicating Atmoscene</h2><p><code>mount()</code> fetches scene metadata when given an ID, loads the versioned registry, engine, renderer and stylesheet once, then creates markup with the canonical compositor. The target receives <code>role="img"</code>, an accessible label and <code>data-atmoscene-id</code>.</p><pre><code>&lt;div id="sky" style="position:relative;min-height:420px"&gt;&lt;/div&gt;
+&lt;script type="module"&gt;
+  import { AtmosceneClient } from '/api/v1/client.mjs';
+  const client = new AtmosceneClient({ baseUrl: location.origin });
+  await client.mount('#sky', 'day.sunrise.none.partly-cloudy');
+&lt;/script&gt;</code></pre><p>The host controls dimensions. Give it a position context and an explicit height or aspect ratio. Atmoscene’s reduced-motion rules remain active automatically.</p></section>
+      <section id="errors"><p class="eyebrow">ERROR MODEL</p><h2>Typed, inspectable failures</h2><p>The SDK throws <code>AtmosceneError</code> with <code>code</code>, <code>message</code> and <code>details</code>. Codes include <code>INVALID_FETCH</code>, <code>ABORTED</code>, <code>NETWORK_ERROR</code>, <code>HTTP_ERROR</code>, <code>DOM_REQUIRED</code>, <code>STYLE_LOAD_ERROR</code>, <code>SCRIPT_LOAD_ERROR</code>, <code>RUNTIME_MISSING</code>, <code>TARGET_NOT_FOUND</code> and <code>INVALID_SCENE</code>.</p><pre><code>try {
+  await client.mount('#sky', sceneId);
+} catch (error) {
+  if (error.code === 'HTTP_ERROR' &amp;&amp; error.details.status === 404) {
+    showFallbackArtwork();
+  }
+}</code></pre></section>
+      <section id="performance"><p class="eyebrow">DELIVERY</p><h2>Load one scene, not the catalogue</h2><ul><li>Use a by-ID endpoint after selecting a scene.</li><li>Cache the immutable scene response in your application or CDN.</li><li>Load the runtime only when a scene enters the viewport.</li><li>Reuse one client instance so manifest and responses stay cached.</li><li>Avoid the full index on a normal weather screen.</li><li>Respect <code>prefers-reduced-motion</code>; the library supplies static states.</li></ul></section>
+      <section id="frameworks"><p class="eyebrow">FRAMEWORK ADAPTERS</p><h2>React, Vue, Svelte, Web Components and SSR</h2><p>Mount after the component’s DOM node exists and call <code>unmount()</code> during cleanup. Do not call <code>mount()</code> during server rendering; fetch scene JSON on the server if useful, then mount the visual after hydration.</p><pre><code>// React effect sketch
+useEffect(() =&gt; {
+  const client = new AtmosceneClient();
+  client.mount(ref.current, sceneId);
+  return () =&gt; client.unmount(ref.current);
+}, [sceneId]);</code></pre><pre><code>// Vue / Svelte lifecycle sketch
+onMounted(() =&gt; client.mount(element, sceneId));
+onBeforeUnmount(() =&gt; client.unmount(element));
+
+// A Web Component can call the same pair from
+// connectedCallback() and disconnectedCallback().</code></pre><p>For SSR, render the text forecast and a stable scene container on the server. Import the SDK only in the browser. This avoids DOM access during rendering and prevents hydration mismatches.</p></section>
+      <section id="accessibility"><p class="eyebrow">ACCESSIBILITY</p><h2>Meaning before motion</h2><p>Pass a concise <code>label</code> when the visual communicates information. If adjacent text already conveys the same weather, set the host to decorative after mounting with <code>aria-hidden="true"</code>. Never rely on animation or color alone for severe-weather warnings. Preserve the library’s reduced-motion behavior and ensure text placed over a scene meets contrast requirements.</p></section>
+      <section id="versioning"><p class="eyebrow">STABILITY, HOSTING & PRIVACY</p><h2>Versioned paths and release rules</h2><p>Breaking changes receive a new major path such as <code>/api/v2/</code>. Compatible metadata additions may appear in v1. Consumers should ignore unknown response fields. Generated output is validated against the canonical registry count so API, catalogue and homepage cannot silently disagree.</p><h3>GitHub Pages limits</h3><p>API v1 is static. URLs return published JSON files; there is no server-side query execution, secret storage, account system or uptime SLA. Use <code>resolve()</code> to construct a stable by-ID request, mirror the <code>apps/api/v1</code> directory for self-hosting, or place it behind your own CDN. Check <code>health.json</code> and pin the <code>/v1/</code> path in production.</p><h3>Privacy and security</h3><p>The asset API and SDK do not request location, use cookies, collect analytics, execute user strings as code or require API keys. The optional homepage weather demo is a separate consumer with its own provider requests. Treat scene labels as data and keep your application’s normal Content Security Policy, dependency review and request timeouts.</p></section>
+      <section id="attribution"><p class="eyebrow">LICENSE & ATTRIBUTION</p><h2>Open source with preserved notices</h2><p>Original Atmoscene code and artwork are released under the MIT License. Condition artwork includes Meteocons material by Bas Milius under MIT and is composed with original Atmoscene layers. Preserve the repository’s MIT license and third-party notices when redistributing the runtime or assets. Atmoscene is created by Afnan Hossain. <a href="https://buymeacoffee.com/afnan.hossain">Support continued development</a>.</p></section>
+    </article>
+  </main>
+  <footer data-atmoscene-footer></footer>
+  <script src="../../shared/registry.js"></script>
+  <script src="../../shared/shell.js"></script>
+</body>
+</html>

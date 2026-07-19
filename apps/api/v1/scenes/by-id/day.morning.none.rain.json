@@ -1,0 +1,37 @@
+{
+  "id": "day.morning.none.rain",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Morning · Rain",
+  "mode": "day",
+  "phase": "morning",
+  "moonPhase": null,
+  "weather": "rain",
+  "family": "core",
+  "category": "rain",
+  "effect": "standard",
+  "windProfile": "precipitation",
+  "attributes": {
+    "key": "rain",
+    "bn": "বৃষ্টি",
+    "en": "Rain",
+    "category": "rain",
+    "condition": "rain",
+    "ownsCelestial": false,
+    "rain": 2,
+    "cloud": 1,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.morning.none.rain.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.morning.none.rain"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "morning",
+    "moonPhase": null,
+    "weather": "rain",
+    "seed": 40
+  }
+}

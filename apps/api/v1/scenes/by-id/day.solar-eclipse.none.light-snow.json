@@ -1,0 +1,36 @@
+{
+  "id": "day.solar-eclipse.none.light-snow",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Solar eclipse · Light snow",
+  "mode": "day",
+  "phase": "solar-eclipse",
+  "moonPhase": null,
+  "weather": "light-snow",
+  "family": "snow-ice",
+  "category": "snow",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "light-snow",
+    "bn": "",
+    "en": "Light snow",
+    "category": "snow",
+    "condition": "overcast",
+    "cloud": 2,
+    "snow": 1,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.solar-eclipse.none.light-snow.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.solar-eclipse.none.light-snow"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "solar-eclipse",
+    "moonPhase": null,
+    "weather": "light-snow",
+    "seed": 1044
+  }
+}

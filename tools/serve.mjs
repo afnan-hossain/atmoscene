@@ -3,7 +3,7 @@ import { readFile, stat } from "node:fs/promises";
 import { extname, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const root = resolve(fileURLToPath(new URL("../apps/lab/", import.meta.url)));
+const root = resolve(fileURLToPath(new URL("../apps/", import.meta.url)));
 const host = process.env.ATMOSCENE_HOST || "127.0.0.1";
 const port = Number(process.env.ATMOSCENE_PORT || 8790);
 
@@ -12,6 +12,9 @@ const mime = {
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
+  ".webmanifest": "application/manifest+json; charset=utf-8",
+  ".xml": "application/xml; charset=utf-8",
+  ".txt": "text/plain; charset=utf-8",
   ".svg": "image/svg+xml",
   ".png": "image/png",
   ".webp": "image/webp",
@@ -20,7 +23,7 @@ const mime = {
 
 function safePath(urlPath) {
   const decoded = decodeURIComponent(urlPath.split("?")[0]);
-  const requested = decoded === "/" ? "index.html" : decoded.replace(/^\/+/, "");
+  const requested = decoded === "/" ? "lab/index.html" : decoded.replace(/^\/+/, "");
   const candidate = resolve(root, requested);
   if (candidate !== root && !candidate.startsWith(`${root}${sep}`)) return null;
   return candidate;
@@ -28,6 +31,11 @@ function safePath(urlPath) {
 
 const server = createServer(async (request, response) => {
   try {
+    const incoming = new URL(request.url || "/", `http://${request.headers.host || `${host}:${port}`}`);
+    if (incoming.pathname === "/") {
+      response.writeHead(302, { Location: `/lab/${incoming.search}` }).end();
+      return;
+    }
     const target = safePath(request.url || "/");
     if (!target) {
       response.writeHead(403).end("Forbidden");
@@ -54,4 +62,3 @@ const server = createServer(async (request, response) => {
 server.listen(port, host, () => {
   console.log(`Atmoscene local lab: http://${host}:${port}`);
 });
-

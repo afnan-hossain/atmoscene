@@ -1,0 +1,34 @@
+{
+  "id": "night.moonrise.last-quarter.gusty-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonrise · Last quarter · Night gusty",
+  "mode": "night",
+  "phase": "moonrise",
+  "moonPhase": "last-quarter",
+  "weather": "gusty-night",
+  "family": "core",
+  "category": "wind",
+  "effect": "standard",
+  "windProfile": "gusting",
+  "attributes": {
+    "key": "gusty-night",
+    "bn": "রাতের দমকা বাতাস",
+    "en": "Night gusty",
+    "category": "wind",
+    "condition": "",
+    "wind": 3
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonrise.last-quarter.gusty-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonrise.last-quarter.gusty-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonrise",
+    "moonPhase": "last-quarter",
+    "weather": "gusty-night",
+    "seed": 361
+  }
+}

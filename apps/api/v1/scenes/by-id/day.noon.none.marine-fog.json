@@ -1,0 +1,37 @@
+{
+  "id": "day.noon.none.marine-fog",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Noon · Marine fog",
+  "mode": "day",
+  "phase": "noon",
+  "moonPhase": null,
+  "weather": "marine-fog",
+  "family": "tropical-marine",
+  "category": "tropical-marine",
+  "effect": "marine-fog",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "marine-fog",
+    "en": "Marine fog",
+    "family": "tropical-marine",
+    "category": "tropical-marine",
+    "effect": "marine-fog",
+    "marine": 1,
+    "visibility": "fog",
+    "cloud": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.noon.none.marine-fog.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/tropical-marine.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.noon.none.marine-fog"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "noon",
+    "moonPhase": null,
+    "weather": "marine-fog",
+    "seed": 2111
+  }
+}

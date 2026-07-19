@@ -1,0 +1,36 @@
+{
+  "id": "night.moonrise.first-quarter.moderate-snow-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonrise · First quarter · Night moderate snow",
+  "mode": "night",
+  "phase": "moonrise",
+  "moonPhase": "first-quarter",
+  "weather": "moderate-snow-night",
+  "family": "snow-ice",
+  "category": "snow",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "moderate-snow-night",
+    "bn": "",
+    "en": "Night moderate snow",
+    "category": "snow",
+    "condition": "overcast",
+    "cloud": 2,
+    "snow": 2,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonrise.first-quarter.moderate-snow-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonrise.first-quarter.moderate-snow-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonrise",
+    "moonPhase": "first-quarter",
+    "weather": "moderate-snow-night",
+    "seed": 1157
+  }
+}

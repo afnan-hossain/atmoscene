@@ -1,0 +1,37 @@
+{
+  "id": "day.sunset.none.double-rainbow",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Sunset · Double rainbow",
+  "mode": "day",
+  "phase": "sunset",
+  "moonPhase": null,
+  "weather": "double-rainbow",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "double-rainbow",
+  "windProfile": "precipitation",
+  "attributes": {
+    "key": "double-rainbow",
+    "en": "Double rainbow",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "double-rainbow",
+    "celestialEvent": "double-rainbow",
+    "cloud": 1,
+    "rain": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.sunset.none.double-rainbow.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.sunset.none.double-rainbow"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "sunset",
+    "moonPhase": null,
+    "weather": "double-rainbow",
+    "seed": 3146
+  }
+}

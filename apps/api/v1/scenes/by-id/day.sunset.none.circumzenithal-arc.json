@@ -1,0 +1,35 @@
+{
+  "id": "day.sunset.none.circumzenithal-arc",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Sunset · Circumzenithal arc",
+  "mode": "day",
+  "phase": "sunset",
+  "moonPhase": null,
+  "weather": "circumzenithal-arc",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "circumzenithal-arc",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "circumzenithal-arc",
+    "en": "Circumzenithal arc",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "circumzenithal-arc",
+    "celestialEvent": "circumzenithal-arc",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.sunset.none.circumzenithal-arc.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.sunset.none.circumzenithal-arc"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "sunset",
+    "moonPhase": null,
+    "weather": "circumzenithal-arc",
+    "seed": 3144
+  }
+}

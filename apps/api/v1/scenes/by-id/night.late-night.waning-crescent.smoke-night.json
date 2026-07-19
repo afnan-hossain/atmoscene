@@ -1,0 +1,36 @@
+{
+  "id": "night.late-night.waning-crescent.smoke-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Late night · Waning crescent · Night smoke",
+  "mode": "night",
+  "phase": "late-night",
+  "moonPhase": "waning-crescent",
+  "weather": "smoke-night",
+  "family": "aerosols",
+  "category": "aerosols",
+  "effect": "smoke",
+  "windProfile": "aerosol-flow",
+  "attributes": {
+    "key": "smoke-night",
+    "en": "Night smoke",
+    "family": "aerosols",
+    "category": "aerosols",
+    "effect": "smoke",
+    "aerosol": 1,
+    "visibility": "smoke",
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.late-night.waning-crescent.smoke-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aerosols.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.late-night.waning-crescent.smoke-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "late-night",
+    "moonPhase": "waning-crescent",
+    "weather": "smoke-night",
+    "seed": 2963
+  }
+}

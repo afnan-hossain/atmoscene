@@ -1,0 +1,35 @@
+{
+  "id": "day.noon.none.squall",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Noon · Squall",
+  "mode": "day",
+  "phase": "noon",
+  "moonPhase": null,
+  "weather": "squall",
+  "family": "core",
+  "category": "wind",
+  "effect": "standard",
+  "windProfile": "turbulent",
+  "attributes": {
+    "key": "squall",
+    "bn": "প্রবল ঝোড়ো বাতাস",
+    "en": "Squall",
+    "category": "wind",
+    "condition": "",
+    "wind": 4,
+    "cloud": 2
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.noon.none.squall.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.noon.none.squall"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "noon",
+    "moonPhase": null,
+    "weather": "squall",
+    "seed": 64
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "night.moonrise.pink-moon.drizzle-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonrise · Pink moon · Night drizzle",
+  "mode": "night",
+  "phase": "moonrise",
+  "moonPhase": "pink-moon",
+  "weather": "drizzle-night",
+  "family": "core",
+  "category": "rain",
+  "effect": "standard",
+  "windProfile": "precipitation",
+  "attributes": {
+    "key": "drizzle-night",
+    "bn": "রাতের গুঁড়ি বৃষ্টি",
+    "en": "Night drizzle",
+    "category": "rain",
+    "condition": "drizzle",
+    "rain": 1,
+    "cloud": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonrise.pink-moon.drizzle-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonrise.pink-moon.drizzle-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonrise",
+    "moonPhase": "pink-moon",
+    "weather": "drizzle-night",
+    "seed": 379
+  }
+}

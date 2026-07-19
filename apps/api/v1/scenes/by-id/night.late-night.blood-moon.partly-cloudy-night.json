@@ -1,0 +1,35 @@
+{
+  "id": "night.late-night.blood-moon.partly-cloudy-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Late night · Blood moon · Partly cloudy night",
+  "mode": "night",
+  "phase": "late-night",
+  "moonPhase": "blood-moon",
+  "weather": "partly-cloudy-night",
+  "family": "core",
+  "category": "cloud",
+  "effect": "standard",
+  "windProfile": "cloud-flow",
+  "attributes": {
+    "key": "partly-cloudy-night",
+    "bn": "আংশিক মেঘলা রাত",
+    "en": "Partly cloudy night",
+    "category": "cloud",
+    "condition": "cloudy",
+    "cloud": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.late-night.blood-moon.partly-cloudy-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.late-night.blood-moon.partly-cloudy-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "late-night",
+    "moonPhase": "blood-moon",
+    "weather": "partly-cloudy-night",
+    "seed": 676
+  }
+}

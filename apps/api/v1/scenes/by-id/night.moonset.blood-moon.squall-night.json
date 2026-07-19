@@ -1,0 +1,35 @@
+{
+  "id": "night.moonset.blood-moon.squall-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonset · Blood moon · Night squall",
+  "mode": "night",
+  "phase": "moonset",
+  "moonPhase": "blood-moon",
+  "weather": "squall-night",
+  "family": "core",
+  "category": "wind",
+  "effect": "standard",
+  "windProfile": "turbulent",
+  "attributes": {
+    "key": "squall-night",
+    "bn": "রাতের প্রবল ঝোড়ো বাতাস",
+    "en": "Night squall",
+    "category": "wind",
+    "condition": "",
+    "wind": 4,
+    "cloud": 2
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonset.blood-moon.squall-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonset.blood-moon.squall-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonset",
+    "moonPhase": "blood-moon",
+    "weather": "squall-night",
+    "seed": 830
+  }
+}

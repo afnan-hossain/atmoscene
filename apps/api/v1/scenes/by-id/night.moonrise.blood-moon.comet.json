@@ -1,0 +1,35 @@
+{
+  "id": "night.moonrise.blood-moon.comet",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonrise · Blood moon · Comet",
+  "mode": "night",
+  "phase": "moonrise",
+  "moonPhase": "blood-moon",
+  "weather": "comet",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "comet",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "comet",
+    "en": "Comet",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "comet",
+    "celestialEvent": "comet",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonrise.blood-moon.comet.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonrise.blood-moon.comet"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonrise",
+    "moonPhase": "blood-moon",
+    "weather": "comet",
+    "seed": 3278
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "day.noon.none.storm",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Noon · Thunderstorm",
+  "mode": "day",
+  "phase": "noon",
+  "moonPhase": null,
+  "weather": "storm",
+  "family": "core",
+  "category": "storm",
+  "effect": "standard",
+  "windProfile": "turbulent",
+  "attributes": {
+    "key": "storm",
+    "bn": "বজ্রঝড়",
+    "en": "Thunderstorm",
+    "category": "storm",
+    "condition": "thunderstorms-extreme-rain",
+    "ownsCelestial": false,
+    "rain": 3,
+    "cloud": 3,
+    "wind": 4,
+    "storm": true
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.noon.none.storm.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.noon.none.storm"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "noon",
+    "moonPhase": null,
+    "weather": "storm",
+    "seed": 58
+  }
+}

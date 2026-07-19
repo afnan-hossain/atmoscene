@@ -1,0 +1,35 @@
+{
+  "id": "night.evening.lunar-eclipse.haze-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Evening · Lunar eclipse · Night haze",
+  "mode": "night",
+  "phase": "evening",
+  "moonPhase": "lunar-eclipse",
+  "weather": "haze-night",
+  "family": "core",
+  "category": "visibility",
+  "effect": "standard",
+  "windProfile": "laminar",
+  "attributes": {
+    "key": "haze-night",
+    "bn": "রাতের ধোঁয়াশা",
+    "en": "Night haze",
+    "category": "visibility",
+    "condition": "haze",
+    "visibility": "haze",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.evening.lunar-eclipse.haze-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.evening.lunar-eclipse.haze-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "evening",
+    "moonPhase": "lunar-eclipse",
+    "weather": "haze-night",
+    "seed": 267
+  }
+}

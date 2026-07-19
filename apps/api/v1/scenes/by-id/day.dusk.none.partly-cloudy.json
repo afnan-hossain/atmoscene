@@ -1,0 +1,36 @@
+{
+  "id": "day.dusk.none.partly-cloudy",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Dusk · Partly cloudy",
+  "mode": "day",
+  "phase": "dusk",
+  "moonPhase": null,
+  "weather": "partly-cloudy",
+  "family": "core",
+  "category": "cloud",
+  "effect": "standard",
+  "windProfile": "cloud-flow",
+  "attributes": {
+    "key": "partly-cloudy",
+    "bn": "আংশিক মেঘলা",
+    "en": "Partly cloudy",
+    "category": "cloud",
+    "condition": "cloudy",
+    "ownsCelestial": false,
+    "cloud": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.dusk.none.partly-cloudy.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.dusk.none.partly-cloudy"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "dusk",
+    "moonPhase": null,
+    "weather": "partly-cloudy",
+    "seed": 101
+  }
+}

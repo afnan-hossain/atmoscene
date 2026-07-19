@@ -1,0 +1,37 @@
+{
+  "id": "night.pre-dawn-night.full.marine-fog-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Pre-dawn · Full moon · Night marine fog",
+  "mode": "night",
+  "phase": "pre-dawn-night",
+  "moonPhase": "full",
+  "weather": "marine-fog-night",
+  "family": "tropical-marine",
+  "category": "tropical-marine",
+  "effect": "marine-fog",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "marine-fog-night",
+    "en": "Night marine fog",
+    "family": "tropical-marine",
+    "category": "tropical-marine",
+    "effect": "marine-fog",
+    "marine": 1,
+    "visibility": "fog",
+    "cloud": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.pre-dawn-night.full.marine-fog-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/tropical-marine.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.pre-dawn-night.full.marine-fog-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "pre-dawn-night",
+    "moonPhase": "full",
+    "weather": "marine-fog-night",
+    "seed": 2623
+  }
+}

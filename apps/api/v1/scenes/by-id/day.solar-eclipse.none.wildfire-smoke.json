@@ -1,0 +1,38 @@
+{
+  "id": "day.solar-eclipse.none.wildfire-smoke",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Solar eclipse · Wildfire smoke",
+  "mode": "day",
+  "phase": "solar-eclipse",
+  "moonPhase": null,
+  "weather": "wildfire-smoke",
+  "family": "aerosols",
+  "category": "aerosols",
+  "effect": "wildfire-smoke",
+  "windProfile": "aerosol-flow",
+  "attributes": {
+    "key": "wildfire-smoke",
+    "en": "Wildfire smoke",
+    "family": "aerosols",
+    "category": "aerosols",
+    "effect": "wildfire-smoke",
+    "aerosol": 3,
+    "visibility": "smoke",
+    "cloud": 1,
+    "heat": 1,
+    "wind": 2
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.solar-eclipse.none.wildfire-smoke.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aerosols.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.solar-eclipse.none.wildfire-smoke"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "solar-eclipse",
+    "moonPhase": null,
+    "weather": "wildfire-smoke",
+    "seed": 2718
+  }
+}

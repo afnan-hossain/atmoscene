@@ -1,0 +1,37 @@
+{
+  "id": "day.solar-eclipse.none.sandstorm",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Solar eclipse · Sandstorm",
+  "mode": "day",
+  "phase": "solar-eclipse",
+  "moonPhase": null,
+  "weather": "sandstorm",
+  "family": "aerosols",
+  "category": "aerosols",
+  "effect": "sandstorm",
+  "windProfile": "aerosol-flow",
+  "attributes": {
+    "key": "sandstorm",
+    "en": "Sandstorm",
+    "family": "aerosols",
+    "category": "aerosols",
+    "effect": "sandstorm",
+    "aerosol": 3,
+    "visibility": "dust",
+    "cloud": 1,
+    "wind": 4
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.solar-eclipse.none.sandstorm.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aerosols.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.solar-eclipse.none.sandstorm"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "solar-eclipse",
+    "moonPhase": null,
+    "weather": "sandstorm",
+    "seed": 2716
+  }
+}

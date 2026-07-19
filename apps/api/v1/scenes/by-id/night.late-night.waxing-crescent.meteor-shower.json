@@ -1,0 +1,35 @@
+{
+  "id": "night.late-night.waxing-crescent.meteor-shower",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Late night · Waxing crescent · Meteor shower",
+  "mode": "night",
+  "phase": "late-night",
+  "moonPhase": "waxing-crescent",
+  "weather": "meteor-shower",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "meteor-shower",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "meteor-shower",
+    "en": "Meteor shower",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "meteor-shower",
+    "celestialEvent": "meteor-shower",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.late-night.waxing-crescent.meteor-shower.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.late-night.waxing-crescent.meteor-shower"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "late-night",
+    "moonPhase": "waxing-crescent",
+    "weather": "meteor-shower",
+    "seed": 3361
+  }
+}

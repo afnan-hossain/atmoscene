@@ -1,0 +1,38 @@
+{
+  "id": "night.moonset.waxing-gibbous.blizzard-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonset · Waxing gibbous · Night blizzard",
+  "mode": "night",
+  "phase": "moonset",
+  "moonPhase": "waxing-gibbous",
+  "weather": "blizzard-night",
+  "family": "snow-ice",
+  "category": "snow",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "blizzard-night",
+    "bn": "",
+    "en": "Night blizzard",
+    "category": "snow",
+    "condition": "overcast",
+    "cloud": 3,
+    "snow": 4,
+    "wind": 4,
+    "drift": true,
+    "whiteout": true
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonset.waxing-gibbous.blizzard-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonset.waxing-gibbous.blizzard-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonset",
+    "moonPhase": "waxing-gibbous",
+    "weather": "blizzard-night",
+    "seed": 1432
+  }
+}

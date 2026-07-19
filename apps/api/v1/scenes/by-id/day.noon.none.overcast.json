@@ -1,0 +1,36 @@
+{
+  "id": "day.noon.none.overcast",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Noon · Overcast",
+  "mode": "day",
+  "phase": "noon",
+  "moonPhase": null,
+  "weather": "overcast",
+  "family": "core",
+  "category": "cloud",
+  "effect": "standard",
+  "windProfile": "cloud-flow",
+  "attributes": {
+    "key": "overcast",
+    "bn": "মেঘাচ্ছন্ন",
+    "en": "Overcast",
+    "category": "cloud",
+    "condition": "overcast",
+    "ownsCelestial": false,
+    "cloud": 2,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.noon.none.overcast.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.noon.none.overcast"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "noon",
+    "moonPhase": null,
+    "weather": "overcast",
+    "seed": 54
+  }
+}

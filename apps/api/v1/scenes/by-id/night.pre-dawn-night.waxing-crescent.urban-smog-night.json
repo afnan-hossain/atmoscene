@@ -1,0 +1,37 @@
+{
+  "id": "night.pre-dawn-night.waxing-crescent.urban-smog-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Pre-dawn · Waxing crescent · Night urban smog",
+  "mode": "night",
+  "phase": "pre-dawn-night",
+  "moonPhase": "waxing-crescent",
+  "weather": "urban-smog-night",
+  "family": "aerosols",
+  "category": "aerosols",
+  "effect": "smog",
+  "windProfile": "aerosol-flow",
+  "attributes": {
+    "key": "urban-smog-night",
+    "en": "Night urban smog",
+    "family": "aerosols",
+    "category": "aerosols",
+    "effect": "smog",
+    "aerosol": 2,
+    "visibility": "haze",
+    "cloud": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.pre-dawn-night.waxing-crescent.urban-smog-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aerosols.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.pre-dawn-night.waxing-crescent.urban-smog-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "pre-dawn-night",
+    "moonPhase": "waxing-crescent",
+    "weather": "urban-smog-night",
+    "seed": 3062
+  }
+}

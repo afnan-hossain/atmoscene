@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="theme-color" content="#0c1f3d">
+  <meta name="description" content="Browse 3,552 animated Atmoscene SVG weather scenes by family, day or night, weather state and search—24 lightweight previews per page.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Atmoscene">
+  <meta property="og:title" content="Atmoscene Scene Catalogue — 3,552 Animated Weather Scenes">
+  <meta property="og:description" content="Filter animated weather SVG scenes by collection, daylight, moon phase and atmospheric state.">
+  <meta property="og:url" content="https://afnan-hossain.github.io/atmoscene/library/catalog.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Atmoscene Scene Explorer — 3,552 Animated Weather Scenes</title>
+  <link rel="stylesheet" href="css/catalog.css?v=brand-preloader-2">
+  <link rel="canonical" href="https://afnan-hossain.github.io/atmoscene/library/catalog.html">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Atmoscene Animated Weather Scene Catalogue",
+      "url": "https://afnan-hossain.github.io/atmoscene/library/catalog.html",
+      "description": "An interactive catalogue for browsing and filtering 3,552 animated SVG weather scene combinations.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+  </script>
+  <script src="../shared/registry.js?v=brand-final-p02" defer></script>
+  <script src="js/engine.js?v=brand-final-p02" defer></script>
+  <script src="js/catalog.js?v=brand-preloader-2" defer></script>
+  <script src="js/site-shell.js?v=brand-preloader-2" defer></script>
+  <link rel="stylesheet" href="../shared/shell.css?v=brand-preloader-2">
+</head>
+<body>
+  <header data-atmoscene-header></header>
+
+  <main class="catalog-app">
+    <section class="catalog-app-hero" aria-labelledby="catalogue-title">
+      <div>
+        <p class="library-kicker"><span></span> Interactive animated SVG scene explorer</p>
+        <h1 id="catalogue-title"><span data-audit-total>3,552</span> weather scenes,<br><em>one visual system.</em></h1>
+        <p>Choose a collection, pick day or night, then narrow by weather. Results update in place and each card opens a full animated preview.</p>
+      </div>
+      <div class="catalog-facts" aria-label="Variation counts">
+        <div><strong data-audit-total>3,552</strong><span>Total combinations</span></div>
+        <div><strong data-audit-day>384</strong><span>Day variations</span></div>
+        <div><strong data-audit-night>3,168</strong><span>Night variations</span></div>
+        <div><strong data-audit-states>45</strong><span>Canonical states</span></div>
+      </div>
+    </section>
+
+    <section class="catalog-family-picker" aria-labelledby="collection-step-title">
+      <div><span>Step 1</span><strong id="collection-step-title">Choose a collection</strong><small>Each collection contains related visual states and stays lightweight.</small></div>
+      <nav class="catalog-category-nav" aria-label="Choose a scene collection">
+        <a href="catalog.html?family=core&mode=day">Core weather</a>
+        <a href="catalog.html?family=snow-ice&mode=day">Snow & ice</a>
+        <a href="catalog.html?family=aurora-polar&mode=night">Aurora & polar</a>
+        <a href="catalog.html?family=tropical-marine&mode=day">Tropical & marine</a>
+        <a href="catalog.html?family=aerosols&mode=day">Dust, smoke & ash</a>
+        <a href="catalog.html?family=rare-celestial&mode=night">Rare celestial</a>
+      </nav>
+    </section>
+
+    <div class="catalog-shell">
+    <section class="control-bar" aria-label="Scene filters">
+      <div class="filter-heading"><span>Steps 2–4</span><strong>Refine this collection</strong><small>Up to 24 animated previews load per page.</small></div>
+      <div class="catalog-output-badge" aria-label="Catalogue output format"><span>Output</span><strong>Animated SVG</strong><small>Static fallback ready</small></div>
+      <div class="catalog-filter-step mode-step"><span>2 · Choose sky time</span><div class="mode-switch" role="group" aria-label="Filter day or night">
+        <button type="button" data-mode="day">Daylight</button>
+        <button type="button" data-mode="night">Night & moon</button>
+      </div></div>
+      <div class="catalog-filter-step state-step"><span>3 · Choose weather type</span><div class="state-switch" role="group" aria-label="Filter weather state">
+        <button class="is-active" type="button" data-state="all">All weather</button>
+        <button type="button" data-state="clear">Clear</button>
+        <button type="button" data-state="cloud">Cloud</button>
+        <button type="button" data-state="rain">Rain</button>
+        <button type="button" data-state="storm">Storm</button>
+        <button type="button" data-state="visibility">Fog & haze</button>
+        <button type="button" data-state="wind">Wind</button>
+        <button type="button" data-state="snow">Snow</button>
+        <button type="button" data-state="ice">Ice</button>
+      </div></div>
+      <div class="catalog-filter-step search-step"><span>4 · Optional search</span><label class="search-field"><span>Scene name or phase</span><input type="search" data-search placeholder="Try full moon, rain or gust"></label></div>
+      <p class="result-count" aria-live="polite"><strong data-visible-count>0</strong> matching scenes<span data-active-filter></span></p>
+    </section>
+
+    <div class="catalog-results">
+    <section class="matrix-section day-section" id="day-matrix" data-section-mode="day">
+      <div class="section-heading"><p>DAYLIGHT SYSTEM</p><h2>8 daylight phases × 24 weather states</h2><span>Dawn through dusk, solar eclipse, snow and ice—with time-specific sky palettes and only one sun.</span></div>
+      <div class="variation-grid" data-day-grid></div>
+    </section>
+
+    <section class="matrix-section night-section" id="night-matrix" data-section-mode="night">
+      <div class="section-heading"><p>NIGHT SYSTEM</p><h2>6 night palettes × 11 moon states × 21 weather states</h2><span>Evening, moonrise, midnight, late night, moonset and pre-dawn with lunar phases, snow, ice, special moons and eclipse scenes.</span></div>
+      <div class="variation-grid" data-night-grid></div>
+    </section>
+    </div>
+    </div>
+  </main>
+
+  <dialog class="preview-dialog" data-preview-dialog>
+    <button class="dialog-close" type="button" data-dialog-close aria-label="Close scene preview">Close</button>
+    <div class="dialog-scene" data-dialog-scene></div>
+    <div class="dialog-copy"><small data-dialog-mode></small><h2 data-dialog-title></h2><p data-dialog-file></p></div>
+  </dialog>
+
+  <footer data-atmoscene-footer></footer>
+  <script src="../shared/shell.js?v=brand-final-p02"></script>
+</body>
+</html>

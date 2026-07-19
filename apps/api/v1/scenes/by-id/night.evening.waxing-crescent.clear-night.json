@@ -1,0 +1,34 @@
+{
+  "id": "night.evening.waxing-crescent.clear-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Evening · Waxing crescent · Clear night",
+  "mode": "night",
+  "phase": "evening",
+  "moonPhase": "waxing-crescent",
+  "weather": "clear-night",
+  "family": "core",
+  "category": "clear",
+  "effect": "standard",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "clear-night",
+    "bn": "পরিষ্কার রাত",
+    "en": "Clear night",
+    "category": "clear",
+    "condition": "",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.evening.waxing-crescent.clear-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.evening.waxing-crescent.clear-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "evening",
+    "moonPhase": "waxing-crescent",
+    "weather": "clear-night",
+    "seed": 142
+  }
+}

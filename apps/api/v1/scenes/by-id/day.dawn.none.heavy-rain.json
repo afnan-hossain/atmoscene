@@ -1,0 +1,37 @@
+{
+  "id": "day.dawn.none.heavy-rain",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Dawn · Heavy rain",
+  "mode": "day",
+  "phase": "dawn",
+  "moonPhase": null,
+  "weather": "heavy-rain",
+  "family": "core",
+  "category": "rain",
+  "effect": "standard",
+  "windProfile": "precipitation",
+  "attributes": {
+    "key": "heavy-rain",
+    "bn": "ভারী বৃষ্টি",
+    "en": "Heavy rain",
+    "category": "rain",
+    "condition": "extreme-rain",
+    "ownsCelestial": false,
+    "rain": 3,
+    "cloud": 2,
+    "wind": 2
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.dawn.none.heavy-rain.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.dawn.none.heavy-rain"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "dawn",
+    "moonPhase": null,
+    "weather": "heavy-rain",
+    "seed": 9
+  }
+}

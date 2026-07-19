@@ -1,0 +1,36 @@
+{
+  "id": "day.dusk.none.clear-warm",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Dusk · Mostly clear warm",
+  "mode": "day",
+  "phase": "dusk",
+  "moonPhase": null,
+  "weather": "clear-warm",
+  "family": "core",
+  "category": "clear",
+  "effect": "standard",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "clear-warm",
+    "bn": "প্রধানত পরিষ্কার · উষ্ণ",
+    "en": "Mostly clear warm",
+    "category": "clear",
+    "condition": "",
+    "ownsCelestial": false,
+    "heat": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.dusk.none.clear-warm.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.dusk.none.clear-warm"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "dusk",
+    "moonPhase": null,
+    "weather": "clear-warm",
+    "seed": 98
+  }
+}

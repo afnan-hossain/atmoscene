@@ -1,0 +1,36 @@
+{
+  "id": "night.moonrise.waxing-gibbous.light-pillars",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonrise · Waxing gibbous · Light pillars",
+  "mode": "night",
+  "phase": "moonrise",
+  "moonPhase": "waxing-gibbous",
+  "weather": "light-pillars",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "light-pillars",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "light-pillars",
+    "en": "Light pillars",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "light-pillars",
+    "celestialEvent": "light-pillars",
+    "ice": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonrise.waxing-gibbous.light-pillars.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonrise.waxing-gibbous.light-pillars"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonrise",
+    "moonPhase": "waxing-gibbous",
+    "weather": "light-pillars",
+    "seed": 3245
+  }
+}

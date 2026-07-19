@@ -1,0 +1,34 @@
+{
+  "id": "night.moonrise.full.windy-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonrise · Full moon · Night windy",
+  "mode": "night",
+  "phase": "moonrise",
+  "moonPhase": "full",
+  "weather": "windy-night",
+  "family": "core",
+  "category": "wind",
+  "effect": "standard",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "windy-night",
+    "bn": "রাতের প্রবাহিত বাতাস",
+    "en": "Night windy",
+    "category": "wind",
+    "condition": "",
+    "wind": 2
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonrise.full.windy-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonrise.full.windy-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonrise",
+    "moonPhase": "full",
+    "weather": "windy-night",
+    "seed": 334
+  }
+}

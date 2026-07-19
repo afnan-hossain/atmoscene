@@ -1,0 +1,38 @@
+{
+  "id": "day.morning.none.tropical-thunderstorm",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Morning · Tropical thunderstorm",
+  "mode": "day",
+  "phase": "morning",
+  "moonPhase": null,
+  "weather": "tropical-thunderstorm",
+  "family": "tropical-marine",
+  "category": "tropical-marine",
+  "effect": "tropical-storm",
+  "windProfile": "turbulent",
+  "attributes": {
+    "key": "tropical-thunderstorm",
+    "en": "Tropical thunderstorm",
+    "family": "tropical-marine",
+    "category": "tropical-marine",
+    "effect": "tropical-storm",
+    "marine": 2,
+    "rain": 3,
+    "cloud": 3,
+    "wind": 3,
+    "storm": true
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.morning.none.tropical-thunderstorm.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/tropical-marine.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.morning.none.tropical-thunderstorm"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "morning",
+    "moonPhase": null,
+    "weather": "tropical-thunderstorm",
+    "seed": 2100
+  }
+}

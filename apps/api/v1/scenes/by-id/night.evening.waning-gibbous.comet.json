@@ -1,0 +1,35 @@
+{
+  "id": "night.evening.waning-gibbous.comet",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Evening · Waning gibbous · Comet",
+  "mode": "night",
+  "phase": "evening",
+  "moonPhase": "waning-gibbous",
+  "weather": "comet",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "comet",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "comet",
+    "en": "Comet",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "comet",
+    "celestialEvent": "comet",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.evening.waning-gibbous.comet.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.evening.waning-gibbous.comet"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "evening",
+    "moonPhase": "waning-gibbous",
+    "weather": "comet",
+    "seed": 3188
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "night.evening.waxing-crescent.comet",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Evening · Waxing crescent · Comet",
+  "mode": "night",
+  "phase": "evening",
+  "moonPhase": "waxing-crescent",
+  "weather": "comet",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "comet",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "comet",
+    "en": "Comet",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "comet",
+    "celestialEvent": "comet",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.evening.waxing-crescent.comet.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.evening.waxing-crescent.comet"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "evening",
+    "moonPhase": "waxing-crescent",
+    "weather": "comet",
+    "seed": 3164
+  }
+}

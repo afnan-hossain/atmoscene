@@ -1,0 +1,36 @@
+{
+  "id": "night.late-night.full.high-surf-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Late night · Full moon · Night high surf",
+  "mode": "night",
+  "phase": "late-night",
+  "moonPhase": "full",
+  "weather": "high-surf-night",
+  "family": "tropical-marine",
+  "category": "tropical-marine",
+  "effect": "high-surf",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "high-surf-night",
+    "en": "Night high surf",
+    "family": "tropical-marine",
+    "category": "tropical-marine",
+    "effect": "high-surf",
+    "marine": 3,
+    "cloud": 1,
+    "wind": 3
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.late-night.full.high-surf-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/tropical-marine.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.late-night.full.high-surf-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "late-night",
+    "moonPhase": "full",
+    "weather": "high-surf-night",
+    "seed": 2448
+  }
+}

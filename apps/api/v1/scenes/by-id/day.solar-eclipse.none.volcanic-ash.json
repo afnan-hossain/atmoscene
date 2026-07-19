@@ -1,0 +1,37 @@
+{
+  "id": "day.solar-eclipse.none.volcanic-ash",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Solar eclipse · Volcanic ash",
+  "mode": "day",
+  "phase": "solar-eclipse",
+  "moonPhase": null,
+  "weather": "volcanic-ash",
+  "family": "aerosols",
+  "category": "aerosols",
+  "effect": "volcanic-ash",
+  "windProfile": "aerosol-flow",
+  "attributes": {
+    "key": "volcanic-ash",
+    "en": "Volcanic ash",
+    "family": "aerosols",
+    "category": "aerosols",
+    "effect": "volcanic-ash",
+    "aerosol": 4,
+    "visibility": "smoke",
+    "cloud": 2,
+    "wind": 2
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.solar-eclipse.none.volcanic-ash.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aerosols.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.solar-eclipse.none.volcanic-ash"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "solar-eclipse",
+    "moonPhase": null,
+    "weather": "volcanic-ash",
+    "seed": 2719
+  }
+}

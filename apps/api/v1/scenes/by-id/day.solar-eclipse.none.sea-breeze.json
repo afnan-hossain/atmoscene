@@ -1,0 +1,35 @@
+{
+  "id": "day.solar-eclipse.none.sea-breeze",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Solar eclipse · Sea breeze",
+  "mode": "day",
+  "phase": "solar-eclipse",
+  "moonPhase": null,
+  "weather": "sea-breeze",
+  "family": "tropical-marine",
+  "category": "tropical-marine",
+  "effect": "sea-breeze",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "sea-breeze",
+    "en": "Sea breeze",
+    "family": "tropical-marine",
+    "category": "tropical-marine",
+    "effect": "sea-breeze",
+    "marine": 1,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.solar-eclipse.none.sea-breeze.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/tropical-marine.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.solar-eclipse.none.sea-breeze"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "solar-eclipse",
+    "moonPhase": null,
+    "weather": "sea-breeze",
+    "seed": 2137
+  }
+}

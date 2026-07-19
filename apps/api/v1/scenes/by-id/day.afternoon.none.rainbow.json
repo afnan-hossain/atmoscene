@@ -1,0 +1,37 @@
+{
+  "id": "day.afternoon.none.rainbow",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Afternoon · Rainbow",
+  "mode": "day",
+  "phase": "afternoon",
+  "moonPhase": null,
+  "weather": "rainbow",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "rainbow",
+  "windProfile": "precipitation",
+  "attributes": {
+    "key": "rainbow",
+    "en": "Rainbow",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "rainbow",
+    "celestialEvent": "rainbow",
+    "cloud": 1,
+    "rain": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.afternoon.none.rainbow.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.afternoon.none.rainbow"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "afternoon",
+    "moonPhase": null,
+    "weather": "rainbow",
+    "seed": 3140
+  }
+}

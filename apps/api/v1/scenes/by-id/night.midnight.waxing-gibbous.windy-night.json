@@ -1,0 +1,34 @@
+{
+  "id": "night.midnight.waxing-gibbous.windy-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Midnight · Waxing gibbous · Night windy",
+  "mode": "night",
+  "phase": "midnight",
+  "moonPhase": "waxing-gibbous",
+  "weather": "windy-night",
+  "family": "core",
+  "category": "wind",
+  "effect": "standard",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "windy-night",
+    "bn": "রাতের প্রবাহিত বাতাস",
+    "en": "Night windy",
+    "category": "wind",
+    "condition": "",
+    "wind": 2
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.midnight.waxing-gibbous.windy-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.midnight.waxing-gibbous.windy-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "midnight",
+    "moonPhase": "waxing-gibbous",
+    "weather": "windy-night",
+    "seed": 464
+  }
+}

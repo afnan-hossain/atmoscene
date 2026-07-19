@@ -1,0 +1,33 @@
+# Atmoscene
+
+> Atmoscene is an open-source animated weather icon and living sky scene library created by Afnan Hossain.
+
+Atmoscene combines animated weather SVG artwork with local daylight phase, night period, moon phase, wind, visibility, precipitation and celestial state. The homepage includes a live Open-Meteo demo, but the asset catalogue is the primary product.
+
+## Current verified scope
+
+- 3,552 animated SVG scene combinations are available through one shared browser renderer.
+- 384 daylight combinations across eight daylight and eclipse phases.
+- 3,168 night combinations across six night periods and 11 lunar states.
+- Available collections: daylight and sun; night and moon; clouds; rain; storms and lightning; wind; fog and haze; snow and ice; aurora and polar sky; tropical and marine; dust, smoke and ash; rare celestial events.
+- The catalogue renders at most 24 animated previews per page and updates filters without reloading the page.
+- Every scene exposes semantic family, weather, phase, moon, wind, visibility, precipitation and special-effect attributes.
+
+## Important routes
+
+- Homepage and local-weather demo: https://afnan-hossain.github.io/atmoscene/
+- Asset library: https://afnan-hossain.github.io/atmoscene/library/
+- Documentation: https://afnan-hossain.github.io/atmoscene/docs/
+- API v1 documentation: https://afnan-hossain.github.io/atmoscene/docs/api/
+- Public API manifest: https://afnan-hossain.github.io/atmoscene/api/v1/manifest.json
+- Working API consumer: https://afnan-hossain.github.io/atmoscene/api/demo/
+- Source repository: https://github.com/afnan-hossain/atmoscene
+- Support: https://buymeacoffee.com/afnan.hossain
+
+## Global weather families
+
+Atmoscene includes core weather, snow and ice, aurora and polar sky, tropical and marine weather, dust and sand, smoke and volcanic ash, atmospheric optics, moon phenomena and rare celestial events. Each family has a dedicated crawlable collection page and family-filtered catalogue route.
+
+## Attribution
+
+Condition artwork includes attributed Meteocons material by Bas Milius under the MIT License, composed with original Atmoscene scene layers. Atmoscene is independent and is not affiliated with or endorsed by Meteocons or Bas Milius.

@@ -1,0 +1,35 @@
+{
+  "id": "night.evening.lunar-eclipse.supermoon",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Evening · Lunar eclipse · Supermoon",
+  "mode": "night",
+  "phase": "evening",
+  "moonPhase": "lunar-eclipse",
+  "weather": "supermoon",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "supermoon",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "supermoon",
+    "en": "Supermoon",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "supermoon",
+    "celestialEvent": "supermoon",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.evening.lunar-eclipse.supermoon.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.evening.lunar-eclipse.supermoon"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "evening",
+    "moonPhase": "lunar-eclipse",
+    "weather": "supermoon",
+    "seed": 3222
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "night.moonrise.blood-moon.breeze-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonrise · Blood moon · Night breeze",
+  "mode": "night",
+  "phase": "moonrise",
+  "moonPhase": "blood-moon",
+  "weather": "breeze-night",
+  "family": "core",
+  "category": "wind",
+  "effect": "standard",
+  "windProfile": "breeze",
+  "attributes": {
+    "key": "breeze-night",
+    "bn": "রাতের মৃদু বাতাস",
+    "en": "Night breeze",
+    "category": "wind",
+    "condition": "",
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonrise.blood-moon.breeze-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonrise.blood-moon.breeze-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonrise",
+    "moonPhase": "blood-moon",
+    "weather": "breeze-night",
+    "seed": 398
+  }
+}

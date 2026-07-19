@@ -1,0 +1,35 @@
+{
+  "id": "night.midnight.blood-moon.lunar-halo",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Midnight · Blood moon · Lunar halo",
+  "mode": "night",
+  "phase": "midnight",
+  "moonPhase": "blood-moon",
+  "weather": "lunar-halo",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "lunar-halo",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "lunar-halo",
+    "en": "Lunar halo",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "lunar-halo",
+    "celestialEvent": "lunar-halo",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.midnight.blood-moon.lunar-halo.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.midnight.blood-moon.lunar-halo"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "midnight",
+    "moonPhase": "blood-moon",
+    "weather": "lunar-halo",
+    "seed": 3346
+  }
+}

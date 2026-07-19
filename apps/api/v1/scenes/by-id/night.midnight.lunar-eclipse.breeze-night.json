@@ -1,0 +1,34 @@
+{
+  "id": "night.midnight.lunar-eclipse.breeze-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Midnight · Lunar eclipse · Night breeze",
+  "mode": "night",
+  "phase": "midnight",
+  "moonPhase": "lunar-eclipse",
+  "weather": "breeze-night",
+  "family": "core",
+  "category": "wind",
+  "effect": "standard",
+  "windProfile": "breeze",
+  "attributes": {
+    "key": "breeze-night",
+    "bn": "রাতের মৃদু বাতাস",
+    "en": "Night breeze",
+    "category": "wind",
+    "condition": "",
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.midnight.lunar-eclipse.breeze-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.midnight.lunar-eclipse.breeze-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "midnight",
+    "moonPhase": "lunar-eclipse",
+    "weather": "breeze-night",
+    "seed": 554
+  }
+}

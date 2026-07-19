@@ -1,0 +1,35 @@
+{
+  "id": "day.dawn.none.solar-halo",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Dawn · Solar halo",
+  "mode": "day",
+  "phase": "dawn",
+  "moonPhase": null,
+  "weather": "solar-halo",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "solar-halo",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "solar-halo",
+    "en": "Solar halo",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "solar-halo",
+    "celestialEvent": "solar-halo",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.dawn.none.solar-halo.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.dawn.none.solar-halo"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "dawn",
+    "moonPhase": null,
+    "weather": "solar-halo",
+    "seed": 3117
+  }
+}

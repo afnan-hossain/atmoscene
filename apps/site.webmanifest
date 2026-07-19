@@ -1,0 +1,11 @@
+{
+  "name": "Atmoscene — Animated Weather Icons & Living Sky Scenes",
+  "short_name": "Atmoscene",
+  "description": "Open-source animated weather SVG icons, data-driven living sky scenes and developer integrations.",
+  "start_url": "/atmoscene/",
+  "scope": "/atmoscene/",
+  "display": "standalone",
+  "background_color": "#07111d",
+  "theme_color": "#07111d",
+  "categories": ["developer", "weather", "design"]
+}

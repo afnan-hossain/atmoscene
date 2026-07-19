@@ -1,0 +1,34 @@
+{
+  "id": "day.afternoon.none.polar-twilight",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Afternoon · Polar twilight",
+  "mode": "day",
+  "phase": "afternoon",
+  "moonPhase": null,
+  "weather": "polar-twilight",
+  "family": "aurora-polar",
+  "category": "aurora-polar",
+  "effect": "polar-twilight",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "polar-twilight",
+    "en": "Polar twilight",
+    "family": "aurora-polar",
+    "category": "aurora-polar",
+    "effect": "polar-twilight",
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.afternoon.none.polar-twilight.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aurora-polar.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.afternoon.none.polar-twilight"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "afternoon",
+    "moonPhase": null,
+    "weather": "polar-twilight",
+    "seed": 1603
+  }
+}

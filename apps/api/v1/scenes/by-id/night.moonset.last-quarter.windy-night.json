@@ -1,0 +1,34 @@
+{
+  "id": "night.moonset.last-quarter.windy-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonset · Last quarter · Night windy",
+  "mode": "night",
+  "phase": "moonset",
+  "moonPhase": "last-quarter",
+  "weather": "windy-night",
+  "family": "core",
+  "category": "wind",
+  "effect": "standard",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "windy-night",
+    "bn": "রাতের প্রবাহিত বাতাস",
+    "en": "Night windy",
+    "category": "wind",
+    "condition": "",
+    "wind": 2
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonset.last-quarter.windy-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonset.last-quarter.windy-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonset",
+    "moonPhase": "last-quarter",
+    "weather": "windy-night",
+    "seed": 789
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "night.moonset.new.blowing-snow-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonset · New moon · Night blowing snow",
+  "mode": "night",
+  "phase": "moonset",
+  "moonPhase": "new",
+  "weather": "blowing-snow-night",
+  "family": "snow-ice",
+  "category": "snow",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "blowing-snow-night",
+    "bn": "",
+    "en": "Night blowing snow",
+    "category": "snow",
+    "condition": "overcast",
+    "cloud": 2,
+    "snow": 3,
+    "wind": 3,
+    "drift": true
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonset.new.blowing-snow-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonset.new.blowing-snow-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonset",
+    "moonPhase": "new",
+    "weather": "blowing-snow-night",
+    "seed": 1407
+  }
+}

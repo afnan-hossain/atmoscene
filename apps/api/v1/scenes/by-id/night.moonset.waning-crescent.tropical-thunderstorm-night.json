@@ -1,0 +1,38 @@
+{
+  "id": "night.moonset.waning-crescent.tropical-thunderstorm-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonset · Waning crescent · Night tropical thunderstorm",
+  "mode": "night",
+  "phase": "moonset",
+  "moonPhase": "waning-crescent",
+  "weather": "tropical-thunderstorm-night",
+  "family": "tropical-marine",
+  "category": "tropical-marine",
+  "effect": "tropical-storm",
+  "windProfile": "turbulent",
+  "attributes": {
+    "key": "tropical-thunderstorm-night",
+    "en": "Night tropical thunderstorm",
+    "family": "tropical-marine",
+    "category": "tropical-marine",
+    "effect": "tropical-storm",
+    "marine": 2,
+    "rain": 3,
+    "cloud": 3,
+    "wind": 3,
+    "storm": true
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonset.waning-crescent.tropical-thunderstorm-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/tropical-marine.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonset.waning-crescent.tropical-thunderstorm-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonset",
+    "moonPhase": "waning-crescent",
+    "weather": "tropical-thunderstorm-night",
+    "seed": 2556
+  }
+}

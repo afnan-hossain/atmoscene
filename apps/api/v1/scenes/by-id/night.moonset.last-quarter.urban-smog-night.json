@@ -1,0 +1,37 @@
+{
+  "id": "night.moonset.last-quarter.urban-smog-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonset · Last quarter · Night urban smog",
+  "mode": "night",
+  "phase": "moonset",
+  "moonPhase": "last-quarter",
+  "weather": "urban-smog-night",
+  "family": "aerosols",
+  "category": "aerosols",
+  "effect": "smog",
+  "windProfile": "aerosol-flow",
+  "attributes": {
+    "key": "urban-smog-night",
+    "en": "Night urban smog",
+    "family": "aerosols",
+    "category": "aerosols",
+    "effect": "smog",
+    "aerosol": 2,
+    "visibility": "haze",
+    "cloud": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonset.last-quarter.urban-smog-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aerosols.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonset.last-quarter.urban-smog-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonset",
+    "moonPhase": "last-quarter",
+    "weather": "urban-smog-night",
+    "seed": 3026
+  }
+}

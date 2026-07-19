@@ -1,0 +1,34 @@
+{
+  "id": "day.solar-eclipse.none.polar-day-clear",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Solar eclipse · Polar day",
+  "mode": "day",
+  "phase": "solar-eclipse",
+  "moonPhase": null,
+  "weather": "polar-day-clear",
+  "family": "aurora-polar",
+  "category": "aurora-polar",
+  "effect": "polar-day",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "polar-day-clear",
+    "en": "Polar day",
+    "family": "aurora-polar",
+    "category": "aurora-polar",
+    "effect": "polar-day",
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.solar-eclipse.none.polar-day-clear.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aurora-polar.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.solar-eclipse.none.polar-day-clear"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "solar-eclipse",
+    "moonPhase": null,
+    "weather": "polar-day-clear",
+    "seed": 1614
+  }
+}

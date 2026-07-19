@@ -1,0 +1,35 @@
+{
+  "id": "night.moonrise.waxing-crescent.haze-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonrise · Waxing crescent · Night haze",
+  "mode": "night",
+  "phase": "moonrise",
+  "moonPhase": "waxing-crescent",
+  "weather": "haze-night",
+  "family": "core",
+  "category": "visibility",
+  "effect": "standard",
+  "windProfile": "laminar",
+  "attributes": {
+    "key": "haze-night",
+    "bn": "রাতের ধোঁয়াশা",
+    "en": "Night haze",
+    "category": "visibility",
+    "condition": "haze",
+    "visibility": "haze",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonrise.waxing-crescent.haze-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonrise.waxing-crescent.haze-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonrise",
+    "moonPhase": "waxing-crescent",
+    "weather": "haze-night",
+    "seed": 293
+  }
+}

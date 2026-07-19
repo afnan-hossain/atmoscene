@@ -1,0 +1,35 @@
+{
+  "id": "day.dusk.none.nacreous-clouds",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Dusk · Nacreous clouds",
+  "mode": "day",
+  "phase": "dusk",
+  "moonPhase": null,
+  "weather": "nacreous-clouds",
+  "family": "aurora-polar",
+  "category": "aurora-polar",
+  "effect": "nacreous",
+  "windProfile": "cloud-flow",
+  "attributes": {
+    "key": "nacreous-clouds",
+    "en": "Nacreous clouds",
+    "family": "aurora-polar",
+    "category": "aurora-polar",
+    "effect": "nacreous",
+    "cloud": 1,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.dusk.none.nacreous-clouds.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aurora-polar.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.dusk.none.nacreous-clouds"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "dusk",
+    "moonPhase": null,
+    "weather": "nacreous-clouds",
+    "seed": 1611
+  }
+}

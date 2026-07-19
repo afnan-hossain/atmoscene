@@ -1,0 +1,36 @@
+{
+  "id": "night.moonset.last-quarter.diamond-dust-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonset · Last quarter · Night diamond dust",
+  "mode": "night",
+  "phase": "moonset",
+  "moonPhase": "last-quarter",
+  "weather": "diamond-dust-night",
+  "family": "snow-ice",
+  "category": "ice",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "diamond-dust-night",
+    "bn": "",
+    "en": "Night diamond dust",
+    "category": "ice",
+    "condition": "",
+    "cloud": 0,
+    "ice": 2,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonset.last-quarter.diamond-dust-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonset.last-quarter.diamond-dust-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonset",
+    "moonPhase": "last-quarter",
+    "weather": "diamond-dust-night",
+    "seed": 1458
+  }
+}

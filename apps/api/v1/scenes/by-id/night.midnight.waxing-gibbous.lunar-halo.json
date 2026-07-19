@@ -1,0 +1,35 @@
+{
+  "id": "night.midnight.waxing-gibbous.lunar-halo",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Midnight · Waxing gibbous · Lunar halo",
+  "mode": "night",
+  "phase": "midnight",
+  "moonPhase": "waxing-gibbous",
+  "weather": "lunar-halo",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "lunar-halo",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "lunar-halo",
+    "en": "Lunar halo",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "lunar-halo",
+    "celestialEvent": "lunar-halo",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.midnight.waxing-gibbous.lunar-halo.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.midnight.waxing-gibbous.lunar-halo"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "midnight",
+    "moonPhase": "waxing-gibbous",
+    "weather": "lunar-halo",
+    "seed": 3310
+  }
+}

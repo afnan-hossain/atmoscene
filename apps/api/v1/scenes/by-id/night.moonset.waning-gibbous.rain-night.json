@@ -1,0 +1,36 @@
+{
+  "id": "night.moonset.waning-gibbous.rain-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonset · Waning gibbous · Night rain",
+  "mode": "night",
+  "phase": "moonset",
+  "moonPhase": "waning-gibbous",
+  "weather": "rain-night",
+  "family": "core",
+  "category": "rain",
+  "effect": "standard",
+  "windProfile": "precipitation",
+  "attributes": {
+    "key": "rain-night",
+    "bn": "রাতের বৃষ্টি",
+    "en": "Night rain",
+    "category": "rain",
+    "condition": "rain",
+    "rain": 2,
+    "cloud": 1,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonset.waning-gibbous.rain-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonset.waning-gibbous.rain-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonset",
+    "moonPhase": "waning-gibbous",
+    "weather": "rain-night",
+    "seed": 770
+  }
+}

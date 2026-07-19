@@ -1,0 +1,38 @@
+{
+  "id": "night.evening.waxing-crescent.tropical-cyclone-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Evening · Waxing crescent · Night tropical cyclone",
+  "mode": "night",
+  "phase": "evening",
+  "moonPhase": "waxing-crescent",
+  "weather": "tropical-cyclone-night",
+  "family": "tropical-marine",
+  "category": "tropical-marine",
+  "effect": "cyclone",
+  "windProfile": "turbulent",
+  "attributes": {
+    "key": "tropical-cyclone-night",
+    "en": "Night tropical cyclone",
+    "family": "tropical-marine",
+    "category": "tropical-marine",
+    "effect": "cyclone",
+    "marine": 3,
+    "rain": 3,
+    "cloud": 3,
+    "wind": 4,
+    "storm": true
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.evening.waxing-crescent.tropical-cyclone-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/tropical-marine.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.evening.waxing-crescent.tropical-cyclone-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "evening",
+    "moonPhase": "waxing-crescent",
+    "weather": "tropical-cyclone-night",
+    "seed": 2157
+  }
+}

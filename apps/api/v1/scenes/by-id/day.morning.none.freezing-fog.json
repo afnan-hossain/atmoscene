@@ -1,0 +1,37 @@
+{
+  "id": "day.morning.none.freezing-fog",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Morning · Freezing fog",
+  "mode": "day",
+  "phase": "morning",
+  "moonPhase": null,
+  "weather": "freezing-fog",
+  "family": "snow-ice",
+  "category": "ice",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "freezing-fog",
+    "bn": "",
+    "en": "Freezing fog",
+    "category": "ice",
+    "condition": "fog",
+    "visibility": "fog",
+    "cloud": 1,
+    "ice": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.morning.none.freezing-fog.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.morning.none.freezing-fog"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "morning",
+    "moonPhase": null,
+    "weather": "freezing-fog",
+    "seed": 1009
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "night.moonset.full.storm-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonset · Full moon · Night thunderstorm",
+  "mode": "night",
+  "phase": "moonset",
+  "moonPhase": "full",
+  "weather": "storm-night",
+  "family": "core",
+  "category": "storm",
+  "effect": "standard",
+  "windProfile": "turbulent",
+  "attributes": {
+    "key": "storm-night",
+    "bn": "রাতের বজ্রঝড়",
+    "en": "Night thunderstorm",
+    "category": "storm",
+    "condition": "thunderstorms-extreme-rain",
+    "rain": 3,
+    "cloud": 3,
+    "wind": 4,
+    "storm": true
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonset.full.storm-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonset.full.storm-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonset",
+    "moonPhase": "full",
+    "weather": "storm-night",
+    "seed": 759
+  }
+}

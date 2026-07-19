@@ -1,0 +1,36 @@
+{
+  "id": "day.noon.none.smoke",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Noon · Smoke",
+  "mode": "day",
+  "phase": "noon",
+  "moonPhase": null,
+  "weather": "smoke",
+  "family": "aerosols",
+  "category": "aerosols",
+  "effect": "smoke",
+  "windProfile": "aerosol-flow",
+  "attributes": {
+    "key": "smoke",
+    "en": "Smoke",
+    "family": "aerosols",
+    "category": "aerosols",
+    "effect": "smoke",
+    "aerosol": 1,
+    "visibility": "smoke",
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.noon.none.smoke.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aerosols.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.noon.none.smoke"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "noon",
+    "moonPhase": null,
+    "weather": "smoke",
+    "seed": 2693
+  }
+}

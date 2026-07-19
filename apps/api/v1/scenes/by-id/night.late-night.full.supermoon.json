@@ -1,0 +1,35 @@
+{
+  "id": "night.late-night.full.supermoon",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Late night · Full moon · Supermoon",
+  "mode": "night",
+  "phase": "late-night",
+  "moonPhase": "full",
+  "weather": "supermoon",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "supermoon",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "supermoon",
+    "en": "Supermoon",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "supermoon",
+    "celestialEvent": "supermoon",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.late-night.full.supermoon.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.late-night.full.supermoon"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "late-night",
+    "moonPhase": "full",
+    "weather": "supermoon",
+    "seed": 3384
+  }
+}

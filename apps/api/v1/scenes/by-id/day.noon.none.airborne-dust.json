@@ -1,0 +1,36 @@
+{
+  "id": "day.noon.none.airborne-dust",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Noon · Airborne dust",
+  "mode": "day",
+  "phase": "noon",
+  "moonPhase": null,
+  "weather": "airborne-dust",
+  "family": "aerosols",
+  "category": "aerosols",
+  "effect": "dust",
+  "windProfile": "aerosol-flow",
+  "attributes": {
+    "key": "airborne-dust",
+    "en": "Airborne dust",
+    "family": "aerosols",
+    "category": "aerosols",
+    "effect": "dust",
+    "aerosol": 1,
+    "visibility": "dust",
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.noon.none.airborne-dust.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aerosols.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.noon.none.airborne-dust"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "noon",
+    "moonPhase": null,
+    "weather": "airborne-dust",
+    "seed": 2691
+  }
+}

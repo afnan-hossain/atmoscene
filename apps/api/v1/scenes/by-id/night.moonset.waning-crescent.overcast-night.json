@@ -1,0 +1,35 @@
+{
+  "id": "night.moonset.waning-crescent.overcast-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonset · Waning crescent · Overcast night",
+  "mode": "night",
+  "phase": "moonset",
+  "moonPhase": "waning-crescent",
+  "weather": "overcast-night",
+  "family": "core",
+  "category": "cloud",
+  "effect": "standard",
+  "windProfile": "cloud-flow",
+  "attributes": {
+    "key": "overcast-night",
+    "bn": "মেঘাচ্ছন্ন রাত",
+    "en": "Overcast night",
+    "category": "cloud",
+    "condition": "overcast",
+    "cloud": 2,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonset.waning-crescent.overcast-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonset.waning-crescent.overcast-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonset",
+    "moonPhase": "waning-crescent",
+    "weather": "overcast-night",
+    "seed": 794
+  }
+}

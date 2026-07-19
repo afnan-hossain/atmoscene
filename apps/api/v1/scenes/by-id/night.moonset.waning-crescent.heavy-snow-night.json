@@ -1,0 +1,37 @@
+{
+  "id": "night.moonset.waning-crescent.heavy-snow-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonset · Waning crescent · Night heavy snow",
+  "mode": "night",
+  "phase": "moonset",
+  "moonPhase": "waning-crescent",
+  "weather": "heavy-snow-night",
+  "family": "snow-ice",
+  "category": "snow",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "heavy-snow-night",
+    "bn": "",
+    "en": "Night heavy snow",
+    "category": "snow",
+    "condition": "overcast",
+    "cloud": 3,
+    "snow": 3,
+    "wind": 2,
+    "drift": true
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonset.waning-crescent.heavy-snow-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonset.waning-crescent.heavy-snow-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonset",
+    "moonPhase": "waning-crescent",
+    "weather": "heavy-snow-night",
+    "seed": 1462
+  }
+}

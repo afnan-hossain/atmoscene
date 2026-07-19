@@ -1,0 +1,36 @@
+{
+  "id": "night.late-night.pink-moon.light-snow-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Late night · Pink moon · Night light snow",
+  "mode": "night",
+  "phase": "late-night",
+  "moonPhase": "pink-moon",
+  "weather": "light-snow-night",
+  "family": "snow-ice",
+  "category": "snow",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "light-snow-night",
+    "bn": "",
+    "en": "Night light snow",
+    "category": "snow",
+    "condition": "overcast",
+    "cloud": 2,
+    "snow": 1,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.late-night.pink-moon.light-snow-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.late-night.pink-moon.light-snow-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "late-night",
+    "moonPhase": "pink-moon",
+    "weather": "light-snow-night",
+    "seed": 1380
+  }
+}

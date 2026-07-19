@@ -1,0 +1,35 @@
+{
+  "id": "day.afternoon.none.sun-dogs",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Afternoon · Sun dogs",
+  "mode": "day",
+  "phase": "afternoon",
+  "moonPhase": null,
+  "weather": "sun-dogs",
+  "family": "rare-celestial",
+  "category": "rare-celestial",
+  "effect": "sun-dogs",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "sun-dogs",
+    "en": "Sun dogs",
+    "family": "rare-celestial",
+    "category": "rare-celestial",
+    "effect": "sun-dogs",
+    "celestialEvent": "sun-dogs",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.afternoon.none.sun-dogs.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/rare-celestial.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.afternoon.none.sun-dogs"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "afternoon",
+    "moonPhase": null,
+    "weather": "sun-dogs",
+    "seed": 3138
+  }
+}

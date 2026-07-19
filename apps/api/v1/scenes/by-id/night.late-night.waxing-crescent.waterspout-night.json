@@ -1,0 +1,37 @@
+{
+  "id": "night.late-night.waxing-crescent.waterspout-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Late night · Waxing crescent · Night waterspout",
+  "mode": "night",
+  "phase": "late-night",
+  "moonPhase": "waxing-crescent",
+  "weather": "waterspout-night",
+  "family": "tropical-marine",
+  "category": "tropical-marine",
+  "effect": "waterspout",
+  "windProfile": "precipitation",
+  "attributes": {
+    "key": "waterspout-night",
+    "en": "Night waterspout",
+    "family": "tropical-marine",
+    "category": "tropical-marine",
+    "effect": "waterspout",
+    "marine": 3,
+    "rain": 1,
+    "cloud": 2,
+    "wind": 3
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.late-night.waxing-crescent.waterspout-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/tropical-marine.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.late-night.waxing-crescent.waterspout-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "late-night",
+    "moonPhase": "waxing-crescent",
+    "weather": "waterspout-night",
+    "seed": 2422
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "day.morning.none.polar-day-clouds",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Morning · Cloudy polar day",
+  "mode": "day",
+  "phase": "morning",
+  "moonPhase": null,
+  "weather": "polar-day-clouds",
+  "family": "aurora-polar",
+  "category": "aurora-polar",
+  "effect": "polar-clouds",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "polar-day-clouds",
+    "en": "Cloudy polar day",
+    "family": "aurora-polar",
+    "category": "aurora-polar",
+    "effect": "polar-clouds",
+    "cloud": 1,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.morning.none.polar-day-clouds.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aurora-polar.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.morning.none.polar-day-clouds"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "morning",
+    "moonPhase": null,
+    "weather": "polar-day-clouds",
+    "seed": 1590
+  }
+}

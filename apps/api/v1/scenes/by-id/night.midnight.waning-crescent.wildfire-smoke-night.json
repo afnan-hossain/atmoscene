@@ -1,0 +1,38 @@
+{
+  "id": "night.midnight.waning-crescent.wildfire-smoke-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Midnight · Waning crescent · Night wildfire smoke",
+  "mode": "night",
+  "phase": "midnight",
+  "moonPhase": "waning-crescent",
+  "weather": "wildfire-smoke-night",
+  "family": "aerosols",
+  "category": "aerosols",
+  "effect": "wildfire-smoke",
+  "windProfile": "aerosol-flow",
+  "attributes": {
+    "key": "wildfire-smoke-night",
+    "en": "Night wildfire smoke",
+    "family": "aerosols",
+    "category": "aerosols",
+    "effect": "wildfire-smoke",
+    "aerosol": 3,
+    "visibility": "smoke",
+    "cloud": 1,
+    "heat": 1,
+    "wind": 2
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.midnight.waning-crescent.wildfire-smoke-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aerosols.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.midnight.waning-crescent.wildfire-smoke-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "midnight",
+    "moonPhase": "waning-crescent",
+    "weather": "wildfire-smoke-night",
+    "seed": 2898
+  }
+}

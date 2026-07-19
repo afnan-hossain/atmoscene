@@ -1,0 +1,35 @@
+{
+  "id": "night.late-night.full.aurora-moderate",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Late night · Full moon · Moderate aurora",
+  "mode": "night",
+  "phase": "late-night",
+  "moonPhase": "full",
+  "weather": "aurora-moderate",
+  "family": "aurora-polar",
+  "category": "aurora-polar",
+  "effect": "aurora-moderate",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "aurora-moderate",
+    "en": "Moderate aurora",
+    "family": "aurora-polar",
+    "category": "aurora-polar",
+    "effect": "aurora-moderate",
+    "aurora": 2,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.late-night.full.aurora-moderate.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aurora-polar.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.late-night.full.aurora-moderate"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "late-night",
+    "moonPhase": "full",
+    "weather": "aurora-moderate",
+    "seed": 1880
+  }
+}

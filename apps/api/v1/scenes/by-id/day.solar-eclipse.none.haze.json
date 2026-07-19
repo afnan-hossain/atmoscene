@@ -1,0 +1,37 @@
+{
+  "id": "day.solar-eclipse.none.haze",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Solar eclipse · Haze",
+  "mode": "day",
+  "phase": "solar-eclipse",
+  "moonPhase": null,
+  "weather": "haze",
+  "family": "core",
+  "category": "visibility",
+  "effect": "standard",
+  "windProfile": "laminar",
+  "attributes": {
+    "key": "haze",
+    "bn": "ধোঁয়াশা",
+    "en": "Haze",
+    "category": "visibility",
+    "condition": "haze",
+    "ownsCelestial": false,
+    "visibility": "haze",
+    "heat": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.solar-eclipse.none.haze.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.solar-eclipse.none.haze"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "solar-eclipse",
+    "moonPhase": null,
+    "weather": "haze",
+    "seed": 124
+  }
+}

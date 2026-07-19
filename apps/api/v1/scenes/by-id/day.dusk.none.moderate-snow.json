@@ -1,0 +1,36 @@
+{
+  "id": "day.dusk.none.moderate-snow",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Dusk · Moderate snow",
+  "mode": "day",
+  "phase": "dusk",
+  "moonPhase": null,
+  "weather": "moderate-snow",
+  "family": "snow-ice",
+  "category": "snow",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "moderate-snow",
+    "bn": "",
+    "en": "Moderate snow",
+    "category": "snow",
+    "condition": "overcast",
+    "cloud": 2,
+    "snow": 2,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.dusk.none.moderate-snow.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.dusk.none.moderate-snow"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "dusk",
+    "moonPhase": null,
+    "weather": "moderate-snow",
+    "seed": 1037
+  }
+}

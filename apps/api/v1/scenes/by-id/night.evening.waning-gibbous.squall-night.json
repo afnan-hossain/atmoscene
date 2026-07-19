@@ -1,0 +1,35 @@
+{
+  "id": "night.evening.waning-gibbous.squall-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Evening · Waning gibbous · Night squall",
+  "mode": "night",
+  "phase": "evening",
+  "moonPhase": "waning-gibbous",
+  "weather": "squall-night",
+  "family": "core",
+  "category": "wind",
+  "effect": "standard",
+  "windProfile": "turbulent",
+  "attributes": {
+    "key": "squall-night",
+    "bn": "রাতের প্রবল ঝোড়ো বাতাস",
+    "en": "Night squall",
+    "category": "wind",
+    "condition": "",
+    "wind": 4,
+    "cloud": 2
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.evening.waning-gibbous.squall-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/core.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.evening.waning-gibbous.squall-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "evening",
+    "moonPhase": "waning-gibbous",
+    "weather": "squall-night",
+    "seed": 206
+  }
+}

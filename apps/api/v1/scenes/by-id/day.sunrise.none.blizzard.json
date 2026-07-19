@@ -1,0 +1,38 @@
+{
+  "id": "day.sunrise.none.blizzard",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Sunrise · Blizzard",
+  "mode": "day",
+  "phase": "sunrise",
+  "moonPhase": null,
+  "weather": "blizzard",
+  "family": "snow-ice",
+  "category": "snow",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "blizzard",
+    "bn": "",
+    "en": "Blizzard",
+    "category": "snow",
+    "condition": "overcast",
+    "cloud": 3,
+    "snow": 4,
+    "wind": 4,
+    "drift": true,
+    "whiteout": true
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.sunrise.none.blizzard.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.sunrise.none.blizzard"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "sunrise",
+    "moonPhase": null,
+    "weather": "blizzard",
+    "seed": 1000
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "night.moonrise.waxing-crescent.aurora-corona",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonrise · Waxing crescent · Aurora corona",
+  "mode": "night",
+  "phase": "moonrise",
+  "moonPhase": "waxing-crescent",
+  "weather": "aurora-corona",
+  "family": "aurora-polar",
+  "category": "aurora-polar",
+  "effect": "aurora-corona",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "aurora-corona",
+    "en": "Aurora corona",
+    "family": "aurora-polar",
+    "category": "aurora-polar",
+    "effect": "aurora-corona",
+    "aurora": 4,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonrise.waxing-crescent.aurora-corona.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aurora-polar.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonrise.waxing-crescent.aurora-corona"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonrise",
+    "moonPhase": "waxing-crescent",
+    "weather": "aurora-corona",
+    "seed": 1707
+  }
+}

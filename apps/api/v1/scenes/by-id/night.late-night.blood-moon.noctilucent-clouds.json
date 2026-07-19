@@ -1,0 +1,35 @@
+{
+  "id": "night.late-night.blood-moon.noctilucent-clouds",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Late night · Blood moon · Noctilucent clouds",
+  "mode": "night",
+  "phase": "late-night",
+  "moonPhase": "blood-moon",
+  "weather": "noctilucent-clouds",
+  "family": "aurora-polar",
+  "category": "aurora-polar",
+  "effect": "noctilucent",
+  "windProfile": "cloud-flow",
+  "attributes": {
+    "key": "noctilucent-clouds",
+    "en": "Noctilucent clouds",
+    "family": "aurora-polar",
+    "category": "aurora-polar",
+    "effect": "noctilucent",
+    "cloud": 1,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.late-night.blood-moon.noctilucent-clouds.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aurora-polar.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.late-night.blood-moon.noctilucent-clouds"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "late-night",
+    "moonPhase": "blood-moon",
+    "weather": "noctilucent-clouds",
+    "seed": 1919
+  }
+}

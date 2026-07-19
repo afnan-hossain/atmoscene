@@ -1,0 +1,36 @@
+{
+  "id": "night.evening.pink-moon.smoke-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Evening · Pink moon · Night smoke",
+  "mode": "night",
+  "phase": "evening",
+  "moonPhase": "pink-moon",
+  "weather": "smoke-night",
+  "family": "aerosols",
+  "category": "aerosols",
+  "effect": "smoke",
+  "windProfile": "aerosol-flow",
+  "attributes": {
+    "key": "smoke-night",
+    "en": "Night smoke",
+    "family": "aerosols",
+    "category": "aerosols",
+    "effect": "smoke",
+    "aerosol": 1,
+    "visibility": "smoke",
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.evening.pink-moon.smoke-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aerosols.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.evening.pink-moon.smoke-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "evening",
+    "moonPhase": "pink-moon",
+    "weather": "smoke-night",
+    "seed": 2771
+  }
+}

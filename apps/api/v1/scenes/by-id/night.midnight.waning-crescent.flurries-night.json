@@ -1,0 +1,36 @@
+{
+  "id": "night.midnight.waning-crescent.flurries-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Midnight · Waning crescent · Night flurries",
+  "mode": "night",
+  "phase": "midnight",
+  "moonPhase": "waning-crescent",
+  "weather": "flurries-night",
+  "family": "snow-ice",
+  "category": "snow",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "flurries-night",
+    "bn": "",
+    "en": "Night flurries",
+    "category": "snow",
+    "condition": "cloudy",
+    "cloud": 1,
+    "snow": 1,
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.midnight.waning-crescent.flurries-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.midnight.waning-crescent.flurries-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "midnight",
+    "moonPhase": "waning-crescent",
+    "weather": "flurries-night",
+    "seed": 1283
+  }
+}

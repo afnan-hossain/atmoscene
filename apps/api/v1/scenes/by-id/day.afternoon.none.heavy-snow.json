@@ -1,0 +1,37 @@
+{
+  "id": "day.afternoon.none.heavy-snow",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Afternoon · Heavy snow",
+  "mode": "day",
+  "phase": "afternoon",
+  "moonPhase": null,
+  "weather": "heavy-snow",
+  "family": "snow-ice",
+  "category": "snow",
+  "effect": "standard",
+  "windProfile": "drift",
+  "attributes": {
+    "key": "heavy-snow",
+    "bn": "",
+    "en": "Heavy snow",
+    "category": "snow",
+    "condition": "overcast",
+    "cloud": 3,
+    "snow": 3,
+    "wind": 2,
+    "drift": true
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.afternoon.none.heavy-snow.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/snow-ice.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.afternoon.none.heavy-snow"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "afternoon",
+    "moonPhase": null,
+    "weather": "heavy-snow",
+    "seed": 1022
+  }
+}

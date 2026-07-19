@@ -1,0 +1,34 @@
+{
+  "id": "night.moonset.waning-gibbous.polar-night-clear",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonset · Waning gibbous · Polar night",
+  "mode": "night",
+  "phase": "moonset",
+  "moonPhase": "waning-gibbous",
+  "weather": "polar-night-clear",
+  "family": "aurora-polar",
+  "category": "aurora-polar",
+  "effect": "polar-night",
+  "windProfile": "open-air",
+  "attributes": {
+    "key": "polar-night-clear",
+    "en": "Polar night",
+    "family": "aurora-polar",
+    "category": "aurora-polar",
+    "effect": "polar-night",
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonset.waning-gibbous.polar-night-clear.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aurora-polar.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonset.waning-gibbous.polar-night-clear"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonset",
+    "moonPhase": "waning-gibbous",
+    "weather": "polar-night-clear",
+    "seed": 1962
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "night.midnight.first-quarter.monsoon-rain-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Midnight · First quarter · Night monsoon rain",
+  "mode": "night",
+  "phase": "midnight",
+  "moonPhase": "first-quarter",
+  "weather": "monsoon-rain-night",
+  "family": "tropical-marine",
+  "category": "tropical-marine",
+  "effect": "monsoon",
+  "windProfile": "precipitation",
+  "attributes": {
+    "key": "monsoon-rain-night",
+    "en": "Night monsoon rain",
+    "family": "tropical-marine",
+    "category": "tropical-marine",
+    "effect": "monsoon",
+    "marine": 2,
+    "rain": 3,
+    "cloud": 3,
+    "wind": 2
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.midnight.first-quarter.monsoon-rain-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/tropical-marine.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.midnight.first-quarter.monsoon-rain-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "midnight",
+    "moonPhase": "first-quarter",
+    "weather": "monsoon-rain-night",
+    "seed": 2339
+  }
+}

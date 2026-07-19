@@ -1,0 +1,37 @@
+{
+  "id": "night.evening.waning-crescent.sandstorm-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Evening · Waning crescent · Night sandstorm",
+  "mode": "night",
+  "phase": "evening",
+  "moonPhase": "waning-crescent",
+  "weather": "sandstorm-night",
+  "family": "aerosols",
+  "category": "aerosols",
+  "effect": "sandstorm",
+  "windProfile": "aerosol-flow",
+  "attributes": {
+    "key": "sandstorm-night",
+    "en": "Night sandstorm",
+    "family": "aerosols",
+    "category": "aerosols",
+    "effect": "sandstorm",
+    "aerosol": 3,
+    "visibility": "dust",
+    "cloud": 1,
+    "wind": 4
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.evening.waning-crescent.sandstorm-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aerosols.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.evening.waning-crescent.sandstorm-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "evening",
+    "moonPhase": "waning-crescent",
+    "weather": "sandstorm-night",
+    "seed": 2764
+  }
+}

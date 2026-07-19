@@ -1,0 +1,37 @@
+{
+  "id": "day.dawn.none.waterspout",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Dawn · Waterspout",
+  "mode": "day",
+  "phase": "dawn",
+  "moonPhase": null,
+  "weather": "waterspout",
+  "family": "tropical-marine",
+  "category": "tropical-marine",
+  "effect": "waterspout",
+  "windProfile": "precipitation",
+  "attributes": {
+    "key": "waterspout",
+    "en": "Waterspout",
+    "family": "tropical-marine",
+    "category": "tropical-marine",
+    "effect": "waterspout",
+    "marine": 3,
+    "rain": 1,
+    "cloud": 2,
+    "wind": 3
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.dawn.none.waterspout.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/tropical-marine.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.dawn.none.waterspout"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "dawn",
+    "moonPhase": null,
+    "weather": "waterspout",
+    "seed": 2086
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "day.afternoon.none.urban-smog",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Afternoon · Urban smog",
+  "mode": "day",
+  "phase": "afternoon",
+  "moonPhase": null,
+  "weather": "urban-smog",
+  "family": "aerosols",
+  "category": "aerosols",
+  "effect": "smog",
+  "windProfile": "aerosol-flow",
+  "attributes": {
+    "key": "urban-smog",
+    "en": "Urban smog",
+    "family": "aerosols",
+    "category": "aerosols",
+    "effect": "smog",
+    "aerosol": 2,
+    "visibility": "haze",
+    "cloud": 1,
+    "wind": 0
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/day.afternoon.none.urban-smog.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aerosols.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=day.afternoon.none.urban-smog"
+  },
+  "runtime": {
+    "mode": "day",
+    "phase": "afternoon",
+    "moonPhase": null,
+    "weather": "urban-smog",
+    "seed": 2702
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "night.moonrise.blood-moon.airborne-dust-night",
+  "apiVersion": "1.0.0",
+  "rendererVersion": "global-library-2026-07",
+  "label": "Moonrise · Blood moon · Night airborne dust",
+  "mode": "night",
+  "phase": "moonrise",
+  "moonPhase": "blood-moon",
+  "weather": "airborne-dust-night",
+  "family": "aerosols",
+  "category": "aerosols",
+  "effect": "dust",
+  "windProfile": "aerosol-flow",
+  "attributes": {
+    "key": "airborne-dust-night",
+    "en": "Night airborne dust",
+    "family": "aerosols",
+    "category": "aerosols",
+    "effect": "dust",
+    "aerosol": 1,
+    "visibility": "dust",
+    "wind": 1
+  },
+  "links": {
+    "self": "https://afnan-hossain.github.io/atmoscene/api/v1/scenes/by-id/night.moonrise.blood-moon.airborne-dust-night.json",
+    "collection": "https://afnan-hossain.github.io/atmoscene/api/v1/collections/aerosols.json",
+    "preview": "https://afnan-hossain.github.io/atmoscene/api/demo/?scene=night.moonrise.blood-moon.airborne-dust-night"
+  },
+  "runtime": {
+    "mode": "night",
+    "phase": "moonrise",
+    "moonPhase": "blood-moon",
+    "weather": "airborne-dust-night",
+    "seed": 2841
+  }
+}
