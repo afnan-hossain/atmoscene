@@ -1,14 +1,18 @@
 'use strict';
-/* Samsung Weather hero simulator — layer stack rebuilt from the decompiled APK.
-   Scene data: data/scenes.json (parsed from assets/agsl_shader_android.json in the APK)
+/* Samsung Weather hero simulator — now running Samsung's own AGSL shaders.
+   Scene data: data/scenes.json (parsed from assets/agsl_shader_android.json,
+   including the original assets/resource/code_N.json SkSL programs).
    Land layers: assets/layers/* (original WebP/PNG resources)
-   Characters: assets/characters/* (original packed-alpha MP4s, decoded in WebGL) */
+   Characters: assets/characters/* (original packed-alpha MP4s, decoded in WebGL)
+   Geometry: detail_hq_bg_layout.xml dimens on a 360x340dp hero canvas. */
 
 const SUNS = ['DAY', 'NIGHT', 'SUNRISE', 'SUNSET', 'WHITE_NIGHT', 'POLAR_NIGHT'];
 const SUN_LABEL = { DAY: 'Day', NIGHT: 'Night', SUNRISE: 'Sunrise', SUNSET: 'Sunset', WHITE_NIGHT: 'White night', POLAR_NIGHT: 'Polar night' };
 const TIERS = ['LOWEST', 'LOW', 'HIGH'];
 const TIER_LABEL = { LOWEST: 'Lowest (weak GPU)', LOW: 'Low', HIGH: 'High' };
 const WIND_LABEL = ['Calm', 'Calm+', 'Light', 'Moderate', 'Strong'];
+const BACK_SLOTS = ['BACKGROUND_CANVAS', 'SUN_AND_STAR_CANVAS', 'CLOUD_CANVAS', 'THUNDER_CANVAS'];
+const FRONT_SLOTS = ['RAIN_CANVAS', 'SNOW_CANVAS', 'FOG_CANVAS'];
 const $ = id => document.getElementById(id);
 const els = {};
 ['code','sun','tier','temp','sunalt','speed','cloud','stars','wind','rain','snow','bolt','sand','fog','forcefx',
@@ -16,16 +20,9 @@ const els = {};
  'swipe','scroll','zoom','explode'].forEach(id => els[id] = $(id));
 
 let DB = null, resolved = null, resolvedKey = '', currentChar = '', charLoopStart = 0;
+let iTime = 0, lastTs = 0, nextFlash = 2;
 const video = $('charVideo');
-
-/* ---------- deterministic particle fields ---------- */
-function mulberry(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
-const rnd = mulberry(1337);
-const stars = Array.from({ length: 140 }, () => ({ x: rnd(), y: rnd() * 0.55, r: rnd() * 1.4 + 0.3, tw: rnd() * 6.28 }));
-const drops = Array.from({ length: 240 }, () => ({ x: rnd(), y: rnd(), l: 0.012 + rnd() * 0.02, s: 0.55 + rnd() * 0.7 }));
-const flakes = Array.from({ length: 200 }, () => ({ x: rnd(), y: rnd(), r: 1 + rnd() * 2.4, s: 0.08 + rnd() * 0.22, ph: rnd() * 6.28 }));
-const clouds = Array.from({ length: 26 }, () => ({ x: rnd(), y: rnd() * 0.34, s: 0.5 + rnd() * 1.3, v: 0.004 + rnd() * 0.010 }));
-const sandGrains = Array.from({ length: 220 }, () => ({ x: rnd(), y: rnd(), s: 0.25 + rnd() * 0.8, l: 0.01 + rnd() * 0.03 }));
+const shaderErrors = [];
 
 /* ---------- scene resolution (mirrors od.b in the APK) ---------- */
 function sceneKey(code, sun, tier) { return `${code}_${sun}_${tier}`; }
@@ -68,61 +65,212 @@ function conditionLabel(scene) {
   return fam.includes('clear') ? 'Clear' : familyLabel(scene);
 }
 function hasLayer(name) { return !!resolved?.layers?.[name]; }
-function eff(name, sliderVal) { // effect intensity honoring scene table unless forced
-  const on = hasLayer(name) || els.forcefx.value === '1';
-  return els['t-precip'].value === '1' && on ? sliderVal / 100 : 0;
+function donorLayer(slot) { // for Force-effects: borrow Samsung's own class from another scene
+  for (const s of Object.values(DB?.scenes || {})) if (s.layers?.[slot]) return s.layers[slot];
+  return null;
+}
+function layerFor(slot) {
+  if (resolved?.layers?.[slot]) return resolved.layers[slot];
+  return els.forcefx.value === '1' ? donorLayer(slot) : null;
+}
+
+/* ---------- SkSL (AGSL) -> WebGL GLSL conversion ---------- */
+function skslToGlsl(src) {
+  let s = src
+    .replace(/\bfloat2x2\b/g, 'mat2').replace(/\bfloat3x3\b/g, 'mat3').replace(/\bfloat4x4\b/g, 'mat4')
+    .replace(/\bfloat2\b/g, 'vec2').replace(/\bfloat3\b/g, 'vec3').replace(/\bfloat4\b/g, 'vec4')
+    .replace(/\bhalf2\b/g, 'vec2').replace(/\bhalf3\b/g, 'vec3').replace(/\bhalf4\b/g, 'vec4').replace(/\bhalf\b/g, 'float')
+    .replace(/(\bvec4\s+)main\s*\(/g, '$1skMain(');
+  // AGSL fragCoord is top-left origin; gl_FragCoord is bottom-left, and layers
+  // may render in a viewport sub-rect, so convert via the full canvas height.
+  return `precision highp float;\nuniform float uCanvasH;\n${s}\nvoid main(){ gl_FragColor = skMain(vec2(gl_FragCoord.x, uCanvasH - gl_FragCoord.y)); }\n`;
+}
+const VS = `attribute vec2 aPos; void main(){ gl_Position = vec4(aPos, 0.0, 1.0); }`;
+
+class ShaderStack {
+  constructor(canvas) {
+    this.gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: false });
+    this.programs = new Map();
+    const gl = this.gl;
+    if (!gl) return;
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+    this.buf = buf;
+    gl.enable(gl.BLEND);
+    // Samsung's AGSL shaders return premultiplied colors ("AGSL 합성 규칙" in code_1),
+    // so composite exactly like the Android canvas: src + dst * (1 - srcAlpha).
+    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+  }
+  program(codeId) {
+    if (this.programs.has(codeId)) return this.programs.get(codeId);
+    const gl = this.gl, src = DB.shaderCodes?.[codeId];
+    let entry = null;
+    if (src) {
+      const compile = (type, code) => {
+        const sh = gl.createShader(type); gl.shaderSource(sh, code); gl.compileShader(sh);
+        if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+          const log = gl.getShaderInfoLog(sh);
+          if (!shaderErrors.find(e => e.codeId === codeId)) shaderErrors.push({ codeId, log });
+          return null;
+        }
+        return sh;
+      };
+      const vs = compile(gl.VERTEX_SHADER, VS);
+      const fs = compile(gl.FRAGMENT_SHADER, skslToGlsl(src));
+      if (vs && fs) {
+        const prog = gl.createProgram();
+        gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
+        if (gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+          const uniforms = [];
+          const n = gl.getProgramParameter(prog, gl.ACTIVE_UNIFORMS);
+          for (let i = 0; i < n; i++) {
+            const info = gl.getActiveUniform(prog, i);
+            uniforms.push({ name: info.name.replace(/\[0\]$/, ''), type: info.type, size: info.size, loc: gl.getUniformLocation(prog, info.name) });
+          }
+          entry = { prog, uniforms };
+        }
+      }
+    }
+    this.programs.set(codeId, entry);
+    return entry;
+  }
+  drawLayer(layer, overrides) {
+    const gl = this.gl; if (!gl || !layer) return;
+    const entry = this.program(layer.codeId); if (!entry) return;
+    gl.useProgram(entry.prog);
+    const loc = gl.getAttribLocation(entry.prog, 'aPos');
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.buf);
+    gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    const values = { ...(layer.uniforms || {}), ...overrides };
+    values.iTime = iTime;
+    values.uCanvasH = gl.canvas.height;
+    values.iResolution = [gl.canvas.width, this.layerH || gl.canvas.height];
+    for (const u of entry.uniforms) {
+      let v = values[u.name];
+      if (v === undefined) v = (u.name === 'iStartAnimationProgress' || u.name === 'iSlowdownAnimationProgress') ? 0.5 : 0;
+      const F = gl.FLOAT, I = gl.INT;
+      try {
+        if (u.type === F) gl.uniform1f(u.loc, +v);
+        else if (u.type === gl.FLOAT_VEC2) gl.uniform2f(u.loc, v[0] || 0, v[1] || 0);
+        else if (u.type === gl.FLOAT_VEC3) gl.uniform3f(u.loc, v[0] || 0, v[1] || 0, v[2] || 0);
+        else if (u.type === gl.FLOAT_VEC4) gl.uniform4f(u.loc, v[0] || 0, v[1] || 0, v[2] || 0, v[3] || 0);
+        else if (u.type === I || u.type === gl.BOOL) gl.uniform1i(u.loc, Math.round(+v));
+        else if (u.type === gl.INT_VEC2) gl.uniform2i(u.loc, v[0] || 0, v[1] || 0);
+        else if (u.type === gl.INT_VEC3) gl.uniform3i(u.loc, v[0] || 0, v[1] || 0, v[2] || 0);
+      } catch (e) { /* mismatched uniform shape: leave default */ }
+    }
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  }
+  draw(slots, overridesBySlot, enabled, heightFracBySlot = {}) {
+    const gl = this.gl; if (!gl) return;
+    gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+    for (const slot of slots) {
+      if (!enabled[slot]) continue;
+      const layer = layerFor(slot);
+      if (!layer) continue;
+      // Samsung runs sky-effect shaders in a 340dp-tall view at the top of the
+      // full-screen hero; emulate with a per-layer viewport (iResolution then
+      // matches that view, exactly like AGSLShaderView).
+      const frac = heightFracBySlot[slot] ?? 1;
+      const W = gl.canvas.width, H = gl.canvas.height, lh = Math.round(H * frac);
+      gl.viewport(0, H - lh, W, lh);
+      this.layerH = lh;
+      this.drawLayer(layer, overridesBySlot[slot] || {});
+    }
+    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+  }
+}
+const backStack = new ShaderStack($('glBack'));
+const frontStack = new ShaderStack($('glFront'));
+
+function lerp(a, b, t) { return a + (b - a) * t; }
+function uniformOverrides() {
+  const wind = +els.wind.value, sunU = resolved?.layers?.SUN_AND_STAR_CANVAS?.uniforms || {};
+  const sunOv = {};
+  // positionT = mix(fromAnimationProgress, toAnimationProgress, iStartAnimationProgress)
+  // in Samsung's shader; pinning from=to drives the sun/moon along its parabolic
+  // minPosition->maxPosition path without collapsing the direction vector.
+  sunOv.fromAnimationProgress = +els.sunalt.value / 100;
+  sunOv.toAnimationProgress = +els.sunalt.value / 100;
+  if (sunU.uStarsDensity !== undefined) sunOv.uStarsDensity = sunU.uStarsDensity * (+els.stars.value) / 70;
+  const cloudBase = resolved?.layers?.CLOUD_CANVAS?.uniforms || {};
+  return {
+    SUN_AND_STAR_CANVAS: sunOv,
+    CLOUD_CANVAS: {
+      ...(cloudBase.cloudCover !== undefined ? { cloudCover: +els.cloud.value / 100 } : {}),
+      ...(cloudBase.cloudSpeed !== undefined ? { cloudSpeed: cloudBase.cloudSpeed * (0.4 + wind * 0.45) } : {}),
+    },
+    RAIN_CANVAS: { rainIntensityScale: null },
+    SNOW_CANVAS: {}, FOG_CANVAS: {}, THUNDER_CANVAS: {}, BACKGROUND_CANVAS: {},
+    _rain: { rainIntensityMul: +els.rain.value / 70, windStrength: (wind - 1) * 0.7 },
+    _snow: { snowIntensityMul: +els.snow.value / 70, snowWindStrength: (wind - 1) * 0.35 },
+    _fog: { fogMixAlpha: +els.fog.value / 100 },
+  };
+}
+function scaledOverrides(slot, base) {
+  const ov = uniformOverrides();
+  if (slot === 'RAIN_CANVAS') {
+    const b = base || {};
+    return { ...(b.rainIntensity !== undefined ? { rainIntensity: b.rainIntensity * ov._rain.rainIntensityMul } : {}), windStrength: ov._rain.windStrength };
+  }
+  if (slot === 'SNOW_CANVAS') {
+    const b = base || {};
+    return { ...(b.snowIntensity !== undefined ? { snowIntensity: b.snowIntensity * ov._snow.snowIntensityMul } : {}), snowWindStrength: ov._snow.snowWindStrength };
+  }
+  if (slot === 'FOG_CANVAS') return { fogMixAlpha: ov._fog.fogMixAlpha };
+  return ov[slot] || {};
 }
 
 /* ---------- character WebGL (Samsung TransparentVideoView shader, ported) ---------- */
-const gl = $('charCanvas').getContext('webgl', { alpha: true, premultipliedAlpha: false });
-let glProg, glTex, glReady = false;
-function initGL() {
+const glc = $('charCanvas').getContext('webgl', { alpha: true, premultipliedAlpha: false });
+let charProg, charTex, charReady = false;
+function initCharGL() {
   const vs = `attribute vec2 aPos; varying vec2 vUv;
     void main(){ vUv = vec2(aPos.x*0.5+0.5, 0.5-aPos.y*0.5); gl_Position = vec4(aPos,0.,1.); }`;
   const fs = `precision highp float; varying vec2 vUv; uniform sampler2D uVideo; uniform float uEdge;
     vec4 texImg(vec2 p){ return texture2D(uVideo, p); }
     float lum(vec3 c){ return length(c)/1.7320508; }
     float alphaAt(vec2 xy){
-      float ax = xy.x; float ay = 1.0 - xy.y;              // assembled-mask coords (y down)
+      float ax = xy.x; float ay = 1.0 - xy.y;
       float qx = ax < 0.5 ? 0.0 : 1.0; float qy = ay < 0.5 ? 0.0 : 1.0;
-      float block = qy < 0.5 ? (qx < 0.5 ? 1.0 : 3.0) : (qx < 0.5 ? 0.0 : 2.0); // TL,TR,BL,BR
+      float block = qy < 0.5 ? (qx < 0.5 ? 1.0 : 3.0) : (qx < 0.5 ? 0.0 : 2.0);
       float lx = fract(ax*2.0); float ly = fract(ay*2.0);
       vec2 sp = vec2((block+lx)*0.25, 0.8 + (1.0-ly)*0.2);
       return lum(texImg(sp).rgb);
     }
     void main(){
-      vec3 col = texImg(vec2(vUv.x, vUv.y*0.8)).rgb;      // RGB occupies top 80% of frame
-      float a = alphaAt(vUv);
-      a = clamp(a*(1.0+uEdge), 0.0, 1.0);
+      vec3 col = texImg(vec2(vUv.x, vUv.y*0.8)).rgb;
+      float a = clamp(alphaAt(vUv)*(1.0+uEdge), 0.0, 1.0);
       gl_FragColor = vec4(col, a);
     }`;
-  function sh(type, src) { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; }
-  glProg = gl.createProgram();
-  gl.attachShader(glProg, sh(gl.VERTEX_SHADER, vs));
-  gl.attachShader(glProg, sh(gl.FRAGMENT_SHADER, fs));
-  gl.linkProgram(glProg); gl.useProgram(glProg);
-  const buf = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
-  const loc = gl.getAttribLocation(glProg, 'aPos');
-  gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-  glTex = gl.createTexture();
-  gl.bindTexture(gl.TEXTURE_2D, glTex);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-  gl.uniform1i(gl.getUniformLocation(glProg, 'uVideo'), 0);
-  glReady = true;
+  function sh(type, src) { const s = glc.createShader(type); glc.shaderSource(s, src); glc.compileShader(s); return s; }
+  charProg = glc.createProgram();
+  glc.attachShader(charProg, sh(glc.VERTEX_SHADER, vs));
+  glc.attachShader(charProg, sh(glc.FRAGMENT_SHADER, fs));
+  glc.linkProgram(charProg); glc.useProgram(charProg);
+  const buf = glc.createBuffer();
+  glc.bindBuffer(glc.ARRAY_BUFFER, buf);
+  glc.bufferData(glc.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), glc.STATIC_DRAW);
+  const loc = glc.getAttribLocation(charProg, 'aPos');
+  glc.enableVertexAttribArray(loc); glc.vertexAttribPointer(loc, 2, glc.FLOAT, false, 0, 0);
+  charTex = glc.createTexture();
+  glc.bindTexture(glc.TEXTURE_2D, charTex);
+  glc.texParameteri(glc.TEXTURE_2D, glc.TEXTURE_WRAP_S, glc.CLAMP_TO_EDGE);
+  glc.texParameteri(glc.TEXTURE_2D, glc.TEXTURE_WRAP_T, glc.CLAMP_TO_EDGE);
+  glc.texParameteri(glc.TEXTURE_2D, glc.TEXTURE_MIN_FILTER, glc.LINEAR);
+  glc.texParameteri(glc.TEXTURE_2D, glc.TEXTURE_MAG_FILTER, glc.LINEAR);
+  glc.uniform1i(glc.getUniformLocation(charProg, 'uVideo'), 0);
+  charReady = true;
 }
 function drawChar() {
-  if (!glReady) return;
-  gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+  if (!charReady) return;
+  glc.clearColor(0, 0, 0, 0); glc.clear(glc.COLOR_BUFFER_BIT);
   if (els['t-char'].value !== '1' || !currentChar || video.readyState < 2) return;
-  gl.bindTexture(gl.TEXTURE_2D, glTex);
-  try { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, video); } catch (e) { return; }
-  gl.uniform1f(gl.getUniformLocation(glProg, 'uEdge'), 0.25);
-  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  glc.bindTexture(glc.TEXTURE_2D, charTex);
+  try { glc.texImage2D(glc.TEXTURE_2D, 0, glc.RGBA, glc.RGBA, glc.UNSIGNED_BYTE, video); } catch (e) { return; }
+  glc.uniform1f(glc.getUniformLocation(charProg, 'uEdge'), 0.25);
+  glc.drawArrays(glc.TRIANGLE_STRIP, 0, 4);
 }
 video.addEventListener('timeupdate', () => {
   if (charLoopStart > 0 && video.duration && video.currentTime > video.duration - 0.06) {
@@ -130,18 +278,14 @@ video.addEventListener('timeupdate', () => {
   }
 });
 
-/* ---------- 2D shader-layer canvases ---------- */
-const skyCtx = $('skyCanvas').getContext('2d'), sunCtx = $('sunCanvas').getContext('2d'),
-  cloudCtx = $('cloudCanvas').getContext('2d'), precipCtx = $('precipCanvas').getContext('2d'),
-  fogCtx = $('fogCanvas').getContext('2d'), sandCtx = $('sandCanvas').getContext('2d');
-let W = 0, H = 0, iTime = 0, lastTs = 0, bolt = null, nextBolt = 2;
-
-function rgb(arr, a = 1) { if (!arr) return `rgba(120,160,220,${a})`; return `rgba(${Math.round(arr[0]*255)},${Math.round(arr[1]*255)},${Math.round(arr[2]*255)},${a})`; }
+/* ---------- sizing / layout ---------- */
 function resize() {
-  const stage = $('stage'), tierScale = [0.35, 0.6, 1][+els.tier.value];
-  W = stage.clientWidth; H = stage.clientHeight;
-  for (const c of [skyCtx, sunCtx, cloudCtx, precipCtx, fogCtx, sandCtx]) {
-    c.canvas.width = Math.max(2, W * tierScale); c.canvas.height = Math.max(2, H * tierScale);
+  const stage = $('stage'), scale = [0.5, 0.75, 1][+els.tier.value];
+  for (const stack of [backStack, frontStack]) {
+    if (!stack.gl) continue;
+    stack.gl.canvas.width = Math.max(2, Math.round(stage.clientWidth * scale));
+    stack.gl.canvas.height = Math.max(2, Math.round(stage.clientHeight * scale));
+    stack.gl.viewport(0, 0, stack.gl.canvas.width, stack.gl.canvas.height);
   }
   positionChar();
 }
@@ -150,133 +294,10 @@ function positionChar() {
   const wrap = $('charWrap');
   wrap.style.width = size + 'px'; wrap.style.height = size + 'px';
   wrap.style.left = (+els.charx.value) + '%';
-  wrap.style.bottom = '23.5%';
-}
-
-function drawSky() {
-  const { width: w, height: h } = skyCtx.canvas;
-  skyCtx.clearRect(0, 0, w, h);
-  if (els['t-sky'].value !== '1') return;
-  const uni = resolved?.layers?.BACKGROUND_CANVAS?.uniforms || {};
-  const g = skyCtx.createLinearGradient(0, 0, 0, h);
-  const cols = [uni.skyColor1, uni.skyColor2, uni.skyColor3, uni.skyColor4, uni.skyColor5];
-  const pos = [0, uni.skyColorGradientPos1 ?? 0.3, uni.skyColorGradientPos2 ?? 0.45, uni.skyColorGradientPos3 ?? 0.65, 1];
-  cols.forEach((c, i) => { if (c) g.addColorStop(Math.min(1, Math.max(0, pos[i])), rgb(c)); });
-  skyCtx.fillStyle = g; skyCtx.fillRect(0, 0, w, h);
-}
-function drawSunStars() {
-  const { width: w, height: h } = sunCtx.canvas;
-  sunCtx.clearRect(0, 0, w, h);
-  if (els['t-sun'].value !== '1') return;
-  const sun = SUNS[+els.sun.value], alt = +els.sunalt.value / 100;
-  const isNight = sun === 'NIGHT' || sun === 'POLAR_NIGHT';
-  if ((isNight || sun === 'SUNSET' || sun === 'SUNRISE') && hasLayer('SUN_AND_STAR_CANVAS') || els.forcefx.value === '1') {
-    sunCtx.fillStyle = '#fff';
-    for (const s of stars) {
-      const a = (isNight ? 0.9 : 0.25) * (+els.stars.value / 100) * (0.6 + 0.4 * Math.sin(iTime * 2 + s.tw));
-      if (a <= 0.02) continue;
-      sunCtx.globalAlpha = a; sunCtx.beginPath(); sunCtx.arc(s.x * w, s.y * h, s.r, 0, 6.29); sunCtx.fill();
-    }
-    sunCtx.globalAlpha = 1;
-  }
-  const x = w * (0.14 + 0.72 * alt), y = h * (0.60 - Math.sin(alt * Math.PI) * 0.46);
-  if (isNight) { // moon
-    sunCtx.fillStyle = '#eef3ff'; sunCtx.beginPath(); sunCtx.arc(x, y, w * 0.045, 0, 6.29); sunCtx.fill();
-    sunCtx.fillStyle = 'rgba(20,30,60,0.85)'; sunCtx.beginPath(); sunCtx.arc(x + w * 0.018, y - w * 0.012, w * 0.04, 0, 6.29); sunCtx.fill();
-  } else {
-    const halo = sunCtx.createRadialGradient(x, y, 0, x, y, w * 0.30);
-    halo.addColorStop(0, 'rgba(255,244,200,0.95)'); halo.addColorStop(0.12, 'rgba(255,230,160,0.55)'); halo.addColorStop(1, 'rgba(255,230,160,0)');
-    sunCtx.fillStyle = halo; sunCtx.fillRect(x - w * 0.3, y - w * 0.3, w * 0.6, w * 0.6);
-    sunCtx.fillStyle = '#fff6d8'; sunCtx.beginPath(); sunCtx.arc(x, y, w * 0.038, 0, 6.29); sunCtx.fill();
-  }
-}
-function drawClouds(dt) {
-  const { width: w, height: h } = cloudCtx.canvas;
-  cloudCtx.clearRect(0, 0, w, h);
-  const amount = els['t-cloud'].value === '1' && (hasLayer('CLOUD_CANVAS') || els.forcefx.value === '1') ? +els.cloud.value / 100 : 0;
-  if (amount <= 0) return;
-  const night = ['NIGHT', 'POLAR_NIGHT'].includes(SUNS[+els.sun.value]);
-  const n = Math.floor(clouds.length * amount * (0.3 + amount));
-  for (let i = 0; i < n; i++) {
-    const c = clouds[i];
-    c.x += (c.v * (0.4 + +els.wind.value * 0.55) * +els.speed.value * dt * 8);
-    if (c.x > 1.25) c.x = -0.25;
-    const cx = c.x * w, cy = c.y * h, s = c.s * w * 0.16;
-    cloudCtx.fillStyle = night ? 'rgba(52,64,92,0.50)' : 'rgba(255,255,255,0.55)';
-    for (const [ox, oy, os] of [[0, 0, 1], [-0.5, 0.12, 0.7], [0.5, 0.12, 0.75], [0.1, -0.16, 0.65]]) {
-      cloudCtx.beginPath(); cloudCtx.ellipse(cx + ox * s, cy + oy * s, s * os, s * os * 0.42, 0, 0, 6.29); cloudCtx.fill();
-    }
-  }
-}
-function drawPrecip(dt) {
-  const { width: w, height: h } = precipCtx.canvas;
-  precipCtx.clearRect(0, 0, w, h);
-  const rainI = eff('RAIN_CANVAS', +els.rain.value), snowI = eff('SNOW_CANVAS', +els.snow.value);
-  const wind = +els.wind.value;
-  if (rainI > 0) {
-    precipCtx.strokeStyle = 'rgba(210,230,255,0.55)'; precipCtx.lineWidth = Math.max(1, w / 430); precipCtx.beginPath();
-    const n = Math.floor(drops.length * rainI);
-    for (let i = 0; i < n; i++) {
-      const d = drops[i]; d.y += d.s * dt * (0.7 + rainI); d.x += wind * 0.012 * dt;
-      if (d.y > 1) { d.y = -0.03; d.x = Math.random(); }
-      const x = d.x * w, y = d.y * h;
-      precipCtx.moveTo(x, y); precipCtx.lineTo(x - wind * w * 0.006, y + d.l * h);
-    }
-    precipCtx.stroke();
-  }
-  if (snowI > 0) {
-    precipCtx.fillStyle = 'rgba(255,255,255,0.9)';
-    const n = Math.floor(flakes.length * snowI);
-    for (let i = 0; i < n; i++) {
-      const f = flakes[i]; f.y += f.s * dt * (0.6 + snowI); f.x += Math.sin(iTime + f.ph) * 0.0006 + wind * 0.004 * dt;
-      if (f.y > 1) { f.y = -0.02; f.x = Math.random(); }
-      precipCtx.beginPath(); precipCtx.arc(f.x * w, f.y * h, f.r * (w / 430), 0, 6.29); precipCtx.fill();
-    }
-  }
-  if (bolt && bolt.ttl > 0) { // lightning bolt drawn on precip canvas, flash on #thunderFlash
-    precipCtx.strokeStyle = 'rgba(240,246,255,0.95)'; precipCtx.lineWidth = 2.4; precipCtx.beginPath();
-    bolt.pts.forEach(([x, y], i) => i ? precipCtx.lineTo(x * w, y * h) : precipCtx.moveTo(x * w, y * h));
-    precipCtx.stroke(); bolt.ttl -= dt;
-  }
-}
-function drawFogSand(dt) {
-  const { width: w, height: h } = fogCtx.canvas;
-  fogCtx.clearRect(0, 0, w, h); sandCtx.clearRect(0, 0, w, h);
-  const fogI = eff('FOG_CANVAS', +els.fog.value);
-  if (fogI > 0) {
-    for (let i = 0; i < 5; i++) {
-      const y = h * (0.45 + i * 0.11) + Math.sin(iTime * 0.4 + i * 1.7) * h * 0.008;
-      const g = fogCtx.createLinearGradient(0, y - h * 0.05, 0, y + h * 0.05);
-      g.addColorStop(0, 'rgba(225,235,245,0)'); g.addColorStop(0.5, `rgba(225,235,245,${0.20 * fogI})`); g.addColorStop(1, 'rgba(225,235,245,0)');
-      fogCtx.fillStyle = g; fogCtx.fillRect(0, y - h * 0.05, w, h * 0.1);
-    }
-  }
-  const fam = familyLabel(resolved).toLowerCase();
-  const sandI = els['t-precip'].value === '1' && (fam.includes('sand') || els.forcefx.value === '1') ? +els.sand.value / 100 : 0;
-  if (sandI > 0) {
-    sandCtx.strokeStyle = `rgba(226,178,110,${0.5 * sandI})`; sandCtx.beginPath();
-    const n = Math.floor(sandGrains.length * sandI);
-    for (let i = 0; i < n; i++) {
-      const g = sandGrains[i]; g.x += g.s * dt * (1 + +els.wind.value); g.y += Math.sin(iTime * 3 + i) * 0.0004;
-      if (g.x > 1) { g.x = -0.02; g.y = Math.random(); }
-      sandCtx.moveTo(g.x * w, g.y * h); sandCtx.lineTo(g.x * w + g.l * w, g.y * h);
-    }
-    sandCtx.stroke();
-    sandCtx.fillStyle = `rgba(214,164,96,${0.10 * sandI})`; sandCtx.fillRect(0, 0, w, h);
-  }
-}
-function maybeLightning(dt) {
-  const on = hasLayer('THUNDER_CANVAS') || els.forcefx.value === '1';
-  const freq = els['t-precip'].value === '1' && on ? +els.bolt.value / 100 : 0;
-  nextBolt -= dt;
-  if (freq > 0 && nextBolt <= 0) {
-    const x = 0.15 + Math.random() * 0.7; let pts = [[x, 0.02]]; let cx = x;
-    for (let y = 0.12; y < 0.55; y += 0.09) { cx += (Math.random() - 0.5) * 0.07; pts.push([cx, y]); }
-    bolt = { pts, ttl: 0.16 };
-    $('thunderFlash').style.opacity = 0.28 * freq + 0.08;
-    nextBolt = 0.6 + (1 - freq) * 5 + Math.random() * 2;
-    setTimeout(() => $('thunderFlash').style.opacity = 0, 90);
-  }
+  // detail_bg_character_marginTop = 140dp on a 360dp-wide canvas; the 160dp
+  // character's feet then land at 300dp, standing on the near-land strip.
+  wrap.style.top = (stage.clientWidth * 140 / 360) + 'px';
+  wrap.style.bottom = 'auto';
 }
 
 /* ---------- apply scene + UI ---------- */
@@ -287,7 +308,7 @@ function applyScene() {
   const fam = familyLabel(resolved);
   $('sceneKey').textContent = resolvedKey || '—';
   const bg = resolved?.layers?.BACKGROUND_CANVAS;
-  $('bgClass').textContent = bg ? `${bg.class} / ${bg.codeId}` : 'fallback gradient';
+  $('bgClass').textContent = bg ? `${bg.class} / ${bg.codeId}` : '—';
 
   const res = resolved?.resources || {};
   const far = pickVariant(res.FARLAND, temp), near = pickVariant(res.NEARLAND, temp), grad = pickVariant(res.NEARLAND_GRADATION, temp);
@@ -310,7 +331,6 @@ function applyScene() {
   } else if (!char) { currentChar = ''; video.removeAttribute('src'); video.load(); }
   video.playbackRate = +els.charrate.value;
 
-  // enable/disable effect sliders by scene table (faithful mode)
   const force = els.forcefx.value === '1';
   els.rain.disabled = !(hasLayer('RAIN_CANVAS') || force);
   els.snow.disabled = !(hasLayer('SNOW_CANVAS') || force);
@@ -319,7 +339,6 @@ function applyScene() {
   els.sand.disabled = !(fam.toLowerCase().includes('sand') || force);
   els.cloud.disabled = !(hasLayer('CLOUD_CANVAS') || force);
 
-  // hero UI overlay
   $('uiTemp').textContent = fmtTemp(temp);
   $('uiCond').textContent = conditionLabel(resolved);
   $('uiHigh').textContent = fmtTemp(temp + 1); $('uiLow').textContent = fmtTemp(temp - 16);
@@ -328,20 +347,19 @@ function applyScene() {
   $('uiHourly').innerHTML = hours.map(([t, o]) => o === null
     ? `<div>🌇<div class="h-temp">Sunset</div></div>`
     : `<div>${t}<div class="h-temp">${fmtTemp(temp + o)}°</div><div>💧0%</div></div>`).join('');
-  $('layerBadge').innerHTML = `☁ ${hasLayer('CLOUD_CANVAS') ? 'cloud ' : ''}${hasLayer('RAIN_CANVAS') ? '🌧 rain ' : ''}${hasLayer('SNOW_CANVAS') ? '❄ snow ' : ''}${hasLayer('THUNDER_CANVAS') ? '⚡ thunder ' : ''}${hasLayer('FOG_CANVAS') ? '🌫 fog ' : ''}${hasLayer('SUN_AND_STAR_CANVAS') ? '✦ sun/star' : ''}` || 'shader sky only';
+  $('layerBadge').innerHTML = [hasLayer('BACKGROUND_CANVAS') && '🎨 sky', hasLayer('SUN_AND_STAR_CANVAS') && '✦ sun/star', hasLayer('CLOUD_CANVAS') && '☁ cloud', hasLayer('RAIN_CANVAS') && '🌧 rain', hasLayer('SNOW_CANVAS') && '❄ snow', hasLayer('THUNDER_CANVAS') && '⚡ thunder', hasLayer('FOG_CANVAS') && '🌫 fog'].filter(Boolean).join(' ') || 'shader sky only';
 
   $('sceneInfo').textContent =
 `sceneKey        : ${resolvedKey}
 weatherCode     : ${code}  (${conditionLabel(resolved)})
 sunStatus       : ${sun}   deviceTier: ${tier}   temp: ${temp}°C  wind: ${WIND_LABEL[+els.wind.value]}
-BACKGROUND      : ${bg ? bg.class + ' → ' + bg.codeId + '  uniforms: ' + Object.keys(bg.uniforms).slice(0, 8).join(', ') + '…' : '—'}
-layers          : ${Object.entries(resolved?.layers || {}).map(([k, v]) => `${k}=${v.class}`).join('\n                  ')}
+layers (class → shader program, Samsung's original SkSL):
+${Object.entries(resolved?.layers || {}).map(([k, v]) => `  ${k.padEnd(20)} ${v.class} → ${v.codeId}`).join('\n') || '  —'}
 FARLAND         : ${far || '—'}
 HUMAN/HURRICANE : ${char || '— (no character in this scene, as in the original)'}${char ? `  loopStart=${charLoopStart.toFixed(2)}s` : ''}
 NEARLAND        : ${near || '—'}
 GRADATION       : ${grad || '—'}
-files           : assets/layers/${far}.webp · assets/characters/${char}.mp4`;
-  drawSky();
+files           : assets/layers/${far}.${DB.layerFiles[far] || 'webp'} · assets/characters/${char}.mp4${shaderErrors.length ? `\nshader compile issues: ${shaderErrors.map(e => e.codeId).join(', ')} (see console)` : ''}`;
 }
 function updateLabels() {
   $('v-code').textContent = els.code.value;
@@ -374,13 +392,41 @@ function applyTransforms() {
   document.querySelector('.hero-ui').style.opacity = Math.max(0, 1 - scroll * 1.5);
   document.querySelector('.hourly').style.transform = `translateY(${scroll * 30}px)`;
   $('stage').classList.toggle('exploded', els.explode.value === '1');
+  const fam = familyLabel(resolved).toLowerCase();
+  const sandOn = els['t-precip'].value === '1' && (fam.includes('sand') || els.forcefx.value === '1');
+  $('sandTint').style.background = `rgba(216,164,92,${sandOn ? (+els.sand.value / 100) * 0.30 : 0})`;
 }
 
 /* ---------- main loop ---------- */
+function maybeFlash(dt) {
+  const on = hasLayer('THUNDER_CANVAS') || els.forcefx.value === '1';
+  const freq = els['t-precip'].value === '1' && on ? +els.bolt.value / 100 : 0;
+  nextFlash -= dt;
+  if (freq > 0 && nextFlash <= 0) {
+    $('thunderFlash').style.opacity = 0.25 * freq + 0.06;
+    nextFlash = 0.8 + (1 - freq) * 5 + Math.random() * 2;
+    setTimeout(() => $('thunderFlash').style.opacity = 0, 90);
+  }
+}
 function loop(ts) {
   const dt = Math.min(0.05, (ts - lastTs) / 1000 || 0.016); lastTs = ts;
   iTime += dt * +els.speed.value;
-  drawSunStars(); drawClouds(dt); drawPrecip(dt); drawFogSand(dt); maybeLightning(dt); drawChar();
+  if (resolved) {
+    const ov = uniformOverrides();
+    const backOv = {}, frontOv = {};
+    for (const slot of BACK_SLOTS) backOv[slot] = scaledOverrides(slot, resolved?.layers?.[slot]?.uniforms);
+    for (const slot of FRONT_SLOTS) frontOv[slot] = scaledOverrides(slot, resolved?.layers?.[slot]?.uniforms);
+    const SKY_FX = 340 / 600; // detail_bg_sky_height 340dp in a 600dp-tall stage
+    backStack.draw(BACK_SLOTS, backOv, {
+      BACKGROUND_CANVAS: els['t-sky'].value === '1', SUN_AND_STAR_CANVAS: els['t-sun'].value === '1',
+      CLOUD_CANVAS: els['t-cloud'].value === '1', THUNDER_CANVAS: els['t-precip'].value === '1',
+    }, { SUN_AND_STAR_CANVAS: SKY_FX, CLOUD_CANVAS: SKY_FX, THUNDER_CANVAS: SKY_FX });
+    frontStack.draw(FRONT_SLOTS, frontOv, {
+      RAIN_CANVAS: els['t-precip'].value === '1', SNOW_CANVAS: els['t-precip'].value === '1', FOG_CANVAS: els['t-precip'].value === '1',
+    }, { FOG_CANVAS: SKY_FX });
+  }
+  maybeFlash(dt);
+  drawChar();
   requestAnimationFrame(loop);
 }
 
@@ -388,24 +434,26 @@ function loop(ts) {
 const defaults = {};
 Object.values(els).forEach(e => defaults[e.id] = e.value);
 function refresh() { updateLabels(); applyScene(); positionChar(); applyTransforms(); }
-Object.values(els).forEach(e => e.addEventListener('input', () => {
-  if (['code', 'sun', 'tier'].includes(e.id)) resize();
-  refresh();
-}));
+Object.values(els).forEach(e => e.addEventListener('input', () => { refresh(); if (e === els.tier) resize(); }));
 $('btnPlay').addEventListener('click', () => {
   if (video.paused) { video.play().catch(() => {}); $('btnPlay').textContent = '⏸ Pause character'; }
   else { video.pause(); $('btnPlay').textContent = '▶ Play character'; }
 });
 $('btnRandom').addEventListener('click', () => {
-  els.code.value = Math.floor(Math.random() * 30) - 1;
-  els.sun.value = Math.floor(Math.random() * 4);
-  els.temp.value = Math.floor(Math.random() * 45) - 8;
-  resize(); refresh();
+  const keys = Object.keys(DB.scenes);
+  const k = keys[Math.floor(Math.random() * keys.length)];
+  const [c, s, t] = k.split('_');
+  els.code.value = c; els.sun.value = Math.max(0, SUNS.indexOf(s)); els.tier.value = TIERS.indexOf(t);
+  refresh();
 });
-$('btnReset').addEventListener('click', () => { Object.values(els).forEach(e => e.value = defaults[e.id]); resize(); refresh(); });
-new ResizeObserver(() => { resize(); drawSky(); }).observe($('stage'));
+$('btnReset').addEventListener('click', () => { Object.values(els).forEach(e => e.value = defaults[e.id]); refresh(); resize(); });
+window.addEventListener('resize', resize);
 
-fetch('data/scenes.json').then(r => r.json()).then(data => {
-  DB = data; initGL(); resize(); refresh();
+fetch('data/scenes.json').then(r => r.json()).then(db => {
+  DB = db;
+  initCharGL();
+  resize(); refresh();
   requestAnimationFrame(loop);
-}).catch(err => { $('sceneInfo').textContent = 'Failed to load data/scenes.json — serve this folder over HTTP (see instructions). ' + err; });
+}).catch(err => {
+  $('sceneInfo').textContent = 'Failed to load data/scenes.json — serve this folder over HTTP (e.g. python -m http.server). ' + err;
+});

@@ -14,12 +14,17 @@ renderer, and the transparent character videos.
 
 ## Layer stack (back → front)
 
-Mirrors `DetailHqBgView` / `DetailHqBgCharacterPlayerView` in the app:
+Mirrors `DetailHqBgView` / `DetailHqBgCharacterPlayerView` and the original
+`detail_hq_bg_layout.xml` geometry (`DetailHqBgView` is MATCH_PARENT; layers
+are dp-anchored: sky-effect shaders in a 340dp-tall view, far land at
+212dp/100dp, gradation at 226dp/258dp, near land 840dp wide at 250dp/80dp,
+character 160dp at marginTop 140dp):
 
-1. `BACKGROUND_CANVAS` — AGSL sky shader; the simulator drives a gradient
-   from the scene's real uniforms (`skyColor1..5`, gradient positions)
-2. `SUN_AND_STAR_CANVAS` — sun/moon + stars (`sunAltitudePercent`)
-3. `CLOUD_CANVAS`, `THUNDER_CANVAS` (+ lightning), sandstorm
+1. `BACKGROUND_CANVAS` — Samsung's **original AGSL sky program** (`code_0`)
+   with the scene's real uniforms (`skyColor1..5`, gradient positions),
+   converted SkSL → GLSL at runtime (`skslToGlsl`)
+2. `SUN_AND_STAR_CANVAS` — original sun/moon/star programs (`code_1/2/3/12`)
+3. `CLOUD_CANVAS` (`code_4/5`), `THUNDER_CANVAS` (`code_10`)
 4. `FARLAND` — distant-land WebP strip (original file)
 5. `NEARLAND_GRADATION` — horizon gradation PNG (original file)
 6. `HUMAN` / `HURRICANE` — character MP4 with **packed alpha**: RGB in the
@@ -27,8 +32,19 @@ Mirrors `DetailHqBgView` / `DetailHqBgCharacterPlayerView` in the app:
    quadrant blocks (TL=1, TR=3, BL=0, BR=2). Decoded in WebGL with a port of
    Samsung's `TransparentVideoView` shader — see
    `CHARACTER_FRAGMENT_SHADER` in `js/hero-library.mjs`
-7. `NEARLAND` — foreground land WebP strip (original file)
-8. `RAIN_CANVAS` / `SNOW_CANVAS` / `FOG_CANVAS` in front
+7. `NEARLAND` — foreground land WebP strip (original file, in front of the
+   character's feet, as in the app)
+8. `RAIN_CANVAS` (`code_8`) / `SNOW_CANVAS` (`code_6`) / `FOG_CANVAS`
+   (`code_11`) in front
+
+All 13 shader programs (`code_0…code_12`) ship inside the generated
+`scenes.json`; Samsung's shaders output premultiplied colors, so layers are
+composited with `blendFunc(ONE, ONE_MINUS_SRC_ALPHA)`. Slider controls now
+drive the **real shader uniforms** (`cloudCover`, `rainIntensity`,
+`snowIntensity`, `fogMixAlpha`, `windStrength`, `uStarsDensity`, and the sun
+shader's `from/toAnimationProgress` path). The only non-original bits left
+are the app-level lightning flash overlay, the sandstorm tint, and the text
+UI — there is no procedural sky/cloud/rain/snow anywhere.
 
 Temperature picks the character outfit variant exactly like the APK:
 `> 27 °C → over27`, `< 0 °C → below0`, otherwise `average`.

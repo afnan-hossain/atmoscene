@@ -108,10 +108,20 @@ def main():
         with open(f'{args.out}/assets/characters/{name}.mp4', 'wb') as fh:
             fh.write(z.read(f))
 
+    # Original AGSL (SkSL) shader programs: 13 shared code_N files powering
+    # every canvas layer (sky, sun/stars, cloud, rain, snow, thunder, fog).
+    shader_codes = {}
+    for i in range(13):
+        try:
+            shader_codes[f'code_{i}'] = json.loads(z.read(f'assets/resource/code_{i}.json'))
+        except KeyError:
+            pass
+
     with open(f'{args.out}/data/scenes.json', 'w', encoding='utf-8') as fh:
         json.dump({'scenes': scenes,
                    'layerFiles': {k: v.rsplit('.', 1)[-1] for k, v in used_layers.items()},
-                   'characterNames': sorted(used_chars)}, fh)
+                   'characterNames': sorted(used_chars),
+                   'shaderCodes': shader_codes}, fh)
 
     print(f'scenes={len(scenes)} layers={len(used_layers)} characters={len(used_chars)}')
     print(f'wrote {args.out}/data/scenes.json + assets (git-ignored, do not commit)')

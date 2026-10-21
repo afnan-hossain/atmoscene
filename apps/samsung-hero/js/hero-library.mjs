@@ -117,6 +117,24 @@ export function skyGradient(scene) {
     .filter(Boolean);
 }
 
+/**
+ * Convert one of Samsung's original AGSL (SkSL) programs (`code_N`, stored
+ * in scenes.json under `shaderCodes`) to a WebGL1 fragment shader.
+ * AGSL fragCoord is top-left origin; gl_FragCoord is bottom-left, and a
+ * layer may render in a viewport sub-rect, so the wrapper converts via the
+ * full canvas height (`uCanvasH`, in pixels, layer-view height in
+ * `iResolution`). Samsung's shaders output premultiplied colors — composite
+ * with blendFunc(ONE, ONE_MINUS_SRC_ALPHA), like the Android canvas.
+ */
+export function skslToGlsl(src) {
+  const body = src
+    .replace(/\bfloat2x2\b/g, 'mat2').replace(/\bfloat3x3\b/g, 'mat3').replace(/\bfloat4x4\b/g, 'mat4')
+    .replace(/\bfloat2\b/g, 'vec2').replace(/\bfloat3\b/g, 'vec3').replace(/\bfloat4\b/g, 'vec4')
+    .replace(/\bhalf2\b/g, 'vec2').replace(/\bhalf3\b/g, 'vec3').replace(/\bhalf4\b/g, 'vec4').replace(/\bhalf\b/g, 'float')
+    .replace(/(\bvec4\s+)main\s*\(/g, '$1skMain(');
+  return `precision highp float;\nuniform float uCanvasH;\n${body}\nvoid main(){ gl_FragColor = skMain(vec2(gl_FragCoord.x, uCanvasH - gl_FragCoord.y)); }\n`;
+}
+
 /** GLSL fragment shader that decodes the character MP4's packed alpha
  *  (port of Samsung's TransparentVideoView shader): RGB in the top 80% of
  *  the frame; alpha mask in the bottom 20%, split into 4 quadrant blocks
@@ -146,5 +164,5 @@ export default {
   SUN_STATUSES, DEVICE_TIERS, LAYER_SLOTS,
   loadSceneLibrary, sceneKey, resolveScene, pickVariant,
   hasLayer, conditionLabel, sceneArtwork, skyGradient,
-  CHARACTER_FRAGMENT_SHADER,
+  skslToGlsl, CHARACTER_FRAGMENT_SHADER,
 };

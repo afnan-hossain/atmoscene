@@ -10,7 +10,7 @@
 <header class="topbar">
   <div>
     <h1>Hero Scene Simulator</h1>
-    <p>Every rendering element of Samsung Weather's hero, rebuilt from the decompiled APK — real scene table, real land strips, real character videos, AGSL-style shader layers.</p>
+    <p>Every rendering element of Samsung Weather's hero, rebuilt from the decompiled APK — the real 352-scene table, Samsung's own AGSL shader programs (SkSL → WebGL), original land strips and character videos, and the original layout geometry (360×340dp hero) from <code>detail_hq_bg_layout</code>.</p>
   </div>
   <div class="scene-readout">
     <div><span>Resolved scene</span><strong id="sceneKey">—</strong></div>
@@ -23,17 +23,14 @@
   <!-- ================= HERO STAGE ================= -->
   <section class="stage-wrap">
     <div class="phone" id="stage">
-      <canvas id="skyCanvas"></canvas>
-      <canvas id="sunCanvas"></canvas>
-      <canvas id="cloudCanvas"></canvas>
-      <div id="thunderFlash"></div>
+      <canvas id="glBack"></canvas>
       <img id="farLand" alt="far land layer">
       <img id="gradation" alt="near land gradation">
-      <canvas id="sandCanvas"></canvas>
       <div id="charWrap"><canvas id="charCanvas" width="640" height="640"></canvas></div>
       <img id="nearLand" alt="near land layer">
-      <canvas id="precipCanvas"></canvas>
-      <canvas id="fogCanvas"></canvas>
+      <canvas id="glFront"></canvas>
+      <div id="thunderFlash"></div>
+      <div id="sandTint"></div>
 
       <div class="hero-ui">
         <div class="loc">⌖ <span id="uiLocation">Downtown, Gainesville</span></div>
@@ -44,7 +41,7 @@
       </div>
       <div class="layer-badge" id="layerBadge"></div>
     </div>
-    <p class="stage-note">Stack (back → front): AGSL sky shader → sun/stars → clouds → thunder/sandstorm → far land (WebP) → gradation → transparent character video (packed-alpha MP4, decoded in WebGL like Samsung's <code>TransparentVideoView</code>) → near land (WebP) → rain/snow → fog → UI.</p>
+    <p class="stage-note">Stack (back → front), exactly as <code>detail_hq_bg_layout.xml</code>: AGSL <b>BACKGROUND</b> → <b>SUN_AND_STAR</b> → <b>CLOUD</b> → <b>THUNDER</b> shaders (one WebGL canvas, Samsung's <code>code_0…code_12</code> programs with each scene's real uniforms) → far land (WebP, 212dp/100dp) → gradation → transparent character video (packed-alpha MP4, decoded with Samsung's <code>TransparentVideoView</code> shader) → near land (WebP, 840dp wide for parallax) → AGSL <b>RAIN / SNOW / FOG</b> shaders → UI.</p>
   </section>
 
   <!-- ================= CONTROLS ================= -->
@@ -59,20 +56,20 @@
 
     <div class="control-group">
       <h2>☀️ Sky &amp; astronomy <span>SUN_AND_STAR_CANVAS uniforms</span></h2>
-      <label>Sun / moon altitude % <b id="v-sunalt"></b><input type="range" id="sunalt" min="0" max="100" step="1" value="62"></label>
+      <label>Sun / moon position (min→maxPosition) <b id="v-sunalt"></b><input type="range" id="sunalt" min="0" max="100" step="1" value="62"></label>
       <label>Shader time speed (iTime) <b id="v-speed"></b><input type="range" id="speed" min="0" max="3" step="0.05" value="1"></label>
-      <label>Cloud coverage <b id="v-cloud"></b><input type="range" id="cloud" min="0" max="100" step="1" value="35"></label>
-      <label>Star visibility <b id="v-stars"></b><input type="range" id="stars" min="0" max="100" step="1" value="70"></label>
+      <label>Cloud coverage (cloudCover) <b id="v-cloud"></b><input type="range" id="cloud" min="0" max="100" step="1" value="35"></label>
+      <label>Star density (uStarsDensity) <b id="v-stars"></b><input type="range" id="stars" min="0" max="100" step="1" value="70"></label>
     </div>
 
     <div class="control-group">
-      <h2>🌧️ Weather effects <span>RAIN / SNOW / THUNDER / SAND / FOG canvases</span></h2>
-      <label>Wind strength <b id="v-wind"></b><input type="range" id="wind" min="0" max="4" step="1" value="1"></label>
-      <label>Rain intensity <b id="v-rain"></b><input type="range" id="rain" min="0" max="100" step="1" value="70"></label>
-      <label>Snow intensity <b id="v-snow"></b><input type="range" id="snow" min="0" max="100" step="1" value="70"></label>
-      <label>Lightning frequency <b id="v-bolt"></b><input type="range" id="bolt" min="0" max="100" step="1" value="45"></label>
-      <label>Sandstorm intensity <b id="v-sand"></b><input type="range" id="sand" min="0" max="100" step="1" value="60"></label>
-      <label>Fog density <b id="v-fog"></b><input type="range" id="fog" min="0" max="100" step="1" value="55"></label>
+      <h2>🌧️ Weather effects <span>real shader uniforms, scaled</span></h2>
+      <label>Wind strength (windStrength) <b id="v-wind"></b><input type="range" id="wind" min="0" max="4" step="1" value="1"></label>
+      <label>Rain intensity (rainIntensity) <b id="v-rain"></b><input type="range" id="rain" min="0" max="100" step="1" value="70"></label>
+      <label>Snow intensity (snowIntensity) <b id="v-snow"></b><input type="range" id="snow" min="0" max="100" step="1" value="70"></label>
+      <label>Lightning flash <b id="v-bolt"></b><input type="range" id="bolt" min="0" max="100" step="1" value="45"></label>
+      <label>Sandstorm tint <b id="v-sand"></b><input type="range" id="sand" min="0" max="100" step="1" value="60"></label>
+      <label>Fog density (fogMixAlpha) <b id="v-fog"></b><input type="range" id="fog" min="0" max="100" step="1" value="55"></label>
       <label>Force effects (ignore scene table) <b id="v-forcefx"></b><input type="range" id="forcefx" min="0" max="1" step="1" value="0"></label>
     </div>
 
