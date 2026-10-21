@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samsung Weather — Hero Scene Simulator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>Hero Scene Simulator</h1>
+    <p>Every rendering element of Samsung Weather's hero, rebuilt from the decompiled APK — real scene table, real land strips, real character videos, AGSL-style shader layers.</p>
+  </div>
+  <div class="scene-readout">
+    <div><span>Resolved scene</span><strong id="sceneKey">—</strong></div>
+    <div><span>Background shader</span><strong id="bgClass">—</strong></div>
+    <div><span>Character</span><strong id="charName">—</strong></div>
+  </div>
+</header>
+
+<main>
+  <!-- ================= HERO STAGE ================= -->
+  <section class="stage-wrap">
+    <div class="phone" id="stage">
+      <canvas id="skyCanvas"></canvas>
+      <canvas id="sunCanvas"></canvas>
+      <canvas id="cloudCanvas"></canvas>
+      <div id="thunderFlash"></div>
+      <img id="farLand" alt="far land layer">
+      <img id="gradation" alt="near land gradation">
+      <canvas id="sandCanvas"></canvas>
+      <div id="charWrap"><canvas id="charCanvas" width="640" height="640"></canvas></div>
+      <img id="nearLand" alt="near land layer">
+      <canvas id="precipCanvas"></canvas>
+      <canvas id="fogCanvas"></canvas>
+
+      <div class="hero-ui">
+        <div class="loc">⌖ <span id="uiLocation">Downtown, Gainesville</span></div>
+        <div class="temp"><span id="uiTemp">26</span>°</div>
+        <div class="cond" id="uiCond">Fair</div>
+        <div class="hilo">↑ <span id="uiHigh">27</span>° / ↓ <span id="uiLow">10</span>°<br>Feels like <span id="uiFeels">27</span>°</div>
+        <div class="hourly" id="uiHourly"></div>
+      </div>
+      <div class="layer-badge" id="layerBadge"></div>
+    </div>
+    <p class="stage-note">Stack (back → front): AGSL sky shader → sun/stars → clouds → thunder/sandstorm → far land (WebP) → gradation → transparent character video (packed-alpha MP4, decoded in WebGL like Samsung's <code>TransparentVideoView</code>) → near land (WebP) → rain/snow → fog → UI.</p>
+  </section>
+
+  <!-- ================= CONTROLS ================= -->
+  <section class="controls">
+    <div class="control-group">
+      <h2>🎬 Scene <span>DetailHqBgState → agsl_shader_android.json</span></h2>
+      <label>Weather code <b id="v-code"></b><input type="range" id="code" min="-1" max="28" step="1" value="0"></label>
+      <label>Sun status <b id="v-sun"></b><input type="range" id="sun" min="0" max="5" step="1" value="0"></label>
+      <label>Device tier (shader quality) <b id="v-tier"></b><input type="range" id="tier" min="0" max="2" step="1" value="2"></label>
+      <label>Temperature °C → character outfit <b id="v-temp"></b><input type="range" id="temp" min="-12" max="42" step="1" value="26"></label>
+    </div>
+
+    <div class="control-group">
+      <h2>☀️ Sky &amp; astronomy <span>SUN_AND_STAR_CANVAS uniforms</span></h2>
+      <label>Sun / moon altitude % <b id="v-sunalt"></b><input type="range" id="sunalt" min="0" max="100" step="1" value="62"></label>
+      <label>Shader time speed (iTime) <b id="v-speed"></b><input type="range" id="speed" min="0" max="3" step="0.05" value="1"></label>
+      <label>Cloud coverage <b id="v-cloud"></b><input type="range" id="cloud" min="0" max="100" step="1" value="35"></label>
+      <label>Star visibility <b id="v-stars"></b><input type="range" id="stars" min="0" max="100" step="1" value="70"></label>
+    </div>
+
+    <div class="control-group">
+      <h2>🌧️ Weather effects <span>RAIN / SNOW / THUNDER / SAND / FOG canvases</span></h2>
+      <label>Wind strength <b id="v-wind"></b><input type="range" id="wind" min="0" max="4" step="1" value="1"></label>
+      <label>Rain intensity <b id="v-rain"></b><input type="range" id="rain" min="0" max="100" step="1" value="70"></label>
+      <label>Snow intensity <b id="v-snow"></b><input type="range" id="snow" min="0" max="100" step="1" value="70"></label>
+      <label>Lightning frequency <b id="v-bolt"></b><input type="range" id="bolt" min="0" max="100" step="1" value="45"></label>
+      <label>Sandstorm intensity <b id="v-sand"></b><input type="range" id="sand" min="0" max="100" step="1" value="60"></label>
+      <label>Fog density <b id="v-fog"></b><input type="range" id="fog" min="0" max="100" step="1" value="55"></label>
+      <label>Force effects (ignore scene table) <b id="v-forcefx"></b><input type="range" id="forcefx" min="0" max="1" step="1" value="0"></label>
+    </div>
+
+    <div class="control-group">
+      <h2>🧱 Layers <span>0 = off, 1 = on — as in DetailHqBgConfig</span></h2>
+      <label>Sky shader (BACKGROUND) <b id="v-t-sky"></b><input type="range" id="t-sky" min="0" max="1" step="1" value="1"></label>
+      <label>Sun / stars <b id="v-t-sun"></b><input type="range" id="t-sun" min="0" max="1" step="1" value="1"></label>
+      <label>Clouds <b id="v-t-cloud"></b><input type="range" id="t-cloud" min="0" max="1" step="1" value="1"></label>
+      <label>Far land <b id="v-t-far"></b><input type="range" id="t-far" min="0" max="1" step="1" value="1"></label>
+      <label>Character video <b id="v-t-char"></b><input type="range" id="t-char" min="0" max="1" step="1" value="1"></label>
+      <label>Near land + gradation <b id="v-t-near"></b><input type="range" id="t-near" min="0" max="1" step="1" value="1"></label>
+      <label>Precipitation / fog <b id="v-t-precip"></b><input type="range" id="t-precip" min="0" max="1" step="1" value="1"></label>
+    </div>
+
+    <div class="control-group">
+      <h2>🎥 Character &amp; land</h2>
+      <label>Character size <b id="v-charsize"></b><input type="range" id="charsize" min="25" max="70" step="1" value="46"></label>
+      <label>Character position X % <b id="v-charx"></b><input type="range" id="charx" min="0" max="85" step="1" value="58"></label>
+      <label>Character playback speed <b id="v-charrate"></b><input type="range" id="charrate" min="0.1" max="2.5" step="0.05" value="1"></label>
+      <label>Far land opacity <b id="v-farop"></b><input type="range" id="farop" min="0" max="100" step="1" value="100"></label>
+      <label>Near land opacity <b id="v-nearop"></b><input type="range" id="nearop" min="0" max="100" step="1" value="100"></label>
+    </div>
+
+    <div class="control-group">
+      <h2>🖱️ Camera / parallax <span>DetailHqBgView offset interpolators</span></h2>
+      <label>Swipe between cities −100…100 <b id="v-swipe"></b><input type="range" id="swipe" min="-100" max="100" step="1" value="0"></label>
+      <label>Scroll collapse 0…100 <b id="v-scroll"></b><input type="range" id="scroll" min="0" max="100" step="1" value="0"></label>
+      <label>Hero zoom <b id="v-zoom"></b><input type="range" id="zoom" min="80" max="160" step="1" value="100"></label>
+      <label>Exploded layer view <b id="v-explode"></b><input type="range" id="explode" min="0" max="1" step="1" value="0"></label>
+    </div>
+
+    <div class="control-group wide">
+      <h2>📋 Active scene resources</h2>
+      <pre id="sceneInfo">loading scene table…</pre>
+      <div class="btn-row">
+        <button id="btnPlay">⏸ Pause character</button>
+        <button id="btnRandom">🎲 Random scene</button>
+        <button id="btnReset">↺ Reset sliders</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<video id="charVideo" muted loop playsinline preload="auto" style="display:none"></video>
+<script src="app.js"></script>
+</body>
+</html>

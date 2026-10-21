@@ -1,0 +1,7 @@
+# Samsung copyrighted assets — generated locally by
+# tools/extract-samsung-hero.py from an APK you own. Never commit these.
+assets/layers/*
+!assets/layers/.gitkeep
+assets/characters/*
+!assets/characters/.gitkeep
+data/scenes.json

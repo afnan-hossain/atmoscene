@@ -33,3 +33,14 @@ SOFTWARE.
 
 Atmoscene is an independent project and is not affiliated with or endorsed by Meteocons or Bas Milius.
 
+
+## Samsung Weather (reference only — no assets included)
+
+`apps/samsung-hero/` contains an independent, clean-room web reconstruction of
+the hero scene system found in Samsung Weather (`com.sec.android.daemonapp`),
+written for interoperability/study. **No Samsung artwork, video, or scene data
+is included in this repository**: the binary assets and generated
+`data/scenes.json` are git-ignored and can only be produced locally by
+`tools/extract-samsung-hero.py` from an APK the user obtained themselves.
+Samsung Weather and its assets are trademarks/copyrighted material of
+Samsung Electronics. Atmoscene is not affiliated with or endorsed by Samsung.

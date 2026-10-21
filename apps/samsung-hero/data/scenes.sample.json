@@ -1,0 +1,22 @@
+{
+  "_comment": "Synthetic placeholder showing the schema only. Generate the real scenes.json with tools/extract-samsung-hero.py (git-ignored).",
+  "scenes": {
+    "0_DAY_HIGH": {
+      "resources": {
+        "FARLAND": { "average": "example_farbg" },
+        "HUMAN": { "average": "example_character_average", "over27": "example_character_27over", "below0": "example_character_belowzero", "loopStartTime": 150 },
+        "NEARLAND": { "average": "example_ground" },
+        "NEARLAND_GRADATION": { "resource": "example_gradation" }
+      },
+      "layers": {
+        "BACKGROUND_CANVAS": {
+          "class": "class_0", "codeId": "code_0",
+          "uniforms": { "skyColor1": [0.2, 0.45, 0.85, 1], "skyColor2": [0.45, 0.65, 0.95, 1], "skyColor3": [0.7, 0.85, 1, 1], "skyColor4": [0.85, 0.92, 1, 1], "skyColor5": [0.95, 0.98, 1, 1], "skyColorGradientPos1": 0.3, "skyColorGradientPos2": 0.45, "skyColorGradientPos3": 0.65 }
+        },
+        "SUN_AND_STAR_CANVAS": { "class": "class_1", "codeId": "code_1", "uniforms": {} }
+      }
+    }
+  },
+  "layerFiles": { "example_farbg": "webp", "example_ground": "webp", "example_gradation": "png" },
+  "characterNames": ["example_character_average"]
+}
