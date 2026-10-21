@@ -35,7 +35,9 @@ body { font-family: "Segoe UI", system-ui, sans-serif; background:#0a0d14; color
    horizon band of a 16:9 stage. */
 .phone { position:relative; width:min(1920px, 98vw); aspect-ratio: 16/9; max-height:94vh; border-radius:24px; overflow:hidden;
   container-type: inline-size; background:#79a6e8; box-shadow:0 18px 50px rgba(0,0,0,.55), 0 0 0 8px #1c2233; }
-.phone canvas, .phone img { position:absolute; width:100%; height:100%; }
+.phone canvas, .phone img:not(.wx-icon) { position:absolute; width:100%; height:100%; }
+.phone .wx-icon { position:static; display:block; width:22px; height:22px; max-width:none; flex:0 0 auto; }
+.phone .wx-icon.drop { width:11px; height:11px; display:inline-block; }
 #glBack { inset:0; z-index:1; }
 #gradation { z-index:4; object-fit:fill; width:100%; height:52% !important; top:52% !important; left:0; opacity:.9; }
 #farLand { z-index:5; object-fit:cover; width:100%; height:19% !important; top:43% !important; left:0; }
@@ -52,17 +54,20 @@ body { font-family: "Segoe UI", system-ui, sans-serif; background:#0a0d14; color
 .hero-ui .cond { font-size:20px; font-weight:600; margin-top:2px; }
 .hero-ui .hilo { font-size:13.5px; margin-top:9px; line-height:1.5; opacity:.95; }
 /* Samsung hourly card: translucent panel, hour icons, precip, temp graph */
-.hourly-card { position:absolute; z-index:20; left:50%; bottom:16px; width:min(1040px, 86%); height:178px;
+.hourly-card { position:absolute; z-index:20; left:50%; bottom:14px; width:min(1040px, 88%); height:auto;
   transform: translateX(-50%); background:rgba(52,84,128,.42); border-radius:22px; backdrop-filter: blur(6px); color:#fff;
-  text-shadow:0 1px 6px rgba(20,40,80,.4); pointer-events:none; }
-.h-cols { display:flex; justify-content:space-between; padding:10px 16px 0; }
-.h-col { flex:1; text-align:center; font-size:12.5px; display:flex; flex-direction:column; gap:4px; align-items:center; }
-.h-col .h-ico { font-size:19px; height:26px; }
-.h-col .h-pre { font-size:11px; opacity:.9; white-space:nowrap; }
+  text-shadow:0 1px 6px rgba(20,40,80,.4); pointer-events:none; padding:12px 10px 8px;
+  display:flex; flex-direction:column; gap:4px; }
+.h-cols { display:flex; align-items:flex-start; }
+.h-col { flex:1 1 0; min-width:0; text-align:center; font-size:12.5px; display:flex; flex-direction:column; align-items:center; gap:6px; }
+.h-col .h-time { line-height:1; white-space:nowrap; }
+.h-col .h-ico { height:28px; display:flex; align-items:center; justify-content:center; }
+.h-col .h-ico .wx-icon { width:26px; height:26px; }
+.h-col .h-pre { font-size:11px; line-height:1; opacity:.95; white-space:nowrap; display:flex; align-items:center; gap:3px; }
 .h-col.sunset .h-pre { font-weight:700; }
-.h-graph { position:absolute; left:16px; right:16px; top:96px; width:calc(100% - 32px); height:46px; }
-.h-temps { position:absolute; left:16px; right:16px; top:148px; height:20px; }
-.h-temps span { position:absolute; transform:translateX(-50%); font-size:13px; font-weight:600; }
+.h-graph { display:block; position:relative; width:100%; height:34px; margin:2px 0; }
+.h-temps { align-items:center; }
+.h-temps .h-col { font-size:14px; font-weight:700; gap:0; }
 /* Samsung daily card */
 .daily-card { width:min(1040px, 92vw); margin-top:14px; background:linear-gradient(180deg, rgba(64,102,158,.55), rgba(38,64,110,.65));
   border:1px solid var(--line); border-radius:22px; padding:10px 22px 16px; color:#fff; }

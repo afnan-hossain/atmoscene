@@ -352,6 +352,11 @@ function effectiveTemp() { // diurnal curve around the temperature slider (±3.5
   const h = +els.time.value;
   return Math.round(+els.temp.value + 3.5 * Math.sin((h - 9) / 24 * Math.PI * 2));
 }
+function locationHour() {
+  // Wall clock in the forecast location, independent of the laptop timezone.
+  const local = new Date(Date.now() + (WX?.utc_offset_seconds || 0) * 1000);
+  return local.getUTCHours() + local.getUTCMinutes() / 60 + local.getUTCSeconds() / 3600;
+}
 function fmtHour(h) {
   h = ((h % 24) + 24) % 24;
   const hh = Math.floor(h), mm = Math.round((h - hh) * 60) % 60;
@@ -378,6 +383,7 @@ function condIcon(cond, isNight) {
 
 /* ---------- live weather (Open-Meteo, free / no key — same as Atmoscene) ---------- */
 let WX = null; // parsed real forecast for the chosen location
+let followClock = true; // live clock, until the time slider or timelapse takes over
 let LOC = { name: 'Gainesville', admin: 'Florida', lat: 29.6516, lon: -82.3248 };
 function wmoToScene(wmo, isDay) {
   if (wmo === 0) return 0;                                  // clear / sunny
@@ -440,14 +446,17 @@ async function fetchWeather(lat, lon, label) {
   // drive the simulator from the real sky
   els.code.value = wmoToScene(wmo, isDay);
   els.temp.value = Math.max(-12, Math.min(42, Math.round(cur.temperature_2m)));
-  const localHour = +cur.time.slice(11, 13) + (+cur.time.slice(14, 16)) / 60;
-  els.time.value = localHour;
+  // current.time is the start of Open-Meteo's 15-minute observation bucket
+  // (6:57 reads as 6:45). The clock shows the location's real wall time.
+  followClock = true;
+  els.time.value = locationHour();
   els.wind.value = Math.max(0, Math.min(4, Math.round(cur.wind_speed_10m / 12)));
   syncTimeToScene();
   const overrideStatus = isDay ? (SUNS[+els.sun.value] === 'NIGHT' ? 'DAY' : SUNS[+els.sun.value]) : 'NIGHT';
   els.sun.value = SUNS.indexOf(overrideStatus);
   $('uiLocation').textContent = label;
-  $('wxStatus').textContent = `Live weather: ${label} · ${Math.round(cur.temperature_2m)}° ${wmoLabel(wmo)} · wind ${Math.round(cur.wind_speed_10m)} km/h · Open-Meteo`;
+  const observed = fmtHour(+cur.time.slice(11, 13) + (+cur.time.slice(14, 16)) / 60).full;
+  $('wxStatus').textContent = `Live weather: ${label} · ${Math.round(cur.temperature_2m)}° ${wmoLabel(wmo)} · wind ${Math.round(cur.wind_speed_10m)} km/h · observed ${observed} · Open-Meteo`;
   refresh();
 }
 function renderCards(cond) {
@@ -492,15 +501,15 @@ function renderCards(cond) {
   const pts = slots.map((s, i) => s.sunset ? null : [X(i), Y(s.t)]).filter(Boolean);
   const line = pts.map(p => p.map(v => v.toFixed(1)).join(',')).join(' ');
   $('hourlyCard').innerHTML = `
-    <div class="h-cols">${slots.map((s, i) => s.sunset
-      ? `<div class="h-col sunset"><span>${s.label || '6:52 PM'}</span><span class="h-ico">${iconImg('ic_weather_sunset')}</span><span class="h-pre">Sunset</span></div>`
-      : `<div class="h-col"><span>${fmtHour(s.h).label}</span><span class="h-ico">${iconImg(s.icon || condIcon(cond, s.night))}</span><span class="h-pre">${iconImg('ic_rainprobability_01', 'drop')}${s.precip}%</span></div>`).join('')}
+    <div class="h-cols">${slots.map(s => s.sunset
+      ? `<div class="h-col sunset"><span class="h-time">${s.label || '6:52 PM'}</span><span class="h-ico">${iconImg('ic_weather_sunset')}</span><span class="h-pre">Sunset</span></div>`
+      : `<div class="h-col"><span class="h-time">${fmtHour(s.h).label}</span><span class="h-ico">${iconImg(s.icon || condIcon(cond, s.night))}</span><span class="h-pre">${iconImg('ic_rainprobability_01', 'drop')}<span>${s.precip}%</span></span></div>`).join('')}
     </div>
     <svg class="h-graph" viewBox="0 0 100 100" preserveAspectRatio="none">
       <polyline points="${line}" fill="none" stroke="#ffd94d" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
       ${pts.map(p => `<circle cx="${p[0]}" cy="${p[1]}" r="1.8" fill="#fff" stroke="#ffd94d" stroke-width="1"/>`).join('')}
     </svg>
-    <div class="h-temps">${slots.map((s, i) => `<span style="left:${X(i)}%">${s.sunset ? '' : s.t + '°'}</span>`).join('')}</div>`;
+    <div class="h-cols h-temps">${slots.map(s => `<div class="h-col"><span>${s.sunset ? '' : s.t + '°'}</span></div>`).join('')}</div>`;
   // daily: real Open-Meteo days (incl. Yesterday via past_days=1), Samsung list style
   const wd = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   let rows;
@@ -645,8 +654,12 @@ function loop(ts) {
   const dt = Math.min(0.05, (ts - lastTs) / 1000 || 0.016); lastTs = ts;
   iTime += dt * +els.speed.value;
   if (timePlaying && DB) {
+    followClock = false;
     els.time.value = (+els.time.value + dt * +els.tspeed.value) % 24;
     syncTimeToScene(); refresh();
+  } else if (followClock && WX) {
+    const h = locationHour();
+    if (fmtHour(h).full !== $('uiClock').textContent) { els.time.value = h; syncTimeToScene(); refresh(); }
   }
   if (resolved) {
     const ov = uniformOverrides();
@@ -682,7 +695,7 @@ $('btnTime').addEventListener('click', () => {
   $('btnTime').textContent = timePlaying ? '⏸ Pause timelapse' : '▶ Play timelapse';
 });
 Object.values(els).forEach(e => e.addEventListener('input', () => {
-  if (e === els.time) syncTimeToScene();
+  if (e === els.time) { followClock = false; syncTimeToScene(); }
   refresh(); if (e === els.tier) resize();
 }));
 $('btnPlay').addEventListener('click', () => {
@@ -696,7 +709,7 @@ $('btnRandom').addEventListener('click', () => {
   els.code.value = c; els.sun.value = Math.max(0, SUNS.indexOf(s)); els.tier.value = TIERS.indexOf(t);
   refresh();
 });
-$('btnReset').addEventListener('click', () => { Object.values(els).forEach(e => e.value = defaults[e.id]); refresh(); resize(); });
+$('btnReset').addEventListener('click', () => { Object.values(els).forEach(e => e.value = defaults[e.id]); followClock = true; refresh(); resize(); });
 window.addEventListener('resize', resize);
 
 /* ---------- location search + GPS (Open-Meteo geocoding, as on Atmoscene) ---------- */
