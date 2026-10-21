@@ -10,6 +10,19 @@ body { font-family: "Segoe UI", system-ui, sans-serif; background:#0a0d14; color
 .scene-readout span { display:block; font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--dim); }
 .scene-readout strong { font-size:13px; word-break:break-all; }
 
+.wx-icon { width:22px; height:22px; vertical-align:middle; }
+.wx-icon.drop { width:11px; height:11px; margin-right:2px; }
+.h-col .h-ico .wx-icon { width:26px; height:26px; }
+.d-ico .wx-icon { width:24px; height:24px; margin-right:4px; }
+.d-pre .wx-icon.drop { width:10px; height:10px; }
+.loc-bar { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:8px 22px 2px; }
+.loc-search { position:relative; flex:0 1 420px; }
+.loc-search input { width:100%; background:var(--panel); border:1px solid var(--line); border-radius:10px; color:var(--txt); padding:9px 12px; font-size:13.5px; outline:none; }
+.loc-search input:focus { border-color:var(--acc); }
+.loc-results { display:none; position:absolute; z-index:50; left:0; right:0; top:calc(100% + 4px); background:var(--panel2); border:1px solid var(--line); border-radius:10px; overflow:hidden; box-shadow:0 14px 34px rgba(0,0,0,.5); }
+.loc-results button { display:block; width:100%; text-align:left; border:none; border-bottom:1px solid var(--line); border-radius:0; padding:9px 12px; font-size:13px; }
+.loc-results button:last-child { border-bottom:none; }
+.wx-status { color:var(--dim); font-size:12.5px; }
 .stage-wrap { display:flex; flex-direction:column; align-items:center; padding:14px 16px 4px; }
 /* Samsung hero geometry (detail_hq_bg_layout.xml + dimens): DetailHqBgView is
    MATCH_PARENT — the scene fills the whole screen and content scrolls over it.
@@ -17,27 +30,52 @@ body { font-family: "Segoe UI", system-ui, sans-serif; background:#0a0d14; color
    in cqw units (1cqw = 3.6dp at stage width): sky-effect shaders 340dp tall,
    far land top 212dp h 100dp, gradation top 226dp h 258dp, near land top 250dp
    h 80dp w 840dp centered, character 160dp at marginTop 140dp. */
-.phone { position:relative; width:min(430px, 94vw); aspect-ratio: 360/600; border-radius:28px; overflow:hidden;
+/* Landscape 1920x1080 hero, integrated full-bleed like the Atmoscene site
+   hero: the Samsung scene (dp-anchored on the phone) is re-anchored to the
+   horizon band of a 16:9 stage. */
+.phone { position:relative; width:min(1920px, 98vw); aspect-ratio: 16/9; max-height:94vh; border-radius:24px; overflow:hidden;
   container-type: inline-size; background:#79a6e8; box-shadow:0 18px 50px rgba(0,0,0,.55), 0 0 0 8px #1c2233; }
 .phone canvas, .phone img { position:absolute; width:100%; height:100%; }
 #glBack { inset:0; z-index:1; }
-#gradation { z-index:4; object-fit:fill; width:100%; height:71.7cqw !important; top:62.8cqw !important; left:0; opacity:.9; }
-#farLand { z-index:5; object-fit:cover; width:100%; height:27.8cqw !important; top:58.9cqw !important; left:0; }
+#gradation { z-index:4; object-fit:fill; width:100%; height:52% !important; top:52% !important; left:0; opacity:.9; }
+#farLand { z-index:5; object-fit:cover; width:100%; height:19% !important; top:43% !important; left:0; }
 #charWrap { position:absolute; z-index:8; }
 #charWrap canvas { position:relative; width:100%; height:100%; }
-#nearLand { z-index:9; object-fit:cover; width:233.3% !important; height:22.2cqw !important; top:69.4cqw !important; left:-66.7%; max-width:none; }
+#nearLand { z-index:9; object-fit:cover; width:170% !important; height:21% !important; top:57.5% !important; left:-35%; max-width:none; }
 #glFront { inset:0; z-index:10; }
 #thunderFlash { position:absolute; inset:0; background:#dfe9ff; opacity:0; z-index:12; pointer-events:none; }
 #sandTint { position:absolute; inset:0; background:rgba(216,164,92,.0); z-index:11; pointer-events:none; }
-.hero-ui { position:absolute; z-index:20; inset:0; padding:20px 22px 0; color:#fff; text-shadow:0 1px 10px rgba(20,40,80,.45); pointer-events:none; transition:opacity .2s; }
-.hero-ui .loc { font-size:16px; font-weight:600; }
-.hero-ui .temp { font-size:76px; font-weight:200; line-height:1.05; }
-.hero-ui .cond { font-size:18px; font-weight:600; margin-top:2px; }
-.hero-ui .hilo { font-size:13px; margin-top:8px; line-height:1.5; opacity:.95; }
-.hourly { position:absolute; left:14px; right:14px; bottom:10px; display:flex; justify-content:space-between;
-  background:rgba(38,66,110,.38); border-radius:16px; padding:9px 12px; backdrop-filter: blur(3px); }
-.hourly div { text-align:center; font-size:11.5px; }
-.hourly .h-temp { font-size:14px; font-weight:700; margin-top:2px; }
+.hero-ui { position:absolute; z-index:20; left:0; top:0; padding:26px 30px 0; color:#fff; text-shadow:0 1px 10px rgba(20,40,80,.45); pointer-events:none; transition:opacity .2s; }
+.hero-ui .loc { font-size:17px; font-weight:600; }
+.hero-ui .clock { font-weight:400; opacity:.85; font-size:14px; margin-left:10px; }
+.hero-ui .temp { font-size:88px; font-weight:200; line-height:1.05; }
+.hero-ui .cond { font-size:20px; font-weight:600; margin-top:2px; }
+.hero-ui .hilo { font-size:13.5px; margin-top:9px; line-height:1.5; opacity:.95; }
+/* Samsung hourly card: translucent panel, hour icons, precip, temp graph */
+.hourly-card { position:absolute; z-index:20; left:22px; right:22px; bottom:18px; height:158px;
+  background:rgba(52,84,128,.42); border-radius:22px; backdrop-filter: blur(6px); color:#fff;
+  text-shadow:0 1px 6px rgba(20,40,80,.4); pointer-events:none; transition:transform .2s; }
+.h-cols { display:flex; justify-content:space-between; padding:14px 18px 0; }
+.h-col { flex:1; text-align:center; font-size:12.5px; display:flex; flex-direction:column; gap:5px; align-items:center; }
+.h-col .h-ico { font-size:19px; }
+.h-col .h-pre { font-size:11px; opacity:.9; }
+.h-col.sunset .h-pre { font-weight:700; }
+.h-graph { position:absolute; left:18px; right:18px; top:64px; width:calc(100% - 36px); height:56px; }
+.h-temps { position:absolute; left:18px; right:18px; top:126px; height:20px; }
+.h-temps span { position:absolute; transform:translateX(-50%); font-size:13px; font-weight:600; }
+/* Samsung daily card */
+.daily-card { width:min(1920px, 98vw); margin-top:14px; background:linear-gradient(180deg, rgba(64,102,158,.55), rgba(38,64,110,.65));
+  border:1px solid var(--line); border-radius:22px; padding:10px 22px 16px; color:#fff; }
+.d-row { display:flex; align-items:center; gap:14px; padding:13px 2px; border-bottom:1px solid rgba(255,255,255,.10); font-size:15.5px; }
+.d-row:last-of-type { border-bottom:none; }
+.d-row.today { font-weight:600; }
+.d-name { width:110px; }
+.d-pre { width:64px; font-size:13px; opacity:.9; }
+.d-ico { flex:1; font-size:16px; letter-spacing:6px; }
+.d-temps b { font-size:16.5px; } .d-temps i { font-style:normal; opacity:.65; margin-left:8px; }
+.daily-toast { display:flex; align-items:center; justify-content:center; position:relative; padding-top:12px; }
+.toast-pill { background:rgba(240,246,255,.92); color:#24507e; border-radius:20px; padding:8px 18px; font-size:13.5px; font-weight:600; box-shadow:0 4px 14px rgba(0,0,0,.25); }
+.toast-search { position:absolute; right:4px; font-size:20px; opacity:.9; }
 .layer-badge { position:absolute; z-index:21; right:10px; top:10px; background:rgba(8,12,22,.55); color:#cfe2ff;
   font-size:10.5px; padding:5px 9px; border-radius:20px; max-width:70%; text-align:right; line-height:1.5; }
 .stage-note { color:var(--dim); font-size:12px; max-width:880px; text-align:center; margin-top:12px; line-height:1.5; }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -10,7 +10,7 @@
 <header class="topbar">
   <div>
     <h1>Hero Scene Simulator</h1>
-    <p>Every rendering element of Samsung Weather's hero, rebuilt from the decompiled APK — the real 352-scene table, Samsung's own AGSL shader programs (SkSL → WebGL), original land strips and character videos, and the original layout geometry (360×340dp hero) from <code>detail_hq_bg_layout</code>.</p>
+    <p>Every rendering element of Samsung Weather's hero, rebuilt from the decompiled APK — the real 352-scene table, Samsung's own AGSL shader programs (SkSL → WebGL), original land strips and character videos, and the original layout geometry (360Ã—340dp hero) from <code>detail_hq_bg_layout</code>.</p>
   </div>
   <div class="scene-readout">
     <div><span>Resolved scene</span><strong id="sceneKey">—</strong></div>
@@ -20,6 +20,16 @@
 </header>
 
 <main>
+  <!-- ================= LOCATION / LIVE WEATHER ================= -->
+  <section class="loc-bar">
+    <div class="loc-search">
+      <input type="text" id="locSearch" placeholder="Search city… (live weather via Open-Meteo)" autocomplete="off">
+      <div class="loc-results" id="locResults"></div>
+    </div>
+    <button id="btnGps">⌖ Use my location</button>
+    <span class="wx-status" id="wxStatus">Live weather: Gainesville, FL (default)</span>
+  </section>
+
   <!-- ================= HERO STAGE ================= -->
   <section class="stage-wrap">
     <div class="phone" id="stage">
@@ -33,21 +43,27 @@
       <div id="sandTint"></div>
 
       <div class="hero-ui">
-        <div class="loc">⌖ <span id="uiLocation">Downtown, Gainesville</span></div>
+        <div class="loc">⌖ <span id="uiLocation">Downtown, Gainesville</span> <span class="clock" id="uiClock">6:07 PM</span></div>
         <div class="temp"><span id="uiTemp">26</span>°</div>
         <div class="cond" id="uiCond">Fair</div>
         <div class="hilo">↑ <span id="uiHigh">27</span>° / ↓ <span id="uiLow">10</span>°<br>Feels like <span id="uiFeels">27</span>°</div>
-        <div class="hourly" id="uiHourly"></div>
       </div>
+      <div class="hourly-card" id="hourlyCard"></div>
       <div class="layer-badge" id="layerBadge"></div>
     </div>
+
+    <!-- ============ DAILY CARD (Samsung detail style) ============ -->
+    <section class="daily-card" id="dailyCard">
+      <div class="daily-rows" id="dailyRows"></div>
+      <div class="daily-toast"><span class="toast-pill">◉ Weather info updated.</span><span class="toast-search">⌕</span></div>
+    </section>
     <p class="stage-note">Stack (back → front), exactly as <code>detail_hq_bg_layout.xml</code>: AGSL <b>BACKGROUND</b> → <b>SUN_AND_STAR</b> → <b>CLOUD</b> → <b>THUNDER</b> shaders (one WebGL canvas, Samsung's <code>code_0…code_12</code> programs with each scene's real uniforms) → far land (WebP, 212dp/100dp) → gradation → transparent character video (packed-alpha MP4, decoded with Samsung's <code>TransparentVideoView</code> shader) → near land (WebP, 840dp wide for parallax) → AGSL <b>RAIN / SNOW / FOG</b> shaders → UI.</p>
   </section>
 
   <!-- ================= CONTROLS ================= -->
   <section class="controls">
     <div class="control-group">
-      <h2>🎬 Scene <span>DetailHqBgState → agsl_shader_android.json</span></h2>
+      <h2>Scene <span>DetailHqBgState → agsl_shader_android.json</span></h2>
       <label>Weather code <b id="v-code"></b><input type="range" id="code" min="-1" max="28" step="1" value="0"></label>
       <label>Sun status <b id="v-sun"></b><input type="range" id="sun" min="0" max="5" step="1" value="0"></label>
       <label>Device tier (shader quality) <b id="v-tier"></b><input type="range" id="tier" min="0" max="2" step="1" value="2"></label>
@@ -55,7 +71,14 @@
     </div>
 
     <div class="control-group">
-      <h2>☀️ Sky &amp; astronomy <span>SUN_AND_STAR_CANVAS uniforms</span></h2>
+      <h2>Time simulator <span>drives sun status, sun path, temperature curve and the cards</span></h2>
+      <label>Time of day <b id="v-time"></b><input type="range" id="time" min="0" max="24" step="0.25" value="17.1"></label>
+      <label>Timelapse speed (hours / sec) <b id="v-tspeed"></b><input type="range" id="tspeed" min="0.05" max="2" step="0.05" value="0.35"></label>
+      <div class="btn-row"><button id="btnTime">▶ Play timelapse</button></div>
+    </div>
+
+    <div class="control-group">
+      <h2>Sky &amp; astronomy <span>SUN_AND_STAR_CANVAS uniforms</span></h2>
       <label>Sun / moon position (min→maxPosition) <b id="v-sunalt"></b><input type="range" id="sunalt" min="0" max="100" step="1" value="62"></label>
       <label>Shader time speed (iTime) <b id="v-speed"></b><input type="range" id="speed" min="0" max="3" step="0.05" value="1"></label>
       <label>Cloud coverage (cloudCover) <b id="v-cloud"></b><input type="range" id="cloud" min="0" max="100" step="1" value="35"></label>
@@ -63,7 +86,7 @@
     </div>
 
     <div class="control-group">
-      <h2>🌧️ Weather effects <span>real shader uniforms, scaled</span></h2>
+      <h2>Weather effects <span>real shader uniforms, scaled</span></h2>
       <label>Wind strength (windStrength) <b id="v-wind"></b><input type="range" id="wind" min="0" max="4" step="1" value="1"></label>
       <label>Rain intensity (rainIntensity) <b id="v-rain"></b><input type="range" id="rain" min="0" max="100" step="1" value="70"></label>
       <label>Snow intensity (snowIntensity) <b id="v-snow"></b><input type="range" id="snow" min="0" max="100" step="1" value="70"></label>
@@ -74,7 +97,7 @@
     </div>
 
     <div class="control-group">
-      <h2>🧱 Layers <span>0 = off, 1 = on — as in DetailHqBgConfig</span></h2>
+      <h2>Layers <span>0 = off, 1 = on — as in DetailHqBgConfig</span></h2>
       <label>Sky shader (BACKGROUND) <b id="v-t-sky"></b><input type="range" id="t-sky" min="0" max="1" step="1" value="1"></label>
       <label>Sun / stars <b id="v-t-sun"></b><input type="range" id="t-sun" min="0" max="1" step="1" value="1"></label>
       <label>Clouds <b id="v-t-cloud"></b><input type="range" id="t-cloud" min="0" max="1" step="1" value="1"></label>
@@ -85,7 +108,7 @@
     </div>
 
     <div class="control-group">
-      <h2>🎥 Character &amp; land</h2>
+      <h2>Character &amp; land</h2>
       <label>Character size <b id="v-charsize"></b><input type="range" id="charsize" min="25" max="70" step="1" value="46"></label>
       <label>Character position X % <b id="v-charx"></b><input type="range" id="charx" min="0" max="85" step="1" value="58"></label>
       <label>Character playback speed <b id="v-charrate"></b><input type="range" id="charrate" min="0.1" max="2.5" step="0.05" value="1"></label>
@@ -94,7 +117,7 @@
     </div>
 
     <div class="control-group">
-      <h2>🖱️ Camera / parallax <span>DetailHqBgView offset interpolators</span></h2>
+      <h2>Camera / parallax <span>DetailHqBgView offset interpolators</span></h2>
       <label>Swipe between cities −100…100 <b id="v-swipe"></b><input type="range" id="swipe" min="-100" max="100" step="1" value="0"></label>
       <label>Scroll collapse 0…100 <b id="v-scroll"></b><input type="range" id="scroll" min="0" max="100" step="1" value="0"></label>
       <label>Hero zoom <b id="v-zoom"></b><input type="range" id="zoom" min="80" max="160" step="1" value="100"></label>
@@ -102,18 +125,19 @@
     </div>
 
     <div class="control-group wide">
-      <h2>📋 Active scene resources</h2>
+      <h2>Active scene resources</h2>
       <pre id="sceneInfo">loading scene table…</pre>
       <div class="btn-row">
         <button id="btnPlay">⏸ Pause character</button>
-        <button id="btnRandom">🎲 Random scene</button>
+        <button id="btnRandom"> Random scene</button>
         <button id="btnReset">↺ Reset sliders</button>
       </div>
     </div>
   </section>
 </main>
 
-<video id="charVideo" muted loop playsinline preload="auto" style="display:none"></video>
+<video id="charVideo" muted playsinline preload="auto" style="display:none"></video>
 <script src="app.js"></script>
 </body>
 </html>
+

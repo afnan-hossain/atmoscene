@@ -4,4 +4,6 @@ assets/layers/*
 !assets/layers/.gitkeep
 assets/characters/*
 !assets/characters/.gitkeep
+assets/icons/*
+!assets/icons/.gitkeep
 data/scenes.json

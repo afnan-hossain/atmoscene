@@ -60,7 +60,31 @@ python tools/extract-samsung-hero.py \
   --resources-dump resources_dump.txt \
   --out apps/samsung-hero
 # -> scenes=352 layers=41 characters=24
+
+# Samsung's colored weather icons (weather_ic_* vector drawables -> SVG):
+python tools/convert-samsung-icons.py
+# -> assets/icons/*.svg (35 icons: sunny, clear, rain, snow, thunderstorm,
+#    sunrise/sunset, precipitation droplet, ...)
 ```
+
+## Live weather, location and time simulator
+
+The demo is a working weather app, not just a scene viewer:
+
+- **Real weather** from the free Open-Meteo API (no key), geocoding search
+  dropdown and a **GPS button** (`⌖ Use my location`), exactly like the
+  Atmoscene homepage. WMO weather codes map to Samsung scene codes and to
+  the Samsung icon set; the hero, hourly graph card and daily card
+  (Yesterday/Today/… via `past_days=1`) all render the real forecast.
+- **No emoji weather icons** — every condition icon is Samsung's own
+  `weather_ic_*` artwork, converted from the APK's vector drawables to SVG.
+- **Time simulator**: a time-of-day slider (plus timelapse play) drives the
+  sun status (sunrise/day/sunset/night), the sun/moon position on Samsung's
+  parabolic path, the temperature curve (simulated mode) and the clock —
+  drag it to watch the hero relight through a full day.
+- The character video loop uses Samsung's `loopStartTime`: frames are only
+  uploaded when fresh, the last good texture is kept across the loop seek,
+  and the mask is feathered + premultiplied so edges blend smoothly.
 
 ## Run the simulator
 
