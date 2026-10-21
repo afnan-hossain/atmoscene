@@ -239,12 +239,22 @@ function initCharGL() {
       vec2 sp = vec2((block+lx)*0.25, 0.8 + (1.0-ly)*0.2);
       return lum(texImg(sp).rgb);
     }
+    // The packed mask is only 160px per quadrant, so the reconstructed edge is
+    // blocky. Blur it in mask space (two rings) before the feather.
+    float softMask(vec2 xy){
+      float r = 3.0/640.0;
+      float a = alphaAt(xy) * 0.22;
+      a += (alphaAt(xy+vec2(r,0.0)) + alphaAt(xy+vec2(-r,0.0)) + alphaAt(xy+vec2(0.0,r)) + alphaAt(xy+vec2(0.0,-r))) * 0.10;
+      a += (alphaAt(xy+vec2(r,r)) + alphaAt(xy+vec2(-r,r)) + alphaAt(xy+vec2(r,-r)) + alphaAt(xy+vec2(-r,-r))) * 0.045;
+      float r2 = 6.0/640.0;
+      a += (alphaAt(xy+vec2(r2,0.0)) + alphaAt(xy+vec2(-r2,0.0)) + alphaAt(xy+vec2(0.0,r2)) + alphaAt(xy+vec2(0.0,-r2))) * 0.035;
+      return a;
+    }
     void main(){
       vec3 col = texImg(vec2(vUv.x, vUv.y*0.8)).rgb;
-      float raw = alphaAt(vUv);
-      // Feather the mask edge (the packed mask is binary-ish; a hard clamp
-      // fringes against the scene). Premultiplied output blends smoothly.
-      float a = clamp(smoothstep(0.05, 0.55, raw) * (0.35 + 0.65 * raw) * (1.0+uEdge), 0.0, 1.0);
+      // Floor sits above the mask's background noise so the frame rectangle
+      // (visible on the hurricane) stays fully transparent while the edge feathers.
+      float a = clamp(smoothstep(0.24, 0.66, softMask(vUv)) * (1.0+uEdge), 0.0, 1.0);
       gl_FragColor = vec4(col * a, a);
     }`;
   function sh(type, src) { const s = glc.createShader(type); glc.shaderSource(s, src); glc.compileShader(s); return s; }
@@ -292,9 +302,10 @@ function seekToLoopPoint() {
 }
 video.addEventListener('seeked', () => { loopSeeking = false; });
 video.addEventListener('timeupdate', () => {
-  // Seek a little before the true end so the loop segment (Samsung encodes
-  // loopStartTime for exactly this) wraps without an end-of-stream stall.
-  if (charLoopStart > 0 && video.duration && video.currentTime > video.duration - 0.22) seekToLoopPoint();
+  // Seek a little before the true end so the loop (Samsung's loopStartTime, or
+  // the start for clips like the hurricane that loop whole) wraps before the
+  // video ever reaches the paused 'ended' state.
+  if (video.duration && video.currentTime > video.duration - 0.22) seekToLoopPoint();
 });
 video.addEventListener('ended', seekToLoopPoint);
 
@@ -445,13 +456,19 @@ function renderCards(cond) {
   const slots = [];
   if (WX?.hourly?.time?.length) {
     const times = WX.hourly.time;
-    let idx = times.findIndex(t => t.slice(0, 13) >= WX.current.time.slice(0, 13));
-    if (idx < 0) idx = 0;
-    const sunsetToday = WX.daily?.sunset?.[1] || '';
+    // Anchor the card to the time slider (live mode sets it to the location's
+    // real local hour), so the card, the clock and the sky always agree.
+    const today = WX.current.time.slice(0, 10);
+    const targetH = Math.floor(+els.time.value);
+    let idx = times.findIndex(t => t.slice(0, 10) === today && +t.slice(11, 13) >= targetH);
+    if (idx < 0) idx = Math.max(0, times.findIndex(t => t.slice(0, 13) >= WX.current.time.slice(0, 13)));
+    const sunsetToday = (WX.daily?.sunset || []).find(s => s.slice(0, 10) === today) || '';
     const sunsetH = sunsetToday ? +sunsetToday.slice(11, 13) + (+sunsetToday.slice(14, 16)) / 60 : SUNSET;
+    let prevH = null;
     for (let i = 0; i < 7 && idx + i < times.length; i++) {
       const t = times[idx + i], h = +t.slice(11, 13);
-      if (i > 0 && h === Math.ceil(sunsetH) && sunsetH % 1 !== 0) slots.push({ sunset: true, label: fmtHour(sunsetH).full.replace(':0', ':') });
+      if (prevH !== null && prevH < sunsetH && h >= sunsetH) slots.push({ sunset: true, label: fmtHour(sunsetH).full });
+      prevH = h;
       slots.push({
         h, icon: wmoToIcon(WX.hourly.weather_code[idx + i], WX.hourly.is_day[idx + i] === 1),
         t: Math.round(WX.hourly.temperature_2m[idx + i]),
@@ -537,7 +554,9 @@ function applyScene() {
   $('charName').textContent = char || 'none in this scene';
   if (char && char !== currentChar) {
     currentChar = char;
-    charTextureLive = false; lastUploadedFrame = -1;
+    // Keep drawing the previous frame until the new video has decoded one, so
+    // scene changes never flash the character out and back in.
+    lastUploadedFrame = -1;
     video.loop = false; // looping is handled manually at Samsung's loopStartTime
     video.src = `assets/characters/${char}.mp4`;
     video.playbackRate = +els.charrate.value;
@@ -604,7 +623,7 @@ function applyTransforms() {
   wrap.style.opacity = Math.max(0, 1 - scroll * 1.15);
   near.style.opacity = (+els.nearop.value / 100) * Math.max(0.15, 1 - scroll * 0.7);
   document.querySelector('.hero-ui').style.opacity = Math.max(0, 1 - scroll * 1.5);
-  const hc = $('hourlyCard'); if (hc) hc.style.transform = `translateY(${scroll * 30}px)`;
+  const hc = $('hourlyCard'); if (hc) hc.style.transform = `translate(-50%, ${scroll * 30}px)`;
   $('stage').classList.toggle('exploded', els.explode.value === '1');
   const fam = familyLabel(resolved).toLowerCase();
   const sandOn = els['t-precip'].value === '1' && (fam.includes('sand') || els.forcefx.value === '1');
